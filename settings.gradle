@@ -1,1 +1,1 @@
-include ':app', ':wxqutilslibrary'
+include ':androidapp', ':wxqutilslibrary'

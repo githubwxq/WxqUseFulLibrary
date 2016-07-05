@@ -2,11 +2,13 @@ package Tools;
 
 import android.content.Context;
 import android.util.TypedValue;
+import android.widget.ListView;
 
 public class DensityUtils
 {
 	private DensityUtils()
 	{
+
 		/* cannot be instantiated */
 		throw new UnsupportedOperationException("cannot be instantiated");
 	}

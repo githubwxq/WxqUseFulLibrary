@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WxqUseFulLibrary.iml" filepath="$PROJECT_DIR$/WxqUseFulLibrary.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidapp/androidapp.iml" filepath="$PROJECT_DIR$/androidapp/androidapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/wxqutilslibrary/wxqutilslibrary.iml" filepath="$PROJECT_DIR$/wxqutilslibrary/wxqutilslibrary.iml" />
     </modules>
   </component>
