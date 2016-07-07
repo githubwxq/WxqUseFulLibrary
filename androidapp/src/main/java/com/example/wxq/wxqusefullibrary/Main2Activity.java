@@ -21,7 +21,7 @@ public class Main2Activity extends AppCompatActivity {
         data.add(new Book("wxq","14"));
         data.add(new Book("wxq","15"));
         data.add(new Book("wxq","19"));
-
+        data.add(new Book("wxq","20"));
         easy_list.setAdapter(new EasyAdapter(data));
 
 
