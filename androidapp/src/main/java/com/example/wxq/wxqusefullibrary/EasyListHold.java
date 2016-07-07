@@ -24,20 +24,24 @@ public class EasyListHold extends MyBaseHolder<Book>{
     protected View initView() {
 
        System.out.print("11111111111");
-        View view =View.inflate(context, R.layout.book_list_item, null);
+        View view =View.inflate(context, R.layout.book_list_item, null);//view de的特效
 
         tv_bookname=(TextView)view.findViewById(R.id.tv_bookname);
         bookprive=(TextView)view.findViewById(R.id.tv_price);
-
-
-
+        dealListener();
         return view;
     }
 
+    private void dealListener() {
+
+
+
+    }
 
 
     @Override
     public void refreshView(Book data) {
+        // 拿数据然后放数据
         tv_bookname.setText(data.getName());
         bookprive.setText(data.getPrice());
     }

@@ -26,7 +26,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return data.size() ;// 增加加载更多布局数量
+        return data.size();// 增加加载更多布局数量
     }
 
     @Override
@@ -79,7 +79,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
 
         // 4. 根据数据来刷新界面
 
-        holder.setData(getItem(position));
+        holder.setData(getItem(position));//刷新数据
 
 
         return holder.getRootView();
@@ -95,4 +95,37 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         return data.size();
     }
 
+
+    // 加载更多
+    public void loadMore(ArrayList<T> moreData) {
+
+        data.addAll(moreData);
+        this.notifyDataSetChanged();
+
+
+    }
+
+    // 刷新
+    public void refreshNewData(ArrayList<T> newData) {
+        data = newData;
+        this.notifyDataSetChanged();
+
+
+    }
+
+
 }
+
+// activity使用方法
+//class EasyAdapter extends MyBaseAdapter<Book>{
+//
+//
+//    public EasyAdapter(ArrayList<Book> data) {
+//        super(data);
+//    }
+//
+//    @Override
+//    public MyBaseHolder<Book> getHolder() {
+//        return new EasyListHold(Main2Activity.this); //上下文的问题
+//    }
+//}
