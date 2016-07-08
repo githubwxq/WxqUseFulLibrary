@@ -8,7 +8,6 @@
     android:orientation="vertical"
 
     >
-
     <TextView
         android:id="@+id/tv_hellow"
         android:layout_width="wrap_content"
@@ -17,14 +16,55 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
-
     <TextView
         android:id="@+id/tv_wxq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_wxq3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="wxq"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wxq"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="wxq"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" /><TextView
+    android:id="@+id/tv_wxq6"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="wxq"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" /><TextView
+    android:id="@+id/tv_wxq7"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="wxq"
+    android:layout_alignParentTop="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true" />
+
+
+
 
 </LinearLayout>

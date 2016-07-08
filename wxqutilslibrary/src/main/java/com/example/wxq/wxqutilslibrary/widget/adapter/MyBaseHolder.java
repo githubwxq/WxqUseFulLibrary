@@ -28,9 +28,9 @@ public abstract class MyBaseHolder<T> {
         return mRootView;
     }
     // 设置当前item的数据
-    public void setData(T data) {
+    public void setData(T data,int position) {
         this.data = data;
-        refreshView(data);
+        refreshView(data,position);
     }
     // 获取当前item的数据
     public T getData() {
@@ -38,7 +38,7 @@ public abstract class MyBaseHolder<T> {
     }
 
     // 4. 根据数据来刷新界面
-    public abstract void refreshView(T data);
+    public abstract void refreshView(T data,int position);
 
 
 }

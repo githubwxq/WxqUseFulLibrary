@@ -79,7 +79,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
 
         // 4. 根据数据来刷新界面
 
-        holder.setData(getItem(position));//刷新数据
+        holder.setData(getItem(position),position);//刷新数据
 
 
         return holder.getRootView();

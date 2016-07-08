@@ -2,6 +2,9 @@ package com.example.wxq.wxqusefullibrary;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
@@ -9,14 +12,38 @@ import com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView;
 
 import java.util.ArrayList;
 
+import rx.Subscriber;
+
 public class Main2Activity extends AppCompatActivity {
     RefreshListView easy_list;
 
-
+    EasyListHold easyListHold;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        BookServiceImpl.getAllStudentByName(new Subscriber<Book>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Book books) {
+            System.out.print("hhhhhhhhhhhhhhhhhhhhhh");
+
+            }
+        });
+
+
+
+        easyListHold=new EasyListHold(this);
         easy_list= (RefreshListView) findViewById(R.id.easy_list);
         final ArrayList<Book> data=new ArrayList<>();
         data.add(new Book("wxq","14"));
@@ -60,7 +87,16 @@ public class Main2Activity extends AppCompatActivity {
             }
         });
 
+        easy_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(Main2Activity.this, "你点击了"+ i, Toast.LENGTH_SHORT).show();
+                easyListHold.setSelectPositon(i);
+                easy_list.setAdapter(easyAdapter);
+          //      easyAdapter.notifyDataSetChanged();
 
+            }
+        });
     }
 
     class EasyAdapter extends MyBaseAdapter<Book>{
@@ -72,7 +108,9 @@ public class Main2Activity extends AppCompatActivity {
 
         @Override
         public MyBaseHolder<Book> getHolder() {
-            return new EasyListHold(Main2Activity.this); //上下文的问题
+
+          easyListHold = new EasyListHold(Main2Activity.this);
+            return easyListHold; //上下文的问题
         }
     }
 }
