@@ -1,48 +1,39 @@
 package com.example.wxq.wxqusefullibrary;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
 import com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView;
+import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.util.ArrayList;
 
-import rx.Subscriber;
-
 public class Main2Activity extends AppCompatActivity {
     RefreshListView easy_list;
-
+    Button btn_next;
     EasyListHold easyListHold;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        BookServiceImpl.getAllStudentByName(new Subscriber<Book>() {
+        RxBus.get().register(this);
+
+        btn_next= (Button) findViewById(R.id.btn_next);
+        btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCompleted() {
-
-            }
-
-            @Override
-            public void onError(Throwable e) {
-
-            }
-
-            @Override
-            public void onNext(Book books) {
-            System.out.print("hhhhhhhhhhhhhhhhhhhhhh");
-
+            public void onClick(View view) {
+                Intent intent = new Intent(Main2Activity.this, MyRxActivity.class);
+                startActivity(intent);
             }
         });
-
-
-
         easyListHold=new EasyListHold(this);
         easy_list= (RefreshListView) findViewById(R.id.easy_list);
         final ArrayList<Book> data=new ArrayList<>();
@@ -93,11 +84,21 @@ public class Main2Activity extends AppCompatActivity {
                 Toast.makeText(Main2Activity.this, "你点击了"+ i, Toast.LENGTH_SHORT).show();
                 easyListHold.setSelectPositon(i);
                 easy_list.setAdapter(easyAdapter);
+
+
+
+
+
           //      easyAdapter.notifyDataSetChanged();
 
             }
         });
+
+
+
     }
+
+
 
     class EasyAdapter extends MyBaseAdapter<Book>{
 
@@ -112,5 +113,20 @@ public class Main2Activity extends AppCompatActivity {
           easyListHold = new EasyListHold(Main2Activity.this);
             return easyListHold; //上下文的问题
         }
+    }
+
+
+    @Subscribe
+    public void eat(String food) {
+    //    Toast.makeText(this,food,Toast.LENGTH_SHORT).show();
+
+        btn_next.setText(food);
+
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //销毁
+        RxBus.get().unregister(this);
     }
 }

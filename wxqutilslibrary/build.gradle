@@ -30,4 +30,5 @@ dependencies {
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile 'com.google.code.gson:gson:2.7'
     compile 'com.jakewharton:butterknife:8.1.0'
+    compile 'com.hwangjr.rxbus:rxbus:1.0.4'
 }
