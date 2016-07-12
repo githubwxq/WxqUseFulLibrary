@@ -21,7 +21,14 @@
             android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".MyRxActivity"></activity>
+        <activity android:name=".MyRxActivity" />
+
+        <receiver
+            android:name=".MyReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".TabsActivity"></activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
+import com.hwangjr.rxbus.annotation.Subscribe;
 
 import Tools.ScreenUtils;
 import butterknife.BindView;
@@ -34,11 +35,13 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.tv_wxq7)
     TextView tvWxq7;
 
+    TextView rxbus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //  popupWindow= new CommonPopupWindow();
-
+        RxBus.get().register(this);
         bottomView = new BottomView(this, R.style.BottomViewTheme_Defalut, R.layout.activity_dialog);
 
         bottomView.setTop(false);
@@ -48,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         tvHellow = (TextView) findViewById(R.id.tv_hellow);
 
-
+        rxbus= (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
         tvWxq.setText(ScreenUtils.getScreenWidth(this) + "");
         tvWxq.setOnClickListener(new View.OnClickListener() {
@@ -62,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 //   popupWindow.disspop();
             }
         });
+
         // CommonDialogUtils.showDailog(this,R.layout.activity_dialog);
 
 
@@ -69,6 +73,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Subscribe
+    public void changerxbus(String food) {
+
+        rxbus.setText(food+"来自第三个界面的回传");
+      //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
+    }
 
     @OnClick({R.id.tv_hellow, R.id.tv_wxq3, R.id.tv_wxq4, R.id.tv_wxq5, R.id.tv_wxq6, R.id.tv_wxq7})
     public void onClick(View view) {
@@ -89,5 +99,11 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        RxBus.get().unregister(this);
     }
 }

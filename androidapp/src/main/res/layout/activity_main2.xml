@@ -14,6 +14,12 @@
      android:layout_height="wrap_content"
      android:text="下一个网页"
      />
-
+ <Button
+     android:id="@+id/btn_tabs"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:text="下一个tabs界面"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

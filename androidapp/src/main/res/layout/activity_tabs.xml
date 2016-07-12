@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wxq.wxqusefullibrary.TabsActivity">
+
+    <android.support.design.widget.TabLayout
+       android:id="@+id/tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="@color/black"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/colorPrimaryDark"
+        />
+<android.support.v4.view.ViewPager
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>
+
+    <!-- 这里写注释
+
+
+     <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context="com.china.anonymous.viewpagedemotwo.MainActivity">
+
+
+<android.support.design.widget.TabLayout
+    android:id="@+id/tabs"
+    app:tabIndicatorColor="@color/colorAccent"
+    app:tabSelectedTextColor="@color/colorAccent"
+    app:tabTextColor="@color/colorPrimaryDark"
+    app:tabMode="fixed"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></android.support.design.widget.TabLayout>
+
+<android.support.v4.view.ViewPager
+    android:id="@+id/viewPager"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+</LinearLayout>
+
+
+
+
+
+
+    -->
+

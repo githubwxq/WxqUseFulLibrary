@@ -35,9 +35,9 @@ public class MyRxActivity extends AppCompatActivity {
 
                 Book book=new Book("rxbook ","1000");
 
-                RxBus.get().post(book);
+             //   RxBus.get().post(book);
 
-                RxBus.get().post("mybook",book);//打个标签区分不同的对象
+              //  RxBus.get().post("mybook",book);//打个标签区分不同的对象
             }
         });
 

@@ -5,11 +5,24 @@
     android:layout_height="match_parent"
     tools:context="com.example.wxq.wxqusefullibrary.MyRxActivity">
 <Button
-    android:id="@+id/rxbus_change"
+    android:id="@+id/btn_testfragment1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="lalal"
     />
 
-
+    <Button
+        android:id="@+id/btn_testfragment2"
+        android:layout_toRightOf="@id/btn_testfragment1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lalal"
+        />
+    <Button
+        android:id="@+id/rxbus_change"
+        android:layout_toRightOf="@id/btn_testfragment2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lalal"
+        />
 </RelativeLayout>
