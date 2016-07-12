@@ -10,16 +10,20 @@ import android.widget.Button;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by Administrator on 2016/7/12.
  */
 public class Test1Fragment extends Fragment {
 
+
     @BindView(R.id.btn_testfragment1)
     Button btnTestfragment1;
     @BindView(R.id.btn_testfragment2)
     Button btnTestfragment2;
+    @BindView(R.id.rxbus_change)
+    Button rxbusChange;
 
     @Nullable
     @Override
@@ -32,5 +36,18 @@ public class Test1Fragment extends Fragment {
         btnTestfragment1.setText("butterknife");
 
         return view;
+    }
+
+    @OnClick({R.id.btn_testfragment1, R.id.btn_testfragment2, R.id.rxbus_change})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn_testfragment1:
+                btnTestfragment1.setText("butterknifebtnTestfragment1");
+                break;
+            case R.id.btn_testfragment2:
+                break;
+            case R.id.rxbus_change:
+                break;
+        }
     }
 }
