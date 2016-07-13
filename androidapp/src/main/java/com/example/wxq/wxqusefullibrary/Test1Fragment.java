@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -16,6 +18,8 @@ import butterknife.OnClick;
  * Created by Administrator on 2016/7/12.
  */
 public class Test1Fragment extends Fragment {
+
+
 
 
     @BindView(R.id.btn_testfragment1)
@@ -43,6 +47,12 @@ public class Test1Fragment extends Fragment {
         switch (view.getId()) {
             case R.id.btn_testfragment1:
                 btnTestfragment1.setText("butterknifebtnTestfragment1");
+                RxBus.get().post(Test6Fragment.RXTAG,"我来自于第一个fragment");
+                RxBus.get().post(MainActivity.RXTAG,"hellow mainactivity我来自于第一个fragment");
+
+
+
+
                 break;
             case R.id.btn_testfragment2:
                 break;

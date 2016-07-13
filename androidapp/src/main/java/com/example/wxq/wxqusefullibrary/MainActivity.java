@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.hwangjr.rxbus.annotation.Subscribe;
+import com.hwangjr.rxbus.annotation.Tag;
+import com.hwangjr.rxbus.thread.EventThread;
 
 import Tools.ScreenUtils;
 import butterknife.BindView;
@@ -16,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String RXTAG ="MainActivity";
     BottomView bottomView = null;
     //CommonPopupWindow popupWindow;
 
@@ -79,6 +82,20 @@ public class MainActivity extends AppCompatActivity {
         rxbus.setText(food+"来自第三个界面的回传");
       //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
     }
+
+    @Subscribe(
+            thread = EventThread.MAIN_THREAD,
+            tags = {
+                    @Tag(RXTAG)
+            }
+    )
+    public void getInfoFromFragment1(String informatiion) {
+
+        tvWxq3.setText(informatiion+"<<<<<<");
+        //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
+    }
+
+
 
     @OnClick({R.id.tv_hellow, R.id.tv_wxq3, R.id.tv_wxq4, R.id.tv_wxq5, R.id.tv_wxq6, R.id.tv_wxq7})
     public void onClick(View view) {

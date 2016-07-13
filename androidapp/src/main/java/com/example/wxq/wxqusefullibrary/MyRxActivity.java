@@ -35,7 +35,7 @@ public class MyRxActivity extends AppCompatActivity {
 
                 Book book=new Book("rxbook ","1000");
 
-             //   RxBus.get().post(book);
+               RxBus.get().post(book);
 
               //  RxBus.get().post("mybook",book);//打个标签区分不同的对象
             }
@@ -64,6 +64,7 @@ public class MyRxActivity extends AppCompatActivity {
         // purpose
         Toast.makeText(this,"mybook"+ book.getName(),Toast.LENGTH_SHORT).show();
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

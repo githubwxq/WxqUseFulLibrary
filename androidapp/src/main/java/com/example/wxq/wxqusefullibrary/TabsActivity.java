@@ -10,6 +10,7 @@ import android.util.Log;
 
 import com.example.wxq.wxqusefullibrary.fragment.Test2Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test3Fragment;
+import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
 
 import butterknife.ButterKnife;
 
@@ -45,7 +46,7 @@ public class TabsActivity extends AppCompatActivity {
                   case 4:
                       return new Test1Fragment();
                   case 5:
-                      return new Test1Fragment();
+                      return new Test6Fragment();
                   default:
                       return new Test1Fragment();
               }
@@ -74,7 +75,7 @@ public class TabsActivity extends AppCompatActivity {
 
           @Override
           public int getCount() {
-              return 5;
+              return 6;
           }
       });
         viewPager.setOffscreenPageLimit(5);//确保 viewpage oncreate 子类方法没有重新没加载 同时会调用oncreate方法现在需求是滑到那一个加载哪一个
