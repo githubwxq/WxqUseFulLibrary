@@ -14,7 +14,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
-import com.example.wxq.wxqusefullibrary.Test1Fragment;
 
 import java.util.ArrayList;
 
@@ -55,8 +54,8 @@ ArrayList<Fragment> flists;
 
         ButterKnife.bind(this, view);
         flists=new ArrayList<Fragment>();
-        flists.add(new Test1Fragment());
-        flists.add(new Test5Fragment());
+        flists.add(new Test1ChildFragment());
+        flists.add(new Test2ChildFragment());
 
         tvF2.setText("framgment2");
 
@@ -75,12 +74,12 @@ ArrayList<Fragment> flists;
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "子"+position+1+"个";
+                        return "子"+(position+1)+"fragment";
                     case 1:
-                        return "子"+position+1+"个";
+                        return "子"+(position+1)+"fragment";
 
                     default:
-                        return "第"+position+1+"个";
+                        return "子"+(position+1)+"fragment";
                 }
             }
         });

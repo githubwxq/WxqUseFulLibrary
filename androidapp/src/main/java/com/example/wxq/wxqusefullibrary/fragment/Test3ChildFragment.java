@@ -3,31 +3,25 @@ package com.example.wxq.wxqusefullibrary.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
-import com.example.wxq.wxqusefullibrary.widget.TabHeadItem;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * 测试自定义 tablayout
  * Created by Administrator on 2016/7/12.
  */
-public class Test3Fragment extends Fragment {
+public class Test3ChildFragment extends Fragment {
 
-
-//    @BindView(R.id.tv_f3)
-//    TextView tvF3;
-    @BindView(R.id.tl_fg3)
-    TabLayout tlFg3;
+    @BindView(R.id.tv_child_fg3)
+    TextView tvChildFg3;
 
     //ctrl +alt +k 生命周期排序
     @Override
@@ -47,68 +41,13 @@ public class Test3Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
-        View view = inflater.inflate(R.layout.test3fragment, null);
+        View view = inflater.inflate(R.layout.test3childfragment, null);
 
 
         ButterKnife.bind(this, view);
 
-         initTabs();
-
-
-
-
-
-       // tvF3.setText("fragment3");
+        tvChildFg3.setText("childfragment3");
         return view;
-    }
-
-    private void initTabs() {
-
-     
-        TabHeadItem headItem1 = new TabHeadItem(getActivity());
-        headItem1.setTabText("fist1");
-        tlFg3.addTab(tlFg3.newTab().setCustomView(headItem1));
-
-
-
-        TabHeadItem headItem2 = new TabHeadItem(getActivity());
-        headItem1.setTabText("fist2");
-        tlFg3.addTab(tlFg3.newTab().setCustomView(headItem2));
-
-
-        TabHeadItem headItem3 = new TabHeadItem(getActivity());
-        headItem1.setTabText("fist3");
-        tlFg3.addTab(tlFg3.newTab().setCustomView(headItem3));
-
-//        TabLayout.Tab tab =headItem1;
-//        tlFg3.addView(headItem1);
-//        TabHeadItem headItem2 = new TabHeadItem(getActivity());
-//        headItem2.setTabText("fist2");
-//        tlFg3.addView(headItem2);
-//        TabHeadItem headItem3 = new TabHeadItem(getActivity());
-//        headItem3.setTabText("fist3");
-//        tlFg3.addView(headItem3);
-        //回调接口
-        tlFg3.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-               String position= tab.getPosition()+"weizi";
-                Toast.makeText(getActivity(), position, Toast.LENGTH_SHORT).show();
-                TabHeadItem customView = (TabHeadItem) tab.getCustomView();
-                customView.setTabText("你点击了我");
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-                TabHeadItem customView = (TabHeadItem) tab.getCustomView();
-                customView.setTabText("你没有点击了我");
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
     @Override

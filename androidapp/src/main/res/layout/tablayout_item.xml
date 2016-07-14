@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="48dp"
+    tools:context="com.example.wxq.wxqusefullibrary.MainActivity"
+    android:orientation="vertical"
+android:layout_gravity="center_horizontal"
+
+    >
+
+    <!--    添加matchparent 后tab 居中了 不然默认左前方-->
+    <!--  android:scaleType="center"-->
+
+    <ImageView
+
+        android:id="@+id/iv_head"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+
+       android:src="@drawable/default_image"
+       />
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_tab_title"
+
+        android:layout_width="match_parent"
+        android:layout_height="18dp"
+        android:text="Hello World!"
+        />
+
+</LinearLayout>

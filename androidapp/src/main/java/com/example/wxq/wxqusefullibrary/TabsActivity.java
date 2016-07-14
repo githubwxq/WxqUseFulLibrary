@@ -10,6 +10,8 @@ import android.util.Log;
 
 import com.example.wxq.wxqusefullibrary.fragment.Test2Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test3Fragment;
+import com.example.wxq.wxqusefullibrary.fragment.Test4Fragment;
+import com.example.wxq.wxqusefullibrary.fragment.Test5Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
 
 import butterknife.ButterKnife;
@@ -42,9 +44,9 @@ public class TabsActivity extends AppCompatActivity {
                   case 2:
                       return new Test3Fragment();
                   case 3:
-                      return new Test1Fragment();
+                      return new Test4Fragment();
                   case 4:
-                      return new Test1Fragment();
+                      return new Test5Fragment();
                   case 5:
                       return new Test6Fragment();
                   default:
@@ -56,20 +58,21 @@ public class TabsActivity extends AppCompatActivity {
           @Override
           public CharSequence getPageTitle(int position) {
               switch (position) {
+
                   case 0:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   case 1:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   case 2:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   case 3:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   case 4:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   case 5:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
                   default:
-                      return "第"+position+1+"个";
+                      return "第"+(position+1)+"个";
               }
           }
 

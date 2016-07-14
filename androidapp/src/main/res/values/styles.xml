@@ -29,7 +29,7 @@
         <item name="android:background">@color/black_overlay</item>
     </style>
 
-    <style name="mytabtext">
+    <style name="mytabtext" parent="TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
 
         <item name="android:textSize">16dp</item>
 
