@@ -58,7 +58,7 @@ public class Test4Fragment extends Fragment implements View.OnClickListener {
         flists=new ArrayList<Fragment>();
         flists.add(new Test1ChildFragment());
         flists.add(new Test2ChildFragment());
-        flists.add(new Test1ChildFragment());
+        flists.add(new Test3ChildFragment());
         // viewpage 的适配器
         myViewpage.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override

@@ -30,8 +30,12 @@ public class Test2ChildFragment extends Fragment {
     RecyclerView rlViewLeft;
     @BindView(R.id.rl_view_right)
     RecyclerView rlViewRight;
+    int mleftPositon;
 
     ArrayList<String> datas;
+    ArrayList<String> datasright;
+    RightAdapter mrightadapter;
+
     //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
@@ -54,26 +58,73 @@ public class Test2ChildFragment extends Fragment {
 
         ButterKnife.bind(this, view);
         initDatas();
+        initRight();
         initLeft();
 
-        initRight();
+
 
         return view;
     }
 
     private void initDatas() {
         datas=new ArrayList<String>();
-        datas.add("1");
-        datas.add("2");
-        datas.add("3");
-        datas.add("4");
-        datas.add("5");
-        datas.add("6");
-        datas.add("7");
+        datas.add("传递数据1");
+        datas.add("传递数据2");
+        datas.add("传递数据3");
+        datas.add("传递数据4");
+        datas.add("传递数据5");
+        datas.add("传递数据6");
+        datas.add("传递数据7");
+
+
+        datasright=new ArrayList<String>();
+        datasright.add("right1");
+        datasright.add("right2");
+        datasright.add("right3");
+        datasright.add("right4");
+        datasright.add("right5");
+
+    }
+    private void initDatasRight(String leftdata) {
+// 获取新数据
+        datasright=new ArrayList<String>();
+
+        if(leftdata.equals("传递数据1")){
+
+            datasright.add("rightaaaa");
+            datasright.add("rightbbbb");
+            datasright.add("rightcccc");
+            datasright.add("rightdddd");
+            datasright.add("righteeeee");
+
+        }
+         if(leftdata.equals("传递数据2")){
+
+            datasright.add("righta");
+            datasright.add("rightb");
+            datasright.add("rightc");
+            datasright.add("rightd");
+            datasright.add("righte");
+        }
+
+
 
     }
 
+
     private void initRight() {
+
+
+        //前后顺序
+        rlViewRight.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rlViewRight.setItemAnimator(new DefaultItemAnimator());
+
+        mrightadapter=new RightAdapter() ;
+        rlViewRight.setAdapter(mrightadapter);
+
+
+
     }
 
     private void initLeft() {
@@ -84,7 +135,8 @@ public class Test2ChildFragment extends Fragment {
         rlViewLeft.setItemAnimator(new DefaultItemAnimator());
 
 
-        rlViewLeft.setAdapter(new HomeAdapter());
+        rlViewLeft.setAdapter(new LeftAdapter());
+
 
 
 
@@ -92,7 +144,7 @@ public class Test2ChildFragment extends Fragment {
 
     }
 
-    class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder>
+    class LeftAdapter extends RecyclerView.Adapter<LeftAdapter.MyViewHolder>
     {
 
         @Override
@@ -105,9 +157,31 @@ public class Test2ChildFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(MyViewHolder holder, int position)
+        public void onBindViewHolder(final MyViewHolder holder, final int position)
         {
             holder.tv.setText(datas.get(position));
+            if(position==mleftPositon){
+                holder.tv.setBackgroundResource(R.color.green);
+
+            }else{
+                holder.tv.setBackgroundResource(R.color.white);
+
+            }
+            holder.tv.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                     mleftPositon=position;
+                     initDatasRight(datas.get(position));
+                     mrightadapter.notifyDataSetChanged();
+
+                    notifyDataSetChanged();
+                }
+            });
+
+
+
+
         }
 
         @Override
@@ -191,5 +265,46 @@ public class Test2ChildFragment extends Fragment {
     }
 
 
+    private class RightAdapter extends RecyclerView.Adapter<RightAdapter.MyRightHolder> {
+
+
+        @Override
+        public MyRightHolder onCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            MyRightHolder holder = new MyRightHolder(LayoutInflater.from(
+                    getActivity()).inflate(R.layout.right_item, parent,
+                    false));
+            return holder;
+        }
+
+
+        @Override
+        public void onBindViewHolder(final MyRightHolder holder, final int position)
+        {
+            holder.rtv.setText(datasright.get(position));
+
+
+
+
+
+        }
+
+        @Override
+        public int getItemCount()
+        {
+            return datasright.size();
+        }
+
+        class MyRightHolder extends  RecyclerView.ViewHolder
+        {
+
+            TextView rtv;
+            public MyRightHolder(View view)
+            {
+                super(view);
+                rtv = (TextView) view.findViewById(R.id.tv_rightnumber);
+            }
+        }
+    }
 }
 

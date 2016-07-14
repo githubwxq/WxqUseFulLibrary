@@ -50,12 +50,10 @@ ArrayList<Fragment> flists;
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
         View view = inflater.inflate(R.layout.test2fragment, null);
-
-
         ButterKnife.bind(this, view);
         flists=new ArrayList<Fragment>();
         flists.add(new Test1ChildFragment());
-        flists.add(new Test2ChildFragment());
+        flists.add(new Test1ChildFragment());
 
         tvF2.setText("framgment2");
 
