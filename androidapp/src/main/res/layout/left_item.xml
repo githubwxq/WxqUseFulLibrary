@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+
+    tools:context="com.example.wxq.wxqusefullibrary.MainActivity"
+    android:orientation="horizontal"
+
+    >
+
+
+
+    <TextView
+        android:gravity="center"
+        android:id="@+id/tv_number"
+        android:layout_marginLeft="40dp"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:text="Hello World!"
+        />
+
+</LinearLayout>

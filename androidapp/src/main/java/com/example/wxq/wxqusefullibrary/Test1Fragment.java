@@ -19,9 +19,6 @@ import butterknife.OnClick;
  */
 public class Test1Fragment extends Fragment {
 
-
-
-
     @BindView(R.id.btn_testfragment1)
     Button btnTestfragment1;
     @BindView(R.id.btn_testfragment2)

@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,9 +25,13 @@ import butterknife.ButterKnife;
  */
 public class Test2ChildFragment extends Fragment {
 
-    @BindView(R.id.tv_child_fg2)
-    TextView tvChildFg2;
 
+    @BindView(R.id.rl_view_left)
+    RecyclerView rlViewLeft;
+    @BindView(R.id.rl_view_right)
+    RecyclerView rlViewRight;
+
+    ArrayList<String> datas;
     //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
@@ -43,12 +52,87 @@ public class Test2ChildFragment extends Fragment {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
         View view = inflater.inflate(R.layout.test2childfragment, null);
 
-
         ButterKnife.bind(this, view);
+        initDatas();
+        initLeft();
 
-        tvChildFg2.setText("childfragment2");
+        initRight();
+
         return view;
     }
+
+    private void initDatas() {
+        datas=new ArrayList<String>();
+        datas.add("1");
+        datas.add("2");
+        datas.add("3");
+        datas.add("4");
+        datas.add("5");
+        datas.add("6");
+        datas.add("7");
+
+    }
+
+    private void initRight() {
+    }
+
+    private void initLeft() {
+
+        //前后顺序
+        rlViewLeft.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        rlViewLeft.setItemAnimator(new DefaultItemAnimator());
+
+
+        rlViewLeft.setAdapter(new HomeAdapter());
+
+
+
+
+
+    }
+
+    class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder>
+    {
+
+        @Override
+        public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType)
+        {
+            MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
+                    getActivity()).inflate(R.layout.left_item, parent,
+                    false));
+            return holder;
+        }
+
+        @Override
+        public void onBindViewHolder(MyViewHolder holder, int position)
+        {
+            holder.tv.setText(datas.get(position));
+        }
+
+        @Override
+        public int getItemCount()
+        {
+            return datas.size();
+        }
+
+        class MyViewHolder extends
+                RecyclerView.ViewHolder
+        {
+
+            TextView tv;
+
+            public MyViewHolder(View view)
+            {
+                super(view);
+                tv = (TextView) view.findViewById(R.id.tv_number);
+            }
+        }
+    }
+
+
+
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
