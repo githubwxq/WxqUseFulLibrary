@@ -81,7 +81,7 @@ ArrayList<Book> data;
 
         lvFg5.setAdapter(quickAdapter=new QuickAdapter<Book>( getActivity(), data, R.layout.book_list_item) {
             @Override
-            public void convert(QuickViewHolder helper, Book item) {
+            public void convert(QuickViewHolder helper, Book item,int position) {
                 int currentPositon = helper.getPosition();
 
                 helper.setText(R.id.tv_bookname,item.getName());
