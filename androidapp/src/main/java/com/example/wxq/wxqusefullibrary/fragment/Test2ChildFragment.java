@@ -75,7 +75,13 @@ public class Test2ChildFragment extends Fragment {
         datas.add("传递数据5");
         datas.add("传递数据6");
         datas.add("传递数据7");
-
+        datas.add("传递数据8");
+        datas.add("传递数据9");
+        datas.add("传递数据10");
+        datas.add("传递数据11");
+        datas.add("传递数据12");
+        datas.add("传递数据13");
+        datas.add("传递数据14");
 
         datasright=new ArrayList<String>();
         datasright.add("right1");

@@ -7,7 +7,7 @@
  <com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView
      android:id="@+id/easy_list"
      android:layout_width="wrap_content"
-     android:layout_height="wrap_content"></com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView>
+     android:layout_height="fill_parent"></com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView>
  <Button
      android:id="@+id/btn_next"
      android:layout_width="wrap_content"

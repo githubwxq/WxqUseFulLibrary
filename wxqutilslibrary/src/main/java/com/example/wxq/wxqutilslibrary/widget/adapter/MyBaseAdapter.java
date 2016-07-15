@@ -1,5 +1,6 @@
 package com.example.wxq.wxqutilslibrary.widget.adapter;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -78,7 +79,7 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
         }
 
         // 4. 根据数据来刷新界面
-
+        Log.d("MyBaseAdapter", "base内部执行"+position);
         holder.setData(getItem(position),position);//刷新数据
 
 

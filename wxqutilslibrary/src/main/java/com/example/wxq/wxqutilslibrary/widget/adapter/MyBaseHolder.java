@@ -1,6 +1,5 @@
 package com.example.wxq.wxqutilslibrary.widget.adapter;
 
-import android.content.Context;
 import android.view.View;
 
 /**
@@ -10,11 +9,11 @@ public abstract class MyBaseHolder<T> {
     private View mRootView;
     private T data;
 //当new对象的时候就会加载布局初始化控件，以及设置tag
- public Context context;
 
-    public MyBaseHolder(Context context) {
-        this.context=context;
-     mRootView=initView();//大家不同的实现就用抽象方法实现不同内容
+
+    public MyBaseHolder() {
+
+        mRootView=initView();//大家不同的实现就用抽象方法实现不同内容
         mRootView.setTag(this);//把当前类给他 呆货取出来
 
     }
