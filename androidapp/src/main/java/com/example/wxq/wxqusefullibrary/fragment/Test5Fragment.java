@@ -82,12 +82,12 @@ ArrayList<Book> data;
         lvFg5.setAdapter(quickAdapter=new QuickAdapter<Book>( getActivity(), data, R.layout.book_list_item) {
             @Override
             public void convert(QuickViewHolder helper, Book item,int position) {
-                int currentPositon = helper.getPosition();
+
 
                 helper.setText(R.id.tv_bookname,item.getName());
                 helper.setText(R.id.tv_price, item.getPrice());
-                Toast.makeText(getActivity(), "currentPositon:" + currentPositon, Toast.LENGTH_SHORT).show();
-if(currentPositon==selectPostion){
+              //  Toast.makeText(getActivity(), "currentPositon:" + currentPositon, Toast.LENGTH_SHORT).show();
+if(position==selectPostion){
     helper.setText(R.id.tv_bookname,"我被点击了位子为"+selectPostion);
 
 }else {

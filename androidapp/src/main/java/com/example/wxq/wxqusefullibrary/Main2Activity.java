@@ -85,11 +85,11 @@ public class Main2Activity extends AppCompatActivity {
         quickAdapter = new QuickAdapter<Book>(
                 this, data, R.layout.book_list_item) {
             @Override
-            public void convert(QuickViewHolder helper, Book item) {
+            public void convert(QuickViewHolder helper, Book item,int position) {
                 //相当于getview
                 helper.setText(R.id.tv_bookname, item.getName());
                 helper.setText(R.id.tv_price, item.getPrice());
-                int position = helper.getPosition();
+
                 Log.d("Main2Activity", "position:" + position);
                 if (position == selectPosition) {
                     //
