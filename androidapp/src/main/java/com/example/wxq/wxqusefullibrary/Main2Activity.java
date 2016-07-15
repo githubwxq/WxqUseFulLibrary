@@ -102,11 +102,12 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(Main2Activity.this, "你点击了" + i, Toast.LENGTH_SHORT).show();
+
                 easyListHold.setSelectPositon(i);
-                easy_list.setAdapter(easyAdapter);
+               // easyListHold.refreshView();
 
 
-                //      easyAdapter.notifyDataSetChanged();
+          easyAdapter.refreshHolderState();
 
             }
         });
@@ -126,16 +127,16 @@ public class Main2Activity extends AppCompatActivity {
 
         @Override
         public MyBaseHolder<Book> getHolder() {
-
             easyListHold = new EasyListHold(Main2Activity.this);
             return easyListHold; //上下文的问题
         }
+
     }
 
 
     @Subscribe
     public void eat(String food) {
-        //    Toast.makeText(this,food,Toast.LENGTH_SHORT).show();
+        //  Toast.makeText(this,food,Toast.LENGTH_SHORT).show();
 
         btn_next.setText(food);
 

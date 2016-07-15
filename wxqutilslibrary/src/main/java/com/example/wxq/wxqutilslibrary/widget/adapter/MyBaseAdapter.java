@@ -105,15 +105,20 @@ public abstract class MyBaseAdapter<T> extends BaseAdapter {
 
     }
 
-    // 刷新
+    // 有数据然后刷星数据刷新
     public void refreshNewData(ArrayList<T> newData) {
         data = newData;
         this.notifyDataSetChanged();
 
 
     }
+// 刷星点击专题
+public void refreshHolderState() {
+
+    this.notifyDataSetChanged();
 
 
+}
 }
 
 // activity使用方法
