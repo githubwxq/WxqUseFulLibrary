@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.Book;
 import com.example.wxq.wxqusefullibrary.R;
@@ -32,10 +31,11 @@ public class Test5Fragment extends Fragment {
     TextView tvF5;
     @BindView(R.id.lv_fg5)
     ListView lvFg5;
-ArrayList<Book> data;
+    ArrayList<Book> data;
     ArrayList<Book> moredata;
     private int selectPostion;
     QuickAdapter<Book> quickAdapter;
+
     //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
@@ -58,7 +58,7 @@ ArrayList<Book> data;
 
 
         ButterKnife.bind(this, view);
-        data=new ArrayList<Book>();
+        data = new ArrayList<Book>();
         data.add(new Book("wxq", "14"));
         data.add(new Book("wxq", "15"));
         data.add(new Book("wxq", "19"));
@@ -71,7 +71,7 @@ ArrayList<Book> data;
         data.add(new Book("wxq", "56"));
         data.add(new Book("wxq", "24"));
 
-        moredata=new ArrayList<Book>();
+        moredata = new ArrayList<Book>();
         moredata.add(new Book("moredatawxq", "14"));
         moredata.add(new Book("moredatawxq", "15"));
         moredata.add(new Book("moredatawxq", "19"));
@@ -79,41 +79,41 @@ ArrayList<Book> data;
         moredata.add(new Book("moredatawxq", "21"));
 
 
-        lvFg5.setAdapter(quickAdapter=new QuickAdapter<Book>( getActivity(), data, R.layout.book_list_item) {
+        lvFg5.setAdapter(quickAdapter = new QuickAdapter<Book>(getActivity(), data, R.layout.book_list_item) {
             @Override
-            public void convert(QuickViewHolder helper, Book item,int position) {
-
-
-                helper.setText(R.id.tv_bookname,item.getName());
+            public void convert(QuickViewHolder helper, Book item, int position) {
+      // c抽象方法 使数据能够 相互交流在同一个activity！！！
+         //position 拿到getview   position 很有用的哦
+                helper.setText(R.id.tv_bookname, item.getName());
                 helper.setText(R.id.tv_price, item.getPrice());
-              //  Toast.makeText(getActivity(), "currentPositon:" + currentPositon, Toast.LENGTH_SHORT).show();
-if(position==selectPostion){
-    helper.setText(R.id.tv_bookname,"我被点击了位子为"+selectPostion);
+                //  Toast.makeText(getActivity(), "currentPositon:" + currentPositon, Toast.LENGTH_SHORT).show();
+                if (position == selectPostion) {
+                    helper.setText(R.id.tv_bookname, "我被点击了位子为" + selectPostion);
 
-}else {
+                } else {
 
 
-}
+                }
 
             }
         });
         lvFg5.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getActivity(), "当前点击位置:" + i, Toast.LENGTH_SHORT).show();
-                selectPostion=i;
+              //  Toast.makeText(getActivity(), "当前点击位置:" + i, Toast.LENGTH_SHORT).show();
+                selectPostion = i;
                 quickAdapter.notifyDataSetChanged();
             }
         });
 
-     tvF5.setOnClickListener(new View.OnClickListener() {
-         @Override
-         public void onClick(View view) {
+        tvF5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-            data.addAll(moredata);
-             quickAdapter.notifyDataSetChanged();
-         }
-     });
+                data.addAll(moredata);
+                quickAdapter.notifyDataSetChanged();
+            }
+        });
         return view;
     }
 

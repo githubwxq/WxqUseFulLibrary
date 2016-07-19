@@ -16,12 +16,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by Administrator on 2016/7/12.
+ * Created by wxq on 2016/7/12.
  */
 public class Test1ChildFragment extends Fragment {
 
     @BindView(R.id.tv_child_fg1)
     TextView tvChildFg1;
+
+    @BindView(R.id.tv_foot)
+    TextView tvFoot;
 
     //ctrl +alt +k 生命周期排序
     @Override
@@ -42,11 +45,17 @@ public class Test1ChildFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
         View view = inflater.inflate(R.layout.test1childfragment, null);
-
-
         ButterKnife.bind(this, view);
         tvChildFg1.setText("child1fragment");
+
+
+
+
+
         //  tvF5.setText("framgment5");
+
+
+
         return view;
     }
 

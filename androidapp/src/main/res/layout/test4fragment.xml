@@ -16,7 +16,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="30dp"
-            android:text="花果山"
+            android:text="动画测试"
             android:background="@drawable/yellow_selector"
             android:gravity="center"
             />
@@ -25,7 +25,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="30dp"
-            android:text="超市"
+            android:text="listview测试"
             android:background="@drawable/yellow_selector"
             android:gravity="center"
             />
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="30dp"
-            android:text="月光宝盒"
+            android:text="数据测试"
             android:background="@drawable/yellow_selector"
             android:gravity="center"
             />

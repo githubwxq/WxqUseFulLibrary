@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.widget.TabHeadItem;
@@ -93,7 +92,7 @@ public class Test3Fragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                String position= tab.getPosition()+"weizi";
-                Toast.makeText(getActivity(), position, Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getActivity(), position, Toast.LENGTH_SHORT).show();
                 TabHeadItem customView = (TabHeadItem) tab.getCustomView();
                 customView.setTabText("你点击了我");
             }
