@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     >
     <TextView
@@ -9,35 +10,28 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
 android:gravity="center"
-        android:text="child1"
+        android:background="#6f6f"
+        android:text="child1fragment 准备处理"
         />
+    <android.support.design.widget.TabLayout
+        android:id="@+id/child_fg_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        app:tabMode="fixed"
+        app:tabBackground="@color/gray"
+        app:tabIndicatorColor="@color/green"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/yellow"
+        app:tabTextAppearance="@style/mytabtext"
+        />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/child_fg_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
 
-    <FrameLayout
-        android:id="@+id/fl_change_head"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        ></FrameLayout>
-    <FrameLayout
-        android:id="@+id/fl_change_body"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="#3f3f3f3f"
-        ></FrameLayout>
-    <FrameLayout
-        android:id="@+id/fl_change_foot"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="#113f3f3f"
-        ></FrameLayout>
-    <TextView
-        android:id="@+id/tv_foot"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:gravity="center"
-        android:text="foot"
-        />
+    </android.support.v4.view.ViewPager>
+
 
 </LinearLayout>

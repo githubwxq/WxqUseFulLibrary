@@ -30,7 +30,7 @@ public class Test2Fragment extends Fragment {
     ViewPager fgViewPager;
     @BindView(R.id.fg_tablayout)
     TabLayout fgTablayout;
-ArrayList<Fragment> flists;
+   ArrayList<Fragment> flists;
     //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
@@ -53,7 +53,7 @@ ArrayList<Fragment> flists;
         ButterKnife.bind(this, view);
         flists=new ArrayList<Fragment>();
         flists.add(new Test1ChildFragment());
-        flists.add(new Test1ChildFragment());
+        flists.add(new Test2ChildFragment());
 
         tvF2.setText("framgment2");
 

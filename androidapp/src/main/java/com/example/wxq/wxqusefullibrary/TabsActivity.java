@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
@@ -13,6 +12,7 @@ import com.example.wxq.wxqusefullibrary.fragment.Test3Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test4Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test5Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
+import com.example.wxq.wxqusefullibrary.widget.NoScrollViewPager;
 
 import butterknife.ButterKnife;
 
@@ -31,7 +31,7 @@ public class TabsActivity extends AppCompatActivity {
         RxBus.get().register(this);//创建rxbus添加监听器 当前activity被监听到
         tabs= (TabLayout) findViewById(R.id.tablayout);
 
-        viewPager= (ViewPager) findViewById(R.id.viewPager);
+        viewPager= (NoScrollViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
           @Override
           public Fragment getItem(int position) {
@@ -81,7 +81,7 @@ public class TabsActivity extends AppCompatActivity {
               return 6;
           }
       });
-        viewPager.setOffscreenPageLimit(5);//确保 viewpage oncreate 子类方法没有重新没加载 同时会调用oncreate方法现在需求是滑到那一个加载哪一个
+     //   viewPager.setOffscreenPageLimit();//确保 viewpage oncreate 子类方法没有重新没加载 同时会调用oncreate方法现在需求是滑到那一个加载哪一个
         tabs.setupWithViewPager(viewPager);
 
 
@@ -154,7 +154,7 @@ public class TabsActivity extends AppCompatActivity {
 
     TabLayout tabs;
 
-    ViewPager viewPager;
+    NoScrollViewPager viewPager;
 
 
 }

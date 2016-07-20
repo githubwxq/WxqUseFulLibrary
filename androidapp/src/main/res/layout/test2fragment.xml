@@ -8,9 +8,11 @@
     >
 <TextView
     android:id="@+id/tv_f2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="fragment2"
+    android:layout_width="match_parent"
+    android:layout_height="20dp"
+    android:text="fragment中第一层viewpage没做任何处理"
+    android:background="#3f3"
+    android:gravity="center"
     android:layout_gravity="center"
     />
 

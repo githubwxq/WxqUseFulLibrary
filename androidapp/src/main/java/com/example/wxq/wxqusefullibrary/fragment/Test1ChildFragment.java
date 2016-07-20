@@ -3,7 +3,10 @@ package com.example.wxq.wxqusefullibrary.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,9 +28,13 @@ public class Test1ChildFragment extends Fragment {
     @BindView(R.id.tv_child_fg1)
     TextView tvChildFg1;
 
-    @BindView(R.id.tv_foot)
-    TextView tvFoot;
 
+    @BindView(R.id.child_fg_tablayout)
+    TabLayout childFgTablayout;
+    @BindView(R.id.child_fg_viewPager)
+    ViewPager childFgViewPager;
+
+    ArrayList<Fragment> flists;
     //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
@@ -46,13 +55,40 @@ public class Test1ChildFragment extends Fragment {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
         View view = inflater.inflate(R.layout.test1childfragment, null);
         ButterKnife.bind(this, view);
-        tvChildFg1.setText("child1fragment");
+       // tvChildFg1.setText("child1fragment");
+
+        flists=new ArrayList<Fragment>();
+        flists.add(new viewpageFragment1());
+        flists.add(new viewpageFragment2());
+        flists.add(new viewpageFragment3());
+
+        childFgViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
+            @Override
+            public Fragment getItem(int position) {
+                return flists.get(position);
+            }
+
+            @Override
+            public int getCount() {
+                return 3;
+            }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position) {
+                    case 0:
+                        return "子"+(position+1);
+                    case 1:
+                        return "子"+(position+1);
+
+                    default:
+                        return "子"+(position+1);
+                }
+            }
+        });
 
 
-
-
-
-        //  tvF5.setText("framgment5");
+        childFgTablayout.setupWithViewPager(childFgViewPager);
 
 
 

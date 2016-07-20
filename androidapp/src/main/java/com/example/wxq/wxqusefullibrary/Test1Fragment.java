@@ -30,8 +30,8 @@ public class Test1Fragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.activity_my_rx, null);
-
+       // View view = inflater.inflate(R.layout.test5fragment, null);
+        View view = inflater.inflate(R.layout.activity_my_rx,container,false);
 
         ButterKnife.bind(this, view);
         btnTestfragment1.setText("butterknife");

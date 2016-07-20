@@ -7,7 +7,7 @@ import android.os.Handler;
 /**
  * Created by Administrator on 2016/7/15.
  */
-public class WxqUseFulApplication extends Application{
+public class WxqUseFulApplication extends Application implements Thread.UncaughtExceptionHandler{
 
     private static Context context;
     private static Handler handler;
@@ -19,6 +19,7 @@ public class WxqUseFulApplication extends Application{
         context = getApplicationContext();
         handler = new Handler();
         mainThreadId = android.os.Process.myTid();
+        Thread.setDefaultUncaughtExceptionHandler(this);
     }
 
     public static Context getContext() {
@@ -31,5 +32,9 @@ public class WxqUseFulApplication extends Application{
 
     public static int getMainThreadId() {
         return mainThreadId;
+    }
+    @Override
+    public void uncaughtException(Thread thread, Throwable ex) {
+        CommonTools.outputError(ex);
     }
 }
