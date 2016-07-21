@@ -51,8 +51,9 @@ public class viewpageFragment2 extends Fragment {
             @Override
             public View getView(int i, View view, ViewGroup viewGroup) {
                 TextView tv=new TextView(getContext());
-//                LinearLayout.LayoutParams a=new LinearLayout.LayoutParams(240,240);
-//                tv.setLayoutParams(a);
+                ListView.LayoutParams  a= new   ListView.LayoutParams (240,240);
+
+                tv.setLayoutParams(a);
                 tv.setText("qqqqqqqqqqqq");
 
                 return tv;

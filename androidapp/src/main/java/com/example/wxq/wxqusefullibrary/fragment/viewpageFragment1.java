@@ -46,21 +46,19 @@ public class viewpageFragment1 extends Fragment {
             }
 
             @Override
-            public void destroyItem(View view, int position, Object object)                       //销毁Item
-            {
-               // ((ViewPager) view).removeView(viewLists.get(position));
+            public void destroyItem(ViewGroup container, int position, Object object) {
+                //  super.destroyItem(container, position, object);
+                container.removeView((View) object);
             }
 
+
             @Override
-            public Object instantiateItem(View view, int position)                                //实例化Item
-            {
-               // ((ViewPager) view).addView(viewLists.get(position), 0);
-TextView a=new TextView(getActivity());
-                a.setText("wxqx");
+            public Object instantiateItem(ViewGroup container, int position) {
 
-
-
-                return a;
+                TextView tv=new TextView(getActivity());
+                tv.setText("viewpage1");
+                container.addView(tv);
+                return tv;
             }
         });
 

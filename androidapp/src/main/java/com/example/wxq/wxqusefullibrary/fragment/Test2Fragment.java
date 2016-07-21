@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
 
@@ -24,8 +23,7 @@ import butterknife.ButterKnife;
  * Created by Administrator on 2016/7/12.
  */
 public class Test2Fragment extends Fragment {
-    @BindView(R.id.tv_f2)
-    TextView tvF2;
+
     @BindView(R.id.fg_viewPager)
     ViewPager fgViewPager;
     @BindView(R.id.fg_tablayout)
@@ -55,7 +53,7 @@ public class Test2Fragment extends Fragment {
         flists.add(new Test1ChildFragment());
         flists.add(new Test2ChildFragment());
 
-        tvF2.setText("framgment2");
+
 
         fgViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override

@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
 
@@ -25,8 +24,6 @@ import butterknife.ButterKnife;
  */
 public class Test1ChildFragment extends Fragment {
 
-    @BindView(R.id.tv_child_fg1)
-    TextView tvChildFg1;
 
 
     @BindView(R.id.child_fg_tablayout)

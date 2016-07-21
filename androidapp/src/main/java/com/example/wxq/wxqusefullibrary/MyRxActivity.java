@@ -4,8 +4,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.widget.CustomView1;
+import com.example.wxq.wxqusefullibrary.widget.JustForTestWidget.reactview;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
@@ -14,7 +17,7 @@ import com.hwangjr.rxbus.thread.EventThread;
 
 public class MyRxActivity extends AppCompatActivity {
    Button rxbus_change;
-
+LinearLayout addwidget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +25,10 @@ public class MyRxActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_rx);
         RxBus.get().register(this);
         //也可以自己使用
+        addwidget= (LinearLayout) findViewById(R.id.add_widget);
+      //  addwidget.addView(new CustomView1(this));
+        addwidget.addView(new CustomView1(this));
+        addwidget.addView(new reactview(this));
 
 
         rxbus_change= (Button) findViewById(R.id.rxbus_change);

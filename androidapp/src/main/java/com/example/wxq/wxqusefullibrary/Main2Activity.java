@@ -119,18 +119,18 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 System.out.println("setOnRefreshListener========");
-                   quickAdapter.loadMore(data2);
-             quickAdapter.notifyDataSetChanged();
+                quickAdapter.loadMore(data2);
+                quickAdapter.notifyDataSetChanged();
 //                //结束后主线程调用
-               easy_list.onRefreshComplete(true);
+                easy_list.onRefreshComplete(true);
             }
 
             @Override
             public void onLoadMore() {
                 System.out.println("onLoadMore========");
 //                //结束后主线程调用
-               quickAdapter.loadMore(data2);//
-               easy_list.onRefreshComplete(true);//耗时操作执行完后
+                quickAdapter.loadMore(data2);//
+                easy_list.onRefreshComplete(true);//耗时操作执行完后
             }
         });
 
