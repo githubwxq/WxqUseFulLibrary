@@ -7,6 +7,17 @@ public class Book {
     String name;
     String  price;
 
+    public int getTag() {
+        return tag;
+    }
+
+    public void setTag(int tag) {
+        this.tag = tag;
+    }
+
+    int tag=0;
+
+
     public Book(String name, String price) {
         this.name = name;
         this.price = price;

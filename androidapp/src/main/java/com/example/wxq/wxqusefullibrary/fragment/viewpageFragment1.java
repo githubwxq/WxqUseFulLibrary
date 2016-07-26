@@ -26,17 +26,18 @@ public class viewpageFragment1 extends Fragment {
 
     @BindView(R.id.viewPager_1)
     MyTopViewPager viewPager1;
-     ArrayList<Book> books;
+    ArrayList<Book> books;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.viewpagefragment1, null);
-        books=new ArrayList<Book>();
-        Book book1=new Book("1","100");
-        Book book2=new Book("2","200");
-        Book book3=new Book("3","300");
-        Book book4=new Book("4","400");
+        books = new ArrayList<Book>();
+        Book book1 = new Book("1", "100");
+        Book book2 = new Book("2", "200");
+        Book book3 = new Book("3", "300");
+        Book book4 = new Book("4", "400");
         books.add(book1);
         books.add(book2);
         books.add(book3);
@@ -45,16 +46,16 @@ public class viewpageFragment1 extends Fragment {
         ButterKnife.bind(this, view);
 
 
-        viewPager1.setAdapter(new QuickPageAdapter<Book>(R.layout.book_list_item,getActivity(),books) {
+        viewPager1.setAdapter(new QuickPageAdapter<Book>(R.layout.book_list_item, getActivity(), books) {
 
             @Override
             public void setData(View view, int position, Book book) {
 
-                TextView viewById = (TextView)view.findViewById(R.id.tv_bookname);
-                viewById.setText("viewpage:"+book.getName());
+                TextView viewById = (TextView) view.findViewById(R.id.tv_bookname);
+                viewById.setText("viewpage:" + book.getName());
 
-                TextView tv_price = (TextView)view.findViewById(R.id.tv_price);
-                tv_price.setText("viewpage:"+book.getPrice());
+                TextView tv_price = (TextView) view.findViewById(R.id.tv_price);
+                tv_price.setText("viewpage:" + book.getPrice());
 
 
             }

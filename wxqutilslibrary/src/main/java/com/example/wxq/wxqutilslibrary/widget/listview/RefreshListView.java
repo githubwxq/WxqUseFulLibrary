@@ -89,6 +89,8 @@ public class RefreshListView extends ListView implements OnScrollListener,
 	 * 初始化脚布局
 	 */
 	private void initFooterView() {
+
+
 		mFooterView = View.inflate(getContext(),
 				R.layout.refresh_listview_footer, null);
 		this.addFooterView(mFooterView);
@@ -99,6 +101,7 @@ public class RefreshListView extends ListView implements OnScrollListener,
 		mFooterView.setPadding(0, -mFooterViewHeight, 0, 0);// 隐藏
 
 		this.setOnScrollListener(this);
+
 	}
 
 /*	@Override

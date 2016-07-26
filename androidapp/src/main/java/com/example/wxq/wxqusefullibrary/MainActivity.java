@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
@@ -101,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_hellow:
+                startActivity(new Intent(this, TestCommonAdapterActivity.class));
                 break;
             case R.id.tv_wxq3:
                 break;
