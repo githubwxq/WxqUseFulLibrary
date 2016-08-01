@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:drawable="@mipmap/chatto_voice_playing_f12"
+        android:duration="200"/>
+    <item
+        android:drawable="@mipmap/chatto_voice_playing_f22"
+        android:duration="200"/>
+    <item
+        android:drawable="@mipmap/chatto_voice_playing_f32"
+        android:duration="200"/>
+
+</animation-list>
