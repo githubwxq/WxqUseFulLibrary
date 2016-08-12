@@ -35,6 +35,7 @@ public class Test3Fragment extends Fragment {
         super.onAttach(context);
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
@@ -42,7 +43,8 @@ public class Test3Fragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
-    @Nullable
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
