@@ -34,7 +34,8 @@
             android:exported="true" />
 
         <activity android:name=".TabsActivity" />
-        <activity android:name=".activity.TestCommonAdapterActivity"></activity>
+        <activity android:name=".activity.TestCommonAdapterActivity" />
+        <activity android:name=".activity.TestZhuShiActivity"></activity>
     </application>
 
 </manifest>
