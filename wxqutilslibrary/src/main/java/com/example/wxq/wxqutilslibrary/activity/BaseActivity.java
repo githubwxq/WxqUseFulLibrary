@@ -22,7 +22,7 @@ public String className="";
            className=this.getClass().getName();
            beforeSetView();
            setContentView(setActivityView());
-
+       
         }
 
     private void beforeSetView() {
