@@ -16,6 +16,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import specialtools.ActivityManager;
 
 public class TestCommonAdapterActivity extends AppCompatActivity {
 
@@ -127,16 +128,7 @@ switch (item.getTag()){
 
         return layoutResId;
     }
-
-
 }
-
-
-
-
-
-
-
 
     //多布局文件
 //    private final class MultipleLayoutAdapter extends CommonRecyclerAdapter<Book>{

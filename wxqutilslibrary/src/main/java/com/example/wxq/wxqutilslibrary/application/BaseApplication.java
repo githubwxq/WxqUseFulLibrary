@@ -2,13 +2,10 @@ package com.example.wxq.wxqutilslibrary.application;
 
 import android.app.Activity;
 import android.app.Application;
-import android.os.Build;
 
 import java.util.Stack;
 
-import Tools.LogUtils;
-
-import static Tools.LogUtils.*;
+import static specialtools.LogUtils.*;
 
 public abstract class BaseApplication extends Application {
     /*
