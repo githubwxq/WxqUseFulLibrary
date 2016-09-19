@@ -13,7 +13,6 @@ import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
 
-import specialtools.ScreenUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         rxbus= (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
-        tvWxq.setText(ScreenUtils.getScreenWidth(this) + "");
+
         tvWxq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

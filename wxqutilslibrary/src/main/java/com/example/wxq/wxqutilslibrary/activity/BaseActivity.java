@@ -8,12 +8,13 @@ import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
 
 /**
  * Created by Administrator on 2016/8/17 0017.
- * 主要功能为：
- * 分功能为：
+ * 主要功能为：抽取最基本的activity 拥有基本的方法 第一步抽象
+ * 分功能为： 添加友盟统计 常用的东西 eventbus 等等
  * 分功能为：
  */
 public abstract class BaseActivity extends FragmentActivity {
-public String className="";
+public String className=this.getClass().getSimpleName();
+
 
 
     @Override

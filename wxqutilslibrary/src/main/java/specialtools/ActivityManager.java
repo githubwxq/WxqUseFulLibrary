@@ -2,74 +2,47 @@ package specialtools;
 
 
 import android.app.Activity;
+import android.content.Context;
 
 import java.util.Stack;
 
 /**
- * ÏîÄ¿Ãû³Æ£ºUtilsLib
- * ×÷Õß£ºlb291
- * ÓÊÏä£º lb291700351@live.cn
- * Ê±¼ä£º2016/5/25 16:29
- * ÀàÃèÊö£ºActivityÏà¹ØµÄ¹¤¾ß,Ê¹ÓÃµ¥ÀıÄ£Ê½£¬Ò»¸öÓ¦ÓÃ³ÌĞòÖ»ÔÊĞíÓĞÒ»¸öActivity¶ÑÕ»µÄ¹ÜÀí¹¤¾ß
+ * author wxq
+ * vesion 1.2.1
+ * data 2016
+ * åº”ç”¨ç¨‹åºActiivtyçš„ç®¡ç†ç±»
  */
 public class ActivityManager {
-    //===Desc:³ÉÔ±±äÁ¿======================================================================================
-    /**
-     * ±£´æActivityµÄÕ»
-     */
+
     private static Stack<Activity> activitys;
 
-    private static ActivityManager am;//µ±Ç°ÀàµÄÊµÀı£¬Ê¹ÓÃµÄµ¥ÀıÄ£Ê½
+    private static ActivityManager am;//ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ÃµÄµï¿½ï¿½ï¿½Ä£Ê½
 
 
-    //===Desc:¹¹Ôìº¯Êı======================================================================================
 
-    /**
-     * Ë½ÓĞ»¯¹¹Ôìº¯Êı
-     */
     private ActivityManager() {
         if (null == activitys)
             activitys = new Stack<>();
     }
 
-    /**
-     * Ê¹ÓÃµ¥ÀıÄ£Ê½»ñÈ¡µ±Ç°ÀàµÄµ¥Ò»ÊµÀı
-     *
-     * @return µ±Ç°ÀàµÄµ¥Ò»ÊµÀı
-     */
     public static synchronized ActivityManager getInstance() {
         if (null == am)
             am = new ActivityManager();
         return am;
     }
 
-    //===Desc:Ìá¹©¸øÍâ½çÊ¹ÓÃµÄ¾²Ì¬·½·¨==========================================================================================¡¢
-
-    /**
-     * Ìí¼ÓÒ»¸öActivityµ½¶ÑÕ»
-     *
-     * @param activity ĞèÒªÌí¼ÓµÄActivity¶ÔÏó
-     */
     public synchronized void addActivity(Activity activity) {
         activitys.add(activity);
     }
 
-    /**
-     * »ñÈ¡Õ»¶¥µÄActivity
-     *
-     * @return Èç¹û¶ÑÕ»ÖĞ´æ·ÅÓĞactivity£¬Ôò·µ»ØÕ»¶¥µÄActivity¶ÔÏó£¬Èç¹û¶ÑÕ»ÖĞÃ»ÓĞ´æ·ÅÓĞactivity£¬Ôò·µ»Ønull
-     */
+
     public Activity getTopActivity() {
         if (null == activitys || activitys.size() == 0)
             return null;
-        return activitys.lastElement();//·µ»ØÕ»ÀïÃæ×îºóÒ»¸öÔªËØ³öÈ¥
+        return activitys.lastElement();//ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø³ï¿½È¥
     }
 
-    /**
-     * ¹Ø±Õ´æ·ÅÔÚ¶ÑÕ»ÖĞµÄActivity
-     *
-     * @param activity ĞèÒª¹Ø±ÕµÄactivity
-     */
+
     public void killActivity(Activity activity) {
         if (null == activity)
             return;
@@ -77,19 +50,13 @@ public class ActivityManager {
         activity.finish();
     }
 
-    /**
-     * ¹Ø±ÕÕ»¶¥µÄActivity
-     */
+
     public void killTopActivity() {
         Activity topActivity = getTopActivity();
         killActivity(topActivity);
     }
 
-    /**
-     * ¹Ø±ÕÖ¸¶¨Ãû×ÖµÄactivity
-     *
-     * @param cls ActivityµÄclass¶ÔÏó
-     */
+
     public void killActivity(Class<?> cls) {
         for (Activity activity : activitys) {
             if (activity.getClass().equals(cls))
@@ -97,17 +64,28 @@ public class ActivityManager {
         }
     }
 
-    /**
-     * ¹Ø±Õ´æ·ÅÔÚ¶ÑÕ»ÖĞËùÓĞµÄactivity
-     */
+
     public void killAllActivity() {
         for (Activity a : activitys) {
             if (null != a) {
                 a.finish();
             }
         }
-        activitys.clear();//Çå¿Õ¶ÑÕ»
+        activitys.clear();
     }
+
+    //é€€å‡ºåº”ç”¨ç¨‹åº
+    public void AppExit(Context context){
+        try{
+            killAllActivity();
+            android.app.ActivityManager  activityManager=(android.app.ActivityManager)context.getSystemService(context.ACTIVITY_SERVICE);
+            activityManager.killBackgroundProcesses(context.getPackageName());
+
+        }catch (Exception e){}
+
+
+    }
+
 
 
 }
