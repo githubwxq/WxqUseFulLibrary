@@ -6,26 +6,26 @@ import android.app.Activity;
 import java.util.Stack;
 
 /**
- * ÏîÄ¿Ãû³Æ£ºUtilsLib
- * ×÷Õß£ºlb291
- * ÓÊÏä£º lb291700351@live.cn
- * Ê±¼ä£º2016/5/25 16:29
- * ÀàÃèÊö£ºActivityÏà¹ØµÄ¹¤¾ß,Ê¹ÓÃµ¥ÀıÄ£Ê½£¬Ò»¸öÓ¦ÓÃ³ÌĞòÖ»ÔÊĞíÓĞÒ»¸öActivity¶ÑÕ»µÄ¹ÜÀí¹¤¾ß
+ * é¡¹ç›®åç§°ï¼šUtilsLib
+ * ä½œè€…ï¼šlb291
+ * é‚®ç®±ï¼š lb291700351@live.cn
+ * æ—¶é—´ï¼š2016/5/25 16:29
+ * ç±»æè¿°ï¼šActivityç›¸å…³çš„å·¥å…·,ä½¿ç”¨å•ä¾‹æ¨¡å¼ï¼Œä¸€ä¸ªåº”ç”¨ç¨‹åºåªå…è®¸æœ‰ä¸€ä¸ªActivityå †æ ˆçš„ç®¡ç†å·¥å…·
  */
 public class ActivityManager {
-    //===Desc:³ÉÔ±±äÁ¿======================================================================================
+    //===Desc:æˆå‘˜å˜é‡======================================================================================
     /**
-     * ±£´æActivityµÄÕ»
+     * ä¿å­˜Activityçš„æ ˆ
      */
     private static Stack<Activity> activitys;
 
-    private static ActivityManager am;//µ±Ç°ÀàµÄÊµÀı£¬Ê¹ÓÃµÄµ¥ÀıÄ£Ê½
+    private static ActivityManager am;//å½“å‰ç±»çš„å®ä¾‹ï¼Œä½¿ç”¨çš„å•ä¾‹æ¨¡å¼
 
 
-    //===Desc:¹¹Ôìº¯Êı======================================================================================
+    //===Desc:æ„é€ å‡½æ•°======================================================================================
 
     /**
-     * Ë½ÓĞ»¯¹¹Ôìº¯Êı
+     * ç§æœ‰åŒ–æ„é€ å‡½æ•°
      */
     private ActivityManager() {
         if (null == activitys)
@@ -33,9 +33,9 @@ public class ActivityManager {
     }
 
     /**
-     * Ê¹ÓÃµ¥ÀıÄ£Ê½»ñÈ¡µ±Ç°ÀàµÄµ¥Ò»ÊµÀı
+     * ä½¿ç”¨å•ä¾‹æ¨¡å¼è·å–å½“å‰ç±»çš„å•ä¸€å®ä¾‹
      *
-     * @return µ±Ç°ÀàµÄµ¥Ò»ÊµÀı
+     * @return å½“å‰ç±»çš„å•ä¸€å®ä¾‹
      */
     public static synchronized ActivityManager getInstance() {
         if (null == am)
@@ -43,32 +43,32 @@ public class ActivityManager {
         return am;
     }
 
-    //===Desc:Ìá¹©¸øÍâ½çÊ¹ÓÃµÄ¾²Ì¬·½·¨==========================================================================================¡¢
+    //===Desc:æä¾›ç»™å¤–ç•Œä½¿ç”¨çš„é™æ€æ–¹æ³•==========================================================================================ã€
 
     /**
-     * Ìí¼ÓÒ»¸öActivityµ½¶ÑÕ»
+     * æ·»åŠ ä¸€ä¸ªActivityåˆ°å †æ ˆ
      *
-     * @param activity ĞèÒªÌí¼ÓµÄActivity¶ÔÏó
+     * @param activity éœ€è¦æ·»åŠ çš„Activityå¯¹è±¡
      */
     public synchronized void addActivity(Activity activity) {
         activitys.add(activity);
     }
 
     /**
-     * »ñÈ¡Õ»¶¥µÄActivity
+     * è·å–æ ˆé¡¶çš„Activity
      *
-     * @return Èç¹û¶ÑÕ»ÖĞ´æ·ÅÓĞactivity£¬Ôò·µ»ØÕ»¶¥µÄActivity¶ÔÏó£¬Èç¹û¶ÑÕ»ÖĞÃ»ÓĞ´æ·ÅÓĞactivity£¬Ôò·µ»Ønull
+     * @return å¦‚æœå †æ ˆä¸­å­˜æ”¾æœ‰activityï¼Œåˆ™è¿”å›æ ˆé¡¶çš„Activityå¯¹è±¡ï¼Œå¦‚æœå †æ ˆä¸­æ²¡æœ‰å­˜æ”¾æœ‰activityï¼Œåˆ™è¿”å›null
      */
     public Activity getTopActivity() {
         if (null == activitys || activitys.size() == 0)
             return null;
-        return activitys.lastElement();//·µ»ØÕ»ÀïÃæ×îºóÒ»¸öÔªËØ³öÈ¥
+        return activitys.lastElement();//è¿”å›æ ˆé‡Œé¢æœ€åä¸€ä¸ªå…ƒç´ å‡ºå»
     }
 
     /**
-     * ¹Ø±Õ´æ·ÅÔÚ¶ÑÕ»ÖĞµÄActivity
+     * å…³é—­å­˜æ”¾åœ¨å †æ ˆä¸­çš„Activity
      *
-     * @param activity ĞèÒª¹Ø±ÕµÄactivity
+     * @param activity éœ€è¦å…³é—­çš„activity
      */
     public void killActivity(Activity activity) {
         if (null == activity)
@@ -78,7 +78,7 @@ public class ActivityManager {
     }
 
     /**
-     * ¹Ø±ÕÕ»¶¥µÄActivity
+     * å…³é—­æ ˆé¡¶çš„Activity
      */
     public void killTopActivity() {
         Activity topActivity = getTopActivity();
@@ -86,9 +86,9 @@ public class ActivityManager {
     }
 
     /**
-     * ¹Ø±ÕÖ¸¶¨Ãû×ÖµÄactivity
+     * å…³é—­æŒ‡å®šåå­—çš„activity
      *
-     * @param cls ActivityµÄclass¶ÔÏó
+     * @param cls Activityçš„classå¯¹è±¡
      */
     public void killActivity(Class<?> cls) {
         for (Activity activity : activitys) {
@@ -98,7 +98,7 @@ public class ActivityManager {
     }
 
     /**
-     * ¹Ø±Õ´æ·ÅÔÚ¶ÑÕ»ÖĞËùÓĞµÄactivity
+     * å…³é—­å­˜æ”¾åœ¨å †æ ˆä¸­æ‰€æœ‰çš„activity
      */
     public void killAllActivity() {
         for (Activity a : activitys) {
@@ -106,7 +106,7 @@ public class ActivityManager {
                 a.finish();
             }
         }
-        activitys.clear();//Çå¿Õ¶ÑÕ»
+        activitys.clear();//æ¸…ç©ºå †æ ˆ
     }
 
 

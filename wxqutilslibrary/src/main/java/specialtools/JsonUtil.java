@@ -14,17 +14,17 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ÏîÄ¿Ãû³Æ£ºUtilsLib
- * ×÷Õß£ºlb291
- * ÓÊÏä£º lb291700351@live.cn
- * Ê±¼ä£º2016/5/25 16:29
- * ÀàÃèÊö£ºJson²Ù×÷µÄÏà¹Ø¹¤¾ßÀà£¬µ×²ãÊ¹ÓÃµÄÊÇGson£¬½ûÖ¹ÊµÀı»¯¸ÃÀà
+ * é¡¹ç›®åç§°ï¼šUtilsLib
+ * ä½œè€…ï¼šlb291
+ * é‚®ç®±ï¼š lb291700351@live.cn
+ * æ—¶é—´ï¼š2016/5/25 16:29
+ * ç±»æè¿°ï¼šJsonæ“ä½œçš„ç›¸å…³å·¥å…·ç±»ï¼Œåº•å±‚ä½¿ç”¨çš„æ˜¯Gsonï¼Œç¦æ­¢å®ä¾‹åŒ–è¯¥ç±»
  */
 public class JsonUtil {
     private static final String TAG = "JsonUtil";
 
     /**
-     * ½ûÖ¹ÊµÀı»¯¸ÃÀà
+     * ç¦æ­¢å®ä¾‹åŒ–è¯¥ç±»
      */
     private JsonUtil() {
         throw new UnsupportedOperationException(
@@ -32,10 +32,10 @@ public class JsonUtil {
     }
 
     /**
-     * °ÑÒ»¸ömap±ä³Éjson×Ö·û´®
+     * æŠŠä¸€ä¸ªmapå˜æˆjsonå­—ç¬¦ä¸²
      *
-     * @param map ·â×°ÁËÊı¾İµÄmap¼¯ºÏ
-     * @return Êı¾İ¶ÔÓ¦µÄJson×Ö·û´®ĞÎÊ½
+     * @param map å°è£…äº†æ•°æ®çš„mapé›†åˆ
+     * @return æ•°æ®å¯¹åº”çš„Jsonå­—ç¬¦ä¸²å½¢å¼
      */
     public static String parseMapToJson(Map<?, ?> map) {
         try {
@@ -49,12 +49,12 @@ public class JsonUtil {
 
 
     /**
-     * ½«Ò»¸öjson×Ö·û´®×ª»»³ÉÖ¸¶¨µÄJavaBean¶ÔÏó
+     * å°†ä¸€ä¸ªjsonå­—ç¬¦ä¸²è½¬æ¢æˆæŒ‡å®šçš„JavaBeanå¯¹è±¡
      *
-     * @param json ĞèÒª×ª»»µÄjson×Ö·û´®
-     * @param cls  json×Ö·û´®¶ÔÓ¦µÄJavBean
-     * @param <T>  Ö¸¶¨µÄÊı¾İÀàĞÍ
-     * @return ·â×°ºÃÊı¾İµÄJavaBean¶ÔÏó
+     * @param json éœ€è¦è½¬æ¢çš„jsonå­—ç¬¦ä¸²
+     * @param cls  jsonå­—ç¬¦ä¸²å¯¹åº”çš„JavBean
+     * @param <T>  æŒ‡å®šçš„æ•°æ®ç±»å‹
+     * @return å°è£…å¥½æ•°æ®çš„JavaBeanå¯¹è±¡
      */
     public static <T> T jsonToBean(String json, Class<T> cls) {
         Gson gson = new Gson();
@@ -68,10 +68,10 @@ public class JsonUtil {
     }
 
     /**
-     * °Ñjson×Ö·û´®±ä³ÉmapĞÎÊ½
+     * æŠŠjsonå­—ç¬¦ä¸²å˜æˆmapå½¢å¼
      *
-     * @param json ĞèÒª×ª»»µÄJson
-     * @return map·â×°µÄÊı¾İ
+     * @param json éœ€è¦è½¬æ¢çš„Json
+     * @return mapå°è£…çš„æ•°æ®
      */
     public static HashMap<String, Object> parseJsonToMap(String json) {
         Gson gson = new Gson();
@@ -88,12 +88,12 @@ public class JsonUtil {
 
 
     /**
-     * °Ñjson×Ö·û´®±ä³É¼¯ºÏ<br>
-     * ²ÎÊıÊ¾Àı£ºnew TypeToken&lt;List&lt;YourBean&gt;&gt;(){}.getType()
+     * æŠŠjsonå­—ç¬¦ä¸²å˜æˆé›†åˆ<br>
+     * å‚æ•°ç¤ºä¾‹ï¼šnew TypeToken&lt;List&lt;YourBean&gt;&gt;(){}.getType()
      *
-     * @param json ĞèÒª×ª»»µÄJson×Ö·û´®
-     * @param type Ê¾Àı£ºnew TypeToken&lt;List&lt;YourBean&gt;&gt;(){}.getType()
-     * @return Êı¾İ¼¯ºÏ
+     * @param json éœ€è¦è½¬æ¢çš„Jsonå­—ç¬¦ä¸²
+     * @param type ç¤ºä¾‹ï¼šnew TypeToken&lt;List&lt;YourBean&gt;&gt;(){}.getType()
+     * @return æ•°æ®é›†åˆ
      */
     public static List<?> parseJsonToList(String json, Type type) {
         Gson gson = new Gson();
@@ -101,11 +101,11 @@ public class JsonUtil {
     }
 
     /**
-     * »ñÈ¡json´®ÖĞÄ³¸ö×Ö¶ÎµÄÖµ£¬×¢Òâ£¬Ö»ÄÜ»ñÈ¡Í¬Ò»²ã¼¶µÄvalue
+     * è·å–jsonä¸²ä¸­æŸä¸ªå­—æ®µçš„å€¼ï¼Œæ³¨æ„ï¼Œåªèƒ½è·å–åŒä¸€å±‚çº§çš„value
      *
-     * @param json json×Ö·û´®
-     * @param key  jsonÖĞÏÂÒ»¼¶µÄbean
-     * @return key¶ÔÓ¦µÄÖµ
+     * @param json jsonå­—ç¬¦ä¸²
+     * @param key  jsonä¸­ä¸‹ä¸€çº§çš„bean
+     * @return keyå¯¹åº”çš„å€¼
      */
     public static String getFieldValue(String json, String key) {
         if (TextUtils.isEmpty(json))
