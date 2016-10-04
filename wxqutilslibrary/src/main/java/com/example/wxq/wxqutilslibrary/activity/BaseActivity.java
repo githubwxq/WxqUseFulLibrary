@@ -3,6 +3,8 @@ package com.example.wxq.wxqutilslibrary.activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.WindowManager;
@@ -23,25 +25,7 @@ import specialtools.ActivityManager;
  * abstract 类可以不实现接口的方法注意！！！
  */
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
-    /**
-     * 是否沉浸状态栏
-     **/
-    private boolean isSetStatusBar = true;
-    /**
-     * 是否允许全屏
-     **/
-    private boolean mAllowFullScreen = true;
-    /**
-     * 是否禁止旋转屏幕
-     **/
-    private boolean isAllowScreenRoate = false;
-    /**
-     * 当前Activity渲染的视图View
-     **/
     private View mContextView = null;
-    /**
-     * 是否输出日志信息
-     **/
     private boolean isDebug;
     private String APP_NAME;
     protected final String TAG = this.getClass().getSimpleName();
@@ -49,7 +33,12 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     private LinearLayout llBasetitleBack;
     private TextView tvBasetitleTitle;
     private TextView tvBasetitleOK;
-
+    private Handler mhandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    };
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +53,12 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         llBasetitleBack = (LinearLayout) findViewById(R.id.ll_basetitle_back);
         tvBasetitleTitle = (TextView) findViewById(R.id.tv_basetitle_title);
         tvBasetitleOK = (TextView) findViewById(R.id.tv_basetitle_ok);
+        llBasetitleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 /*
 * 重写setContentView让继承者设置的view 添加到内容布局中
@@ -108,13 +103,9 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         super.onDestroy();
         ActivityManager.getInstance().killActivity(this);
     }
-
     //ctrl alt k
-
-
     /**
      * 设置中间标题文字
-     *
      * @param c
      */
     public void setTitleText(CharSequence c) {
@@ -193,10 +184,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         lastClick = System.currentTimeMillis();
         return true;
     }
-
-
-
-
 
     /**
      * [携带数据的页面跳转]
