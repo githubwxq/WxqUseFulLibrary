@@ -2,12 +2,13 @@ package com.example.wxq.wxqusefullibrary;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
+import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
@@ -17,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     public static final String RXTAG ="MainActivity";
     BottomView bottomView = null;
     //CommonPopupWindow popupWindow;
@@ -37,11 +38,10 @@ public class MainActivity extends AppCompatActivity {
     TextView tvWxq6;
     @BindView(R.id.tv_wxq7)
     TextView tvWxq7;
-
     TextView rxbus;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //  popupWindow= new CommonPopupWindow();
         RxBus.get().register(this);
@@ -104,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(this, TestCommonAdapterActivity.class));
                 break;
             case R.id.tv_wxq3:
+                startActivity(new Intent(this, TestBaseActivity.class));
                 break;
             case R.id.tv_wxq4:
                 break;
@@ -117,6 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
         }
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
     }
 
     @Override

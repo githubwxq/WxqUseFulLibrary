@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:name=".WxqUseFulApplication"
+        android:name="com.example.wxq.wxqusefullibrary.activity.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -34,7 +34,11 @@
             android:exported="true" />
 
         <activity android:name=".TabsActivity" />
-        <activity android:name=".activity.TestCommonAdapterActivity"></activity>
+        <activity android:name=".activity.TestCommonAdapterActivity" />
+        <activity
+            android:name=".activity.TestBaseActivity"
+            android:label="@string/title_activity_test_base"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

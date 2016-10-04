@@ -185,7 +185,7 @@ public class NetWorkUtils {
 
     /**
      * 判断当前网络是否已经连接
-     *
+     *获取网络状态判断
      * @param context 上下文
      * @return 当前网络是否已经连接。false：尚未连接
      */
