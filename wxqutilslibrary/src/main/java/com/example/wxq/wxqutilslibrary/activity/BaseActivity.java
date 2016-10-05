@@ -15,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.R;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,6 +28,7 @@ import specialtools.ActivityManager;
  * 主要功能为：抽取最基本的activity 拥有基本的方法 第一步抽象
  * 分功能为： 添加友盟统计 常用的东西 eventbus 等等
  * abstract 类可以不实现接口的方法注意！！！
+ * 这是最基础的activity封装仅仅封装了标题栏以及一些工具
  */
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
     private View mContextView = null;
@@ -39,49 +39,22 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     private LinearLayout llBasetitleBack;
     private TextView tvBasetitleTitle;
     private TextView tvBasetitleOK;
-    private Handler mhandler=new Handler(){
+    private Handler mhandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
         }
     };
-    
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);//父类的带货有自己的
         findView();
         ActivityManager.getInstance().addActivity(this);
-        //初始化imageloader
-       LoadingImgUtil.initImageLoader(getApplicationContext());
         //注册eventbus
-       EventBus.getDefault().register(this);
+        EventBus.getDefault().register(this);
 
-
-    }
-
-    private void findView() {
-        llRoot = (RelativeLayout) findViewById(R.id.ll_basetitle_root);
-        llBasetitleBack = (LinearLayout) findViewById(R.id.ll_basetitle_back);
-        tvBasetitleTitle = (TextView) findViewById(R.id.tv_basetitle_title);
-        tvBasetitleOK = (TextView) findViewById(R.id.tv_basetitle_ok);
-        llBasetitleBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
-/*
-* 重写setContentView让继承者设置的view 添加到内容布局中
-* */
-    @Override
-    public void setContentView(int layoutResID) {
-        View view = getLayoutInflater().inflate(layoutResID, null);
-        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
-        lp.addRule(RelativeLayout.BELOW, R.id.ll_basetitle);
-        if (null != llRoot)
-            llRoot.addView(view, lp);
 
     }
 
@@ -117,9 +90,37 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         ActivityManager.getInstance().killActivity(this);
 
     }
+
+    private void findView() {
+        llRoot = (RelativeLayout) findViewById(R.id.ll_basetitle_root);
+        llBasetitleBack = (LinearLayout) findViewById(R.id.ll_basetitle_back);
+        tvBasetitleTitle = (TextView) findViewById(R.id.tv_basetitle_title);
+        tvBasetitleOK = (TextView) findViewById(R.id.tv_basetitle_ok);
+        llBasetitleBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    /*
+    * 重写setContentView让继承者设置的view 添加到内容布局中
+    * */
+    @Override
+    public void setContentView(int layoutResID) {
+        View view = getLayoutInflater().inflate(layoutResID, null);
+        RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        lp.addRule(RelativeLayout.BELOW, R.id.ll_basetitle);
+        if (null != llRoot)
+            llRoot.addView(view, lp);
+
+    }
+
     //ctrl alt k
     /**
      * 设置中间标题文字
+     *
      * @param c
      */
     public void setTitleText(CharSequence c) {
@@ -250,8 +251,8 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
     }
 
-    public void showToast(String content){
-        Toast.makeText(this,content,Toast.LENGTH_LONG).show();
+    public void showToast(String content) {
+        Toast.makeText(this, content, Toast.LENGTH_LONG).show();
     }
 
 
@@ -263,6 +264,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public void onEventBase(String event) {
         l();
     }
+
     protected void l() {
         Exception exception = new Exception();
         final StackTraceElement[] stackTrace = exception.getStackTrace();

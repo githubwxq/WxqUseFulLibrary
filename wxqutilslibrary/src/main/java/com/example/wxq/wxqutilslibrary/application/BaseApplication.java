@@ -6,6 +6,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -21,6 +23,8 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         super.onCreate();
         Thread.setDefaultUncaughtExceptionHandler(this);//捕获系统异常
         mContext = getApplicationContext();
+        //初始化imageloader
+        LoadingImgUtil.initImageLoader(mContext);
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {

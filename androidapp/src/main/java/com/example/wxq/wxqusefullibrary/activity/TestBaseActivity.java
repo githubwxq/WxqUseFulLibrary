@@ -40,7 +40,6 @@ public class TestBaseActivity extends BaseActivity {
         tv_test_title.setOnClickListener(this);
         tv_test_name.setOnClickListener(this);
         aCache = aCache.get(this);
-        showToast("oncreate");
      //   EventBus.getDefault().post("i am wxq lala");
 
     }
