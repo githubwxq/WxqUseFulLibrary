@@ -1,16 +1,26 @@
 package com.example.wxq.wxqutilslibrary.myutils.imageloader;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.example.wxq.wxqutilslibrary.R;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
+import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingProgressListener;
 import com.nostra13.universalimageloader.core.listener.SimpleImageLoadingListener;
+import com.nostra13.universalimageloader.utils.StorageUtils;
+
+import java.io.File;
 
 /**
  * Created by Administrator on 2016/9/16.
@@ -95,7 +105,25 @@ public class LoadingImgUtil {
 
     }
 
-
+    public static void initImageLoader(Context context) {
+        @SuppressWarnings("deprecation")
+        File cacheDir = StorageUtils.getOwnCacheDirectory(context,
+                "wxq/Cache");// 获取到缓存的目录地址
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
+                context).threadPriority(Thread.NORM_PRIORITY - 2)
+                .denyCacheImageMultipleSizesInMemory()
+                .diskCacheFileNameGenerator(new Md5FileNameGenerator())
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+//                .tasksProcessingOrder(QueueProcessingType.FIFO)
+//                .writeDebugLogs() // Remove for release app
+                .imageDownloader(new BaseImageDownloader(context))
+                .diskCacheSize(50 * 1024 * 1024)
+                .diskCache(new UnlimitedDiskCache(cacheDir))// 自定义缓存路径
+                .memoryCache(new LruMemoryCache(20 * 1024 * 1024))
+                .memoryCacheSize(20 * 1024 * 1024)
+                .build();
+        ImageLoader.getInstance().init(config);
+    }
 
 
 

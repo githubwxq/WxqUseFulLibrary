@@ -14,7 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.R;
+import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
+
+import org.greenrobot.eventbus.EventBus;
 
 import specialtools.ActivityManager;
 
@@ -39,12 +42,18 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
             super.handleMessage(msg);
         }
     };
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);//父类的带货有自己的
         findView();
         ActivityManager.getInstance().addActivity(this);
+        //初始化imageloader
+       LoadingImgUtil.initImageLoader(getApplicationContext());
+        //注册eventbus
+   //     EventBus.getDefault().register(this);
+
 
     }
 
@@ -101,7 +110,9 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ActivityManager.getInstance().killActivity(this);
+        EventBus.getDefault().unregister(this);
+    //    ActivityManager.getInstance().killActivity(this);
+
     }
     //ctrl alt k
     /**
@@ -244,4 +255,10 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     public void showLog(String content) {
         LogUtils.i(TAG, content);
     }
+
+
+//    @Subscribe(threadMode = ThreadMode.MAIN )
+//    private void toastMsgFromEvent(String msg) {
+//        showToast("当前类刷新下吧！"+msg);
+//    }
 }

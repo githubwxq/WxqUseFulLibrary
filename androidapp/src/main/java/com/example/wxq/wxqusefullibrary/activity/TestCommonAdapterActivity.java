@@ -16,7 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import specialtools.ActivityManager;
 
 public class TestCommonAdapterActivity extends AppCompatActivity {
 
@@ -27,8 +26,9 @@ public class TestCommonAdapterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_common_adapter);
+
         ButterKnife.bind(this);
-Book book1=new Book("1","a");
+        Book book1=new Book("1","a");
         book1.setTag(0);
         Book book2=new Book("2","a");
         book2.setTag(1);
@@ -177,8 +177,9 @@ switch (item.getTag()){
 //    }
 
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
 
-
-
-
+    }
 }
