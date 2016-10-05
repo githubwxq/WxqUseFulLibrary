@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -18,6 +19,8 @@ import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import specialtools.ActivityManager;
 
@@ -52,7 +55,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         //初始化imageloader
        LoadingImgUtil.initImageLoader(getApplicationContext());
         //注册eventbus
-   //     EventBus.getDefault().register(this);
+       EventBus.getDefault().register(this);
 
 
     }
@@ -111,7 +114,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-    //    ActivityManager.getInstance().killActivity(this);
+        ActivityManager.getInstance().killActivity(this);
 
     }
     //ctrl alt k
@@ -256,9 +259,18 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         LogUtils.i(TAG, content);
     }
 
-
-//    @Subscribe(threadMode = ThreadMode.MAIN )
-//    private void toastMsgFromEvent(String msg) {
-//        showToast("当前类刷新下吧！"+msg);
-//    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventBase(String event) {
+        l();
+    }
+    protected void l() {
+        Exception exception = new Exception();
+        final StackTraceElement[] stackTrace = exception.getStackTrace();
+        final StackTraceElement stackTraceElement = stackTrace[1];
+        final String className = stackTraceElement.getClassName();
+        final String classNamePre = stackTrace[2].getClassName();
+        final String methodName = stackTraceElement.getMethodName();
+        final int lineNumber = stackTraceElement.getLineNumber();
+        Log.i("wxq", String.format("class:%s %s method:%s:%d", classNamePre, className, methodName, lineNumber));
+    }
 }

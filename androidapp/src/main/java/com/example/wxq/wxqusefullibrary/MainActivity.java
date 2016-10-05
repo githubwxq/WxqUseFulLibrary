@@ -9,10 +9,14 @@ import android.widget.Toast;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
+import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -111,6 +115,8 @@ public class MainActivity extends BaseActivity {
             case R.id.tv_wxq5:
                 break;
             case R.id.tv_wxq6:
+                EventBus.getDefault().postSticky(new MsgEvent("From Main With Sticky"));
+                EventBus.getDefault().post("i am wxq lala main");
                 Toast.makeText(MainActivity.this, "点击了wxq6", Toast.LENGTH_LONG).show();
                 break;
             case R.id.tv_wxq7:
@@ -129,5 +135,12 @@ public class MainActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         RxBus.get().unregister(this);
+    }
+
+
+    @org.greenrobot.eventbus.Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MsgEvent event){
+        rxbus.setText(event.getJsonData());
+    //    EventBus.getDefault().removeAllStickyEvents();
     }
 }
