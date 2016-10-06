@@ -1,7 +1,6 @@
 package com.example.wxq.wxqusefullibrary;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -9,18 +8,19 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.widget.CustomView1;
 import com.example.wxq.wxqusefullibrary.widget.JustForTestWidget.reactview;
+import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
 
 // rxbus 测试成功
 
-public class MyRxActivity extends AppCompatActivity {
+public class MyRxActivity extends BaseActivity {
    Button rxbus_change;
-LinearLayout addwidget;
+   LinearLayout addwidget;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_rx);
         RxBus.get().register(this);
@@ -77,6 +77,11 @@ LinearLayout addwidget;
         super.onDestroy();
         //销毁
         RxBus.get().unregister(this);
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
     }
 
 }

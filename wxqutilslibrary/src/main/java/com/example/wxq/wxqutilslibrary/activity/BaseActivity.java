@@ -130,7 +130,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 设置中间标题文字
-     *
      * @param resId
      */
     public void setTitleText(int resId) {

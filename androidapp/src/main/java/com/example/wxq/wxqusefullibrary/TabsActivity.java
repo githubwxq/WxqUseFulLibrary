@@ -4,8 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 
 import com.example.wxq.wxqusefullibrary.fragment.Test2Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test3Fragment;
@@ -13,17 +13,18 @@ import com.example.wxq.wxqusefullibrary.fragment.Test4Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test5Fragment;
 import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
 import com.example.wxq.wxqusefullibrary.widget.NoScrollViewPager;
+import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 
 import butterknife.ButterKnife;
 
-public class TabsActivity extends AppCompatActivity {
+public class TabsActivity extends BaseActivity {
 
     private static final String TAG = "OrientationActivity";
     private int param = 1;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
         ButterKnife.bind(this);
@@ -123,6 +124,11 @@ public class TabsActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         Log.i(TAG, "onDestory called.");
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.wxq.wxqusefullibrary;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
 import com.example.wxq.wxqutilslibrary.widget.adapter.QuickAdapter;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 
-public class Main2Activity extends AppCompatActivity {
+public class Main2Activity extends BaseActivity {
     RefreshListView easy_list;
     Button btn_next;
     EasyListHold easyListHold;
@@ -33,7 +33,7 @@ public class Main2Activity extends AppCompatActivity {
 
     @Override
 
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
@@ -184,5 +184,10 @@ public class Main2Activity extends AppCompatActivity {
         super.onDestroy();
         //销毁
         RxBus.get().unregister(this);
+    }
+
+    @Override
+    public void widgetClick(View v) {
+
     }
 }

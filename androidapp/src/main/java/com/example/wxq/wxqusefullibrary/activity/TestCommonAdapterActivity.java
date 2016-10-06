@@ -2,14 +2,18 @@ package com.example.wxq.wxqusefullibrary.activity;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 
 import com.example.wxq.wxqusefullibrary.Book;
 import com.example.wxq.wxqusefullibrary.R;
+import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
+import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,16 +21,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestCommonAdapterActivity extends AppCompatActivity {
+public class TestCommonAdapterActivity extends BaseActivity {
 
     @BindView(R.id.lv_test_adapter)
     ListView lvTestAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test_common_adapter);
-
+        showToast("创建了testcommonadapter");
         ButterKnife.bind(this);
         Book book1=new Book("1","a");
         book1.setTag(0);
@@ -182,4 +186,17 @@ switch (item.getTag()){
         super.onDestroy();
 
     }
+
+    @Override
+    public void widgetClick(View v) {
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true, priority = 100)
+    public void onEvent(MsgEvent event){
+
+        showToast("获取参数" + event.getJsonData());
+    }
+
+
 }
