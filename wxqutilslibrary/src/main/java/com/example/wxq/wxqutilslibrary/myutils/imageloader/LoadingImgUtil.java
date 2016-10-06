@@ -27,7 +27,6 @@ import java.io.File;
  */
 public class LoadingImgUtil {
 
-
     /*显示的image配置 至于缓存路径不是options 设置的
      *通用imageloaderoptopm
      */
@@ -126,6 +125,8 @@ public class LoadingImgUtil {
     }
 
 
+     //快速滑动时不加载图片
+   //lvTestAdapter.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
 
 
 

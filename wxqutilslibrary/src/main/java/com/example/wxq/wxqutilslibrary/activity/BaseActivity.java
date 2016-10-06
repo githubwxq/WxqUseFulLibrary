@@ -54,8 +54,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         ActivityManager.getInstance().addActivity(this);
         //注册eventbus
         EventBus.getDefault().register(this);
-
-
     }
 
     @Override
@@ -130,6 +128,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 设置中间标题文字
+     *
      * @param resId
      */
     public void setTitleText(int resId) {

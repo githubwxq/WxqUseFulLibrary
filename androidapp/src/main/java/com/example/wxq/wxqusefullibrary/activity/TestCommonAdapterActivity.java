@@ -11,6 +11,8 @@ import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.listener.PauseOnScrollListener;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -81,6 +83,7 @@ public class TestCommonAdapterActivity extends BaseActivity {
 //            }
 //        });
         lvTestAdapter.setAdapter(new MultLayoutAdapter(this,R.layout.book_list_item,list));
+        lvTestAdapter.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
 
     }
 private final  class  MultLayoutAdapter extends CommonAdapter<Book>{
