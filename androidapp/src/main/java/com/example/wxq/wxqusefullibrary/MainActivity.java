@@ -11,6 +11,7 @@ import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
+import com.example.wxq.wxqutilslibrary.widget.dialog.CommonBottomPopDialog;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
 import com.hwangjr.rxbus.thread.EventThread;
@@ -111,8 +112,39 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, TestBaseActivity.class));
                 break;
             case R.id.tv_wxq4:
-                break;
+                final CommonBottomPopDialog commonBottomPopDialog=new CommonBottomPopDialog(this);
+                commonBottomPopDialog.show();
+                commonBottomPopDialog.setListenerInterface(new CommonBottomPopDialog.ClickListenerInterface() {
+                    @Override
+                    public void doDelete() {
+                        showToast("删除");
+                    }
+
+                    @Override
+                    public void doCancel() {
+                        showToast("取消");
+                        commonBottomPopDialog.dismiss();
+                    }
+                });
+
             case R.id.tv_wxq5:
+
+//                CommonAlertDialog.getInstance().createAlertDialog(this,"注意有人来了","取消","确定",new View.OnClickListener(){
+//                            @Override
+//                            public void onClick(View v) {
+//                                showToast("no");
+//                                CommonAlertDialog.getInstance().dismiss();
+//                            }
+//                        },new View.OnClickListener(){
+//                            @Override
+//                            public void onClick(View v) {
+//                                showToast("ok");
+//                                CommonAlertDialog.getInstance().dismiss();
+//                            }
+//                        }
+//
+//                ).show();
+
                 break;
             case R.id.tv_wxq6:
                 EventBus.getDefault().postSticky(new MsgEvent("From Main With Sticky"));
