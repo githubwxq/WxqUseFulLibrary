@@ -20,6 +20,7 @@ import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.xutils.x;
 
 import specialtools.ActivityManager;
 
@@ -54,6 +55,8 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         ActivityManager.getInstance().addActivity(this);
         //注册eventbus
         EventBus.getDefault().register(this);
+        //注册xutils
+
     }
 
     @Override

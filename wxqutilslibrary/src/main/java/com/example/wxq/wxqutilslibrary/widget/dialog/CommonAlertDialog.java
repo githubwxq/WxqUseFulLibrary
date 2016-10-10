@@ -14,12 +14,12 @@ import com.example.wxq.wxqutilslibrary.R;
  * Created by Administrator on 2016/10/7.
  */
 public class CommonAlertDialog {
-    private  static  CommonAlertDialog alertDialog;
+    private static CommonAlertDialog alertDialog;
 
-    public static CommonAlertDialog getInstance(){
-        if(alertDialog==null){
+    public static CommonAlertDialog getInstance() {
+        if (alertDialog == null) {
 
-            alertDialog=new CommonAlertDialog();
+            alertDialog = new CommonAlertDialog();
 
         }
 
@@ -28,7 +28,7 @@ public class CommonAlertDialog {
 
     private Dialog dialog;
 
-    public Dialog createAlertDialog(Context context, String msg, String cancleBtnMsg, String sureBtnMsg, View.OnClickListener canclelistener, View.OnClickListener surelistener){
+    public Dialog createAlertDialog(Context context, String msg, String cancleBtnMsg, String sureBtnMsg, View.OnClickListener canclelistener, View.OnClickListener surelistener) {
 
         LayoutInflater inflater = LayoutInflater.from(context);
         View v = inflater.inflate(R.layout.layout_common_dialog, null);// 得到加载view
@@ -48,15 +48,11 @@ public class CommonAlertDialog {
         return dialog;
 
 
-
-
     }
 
-public void dismiss(){
-    dialog.dismiss();
-}
-
-
+    public void dismiss() {
+        dialog.dismiss();
+    }
 
 
 }

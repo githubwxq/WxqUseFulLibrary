@@ -119,35 +119,18 @@ public class Test2ChildFragment extends Fragment {
 
 
     private void initRight() {
-
-
         //前后顺序
         rlViewRight.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         rlViewRight.setItemAnimator(new DefaultItemAnimator());
-
         mrightadapter=new RightAdapter() ;
         rlViewRight.setAdapter(mrightadapter);
-
-
-
     }
 
     private void initLeft() {
-
         //前后顺序
         rlViewLeft.setLayoutManager(new LinearLayoutManager(getActivity()));
-
         rlViewLeft.setItemAnimator(new DefaultItemAnimator());
-
-
         rlViewLeft.setAdapter(new LeftAdapter());
-
-
-
-
-
-
     }
 
     class LeftAdapter extends RecyclerView.Adapter<LeftAdapter.MyViewHolder>

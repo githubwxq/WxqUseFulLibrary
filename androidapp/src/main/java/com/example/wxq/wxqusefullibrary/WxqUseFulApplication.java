@@ -7,6 +7,8 @@ import android.os.Handler;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.leakcanary.RefWatcher;
 
+import org.xutils.x;
+
 /**
  * Created by Administrator on 2016/7/15.
  */
@@ -30,6 +32,9 @@ public class WxqUseFulApplication extends Application implements Thread.Uncaught
         refWatcher= LeakCanary.install(this);//加载内存泄漏工具并获取观察者
         mainThreadId = android.os.Process.myTid();
         Thread.setDefaultUncaughtExceptionHandler(this);
+
+        x.Ext.init(this);
+        x.Ext.setDebug(true); // 是否输出debug日志
     }
 
     public static Context getContext() {

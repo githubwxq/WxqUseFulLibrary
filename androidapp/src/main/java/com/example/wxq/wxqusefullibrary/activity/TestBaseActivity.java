@@ -11,6 +11,7 @@ import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.myutils.xutils.NetConnectTools;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;
@@ -40,6 +41,52 @@ public class TestBaseActivity extends BaseActivity {
         tv_test_title.setOnClickListener(this);
         tv_test_name.setOnClickListener(this);
         aCache = aCache.get(this);
+        String url="http://op.juhe.cn/onebox/weather/query";
+
+        NetConnectTools.getInstance().getData("https://www.juhe.cn/docs/api/id/196", null, new NetConnectTools.CallBackListen() {
+            @Override
+            public void onSuccess(String result) {
+                showToast(result);
+                setTitleText(result+"ok");
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                setTitleText("错误");
+            }
+
+            @Override
+            public void onFinished() {
+                showToast("结束");
+            }
+        },this);
+
+//        NetConnectTools.getInstance().postData("http://op.juhe.cn/onebox/weather/query", null, new NetConnectTools.CallBackListen() {
+//            @Override
+//            public void onSuccess(String result) {
+//                showToast(result);
+//                setTitleText(result+"ok");
+//            }
+//
+//            @Override
+//            public void onError(Throwable ex, boolean isOnCallback) {
+//                setTitleText("错误");
+//            }
+//
+//            @Override
+//            public void onFinished() {
+//                showToast("结束");
+//            }
+//        });
+
+
+
+
+
+
+
+
+
      //   EventBus.getDefault().post("i am wxq lala");
 
     }

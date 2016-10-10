@@ -8,6 +8,8 @@ import android.util.Log;
 
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
 
+import org.xutils.x;
+
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -25,6 +27,9 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         mContext = getApplicationContext();
         //初始化imageloader
         LoadingImgUtil.initImageLoader(mContext);
+        // 注册xutils
+        x.Ext.init(this);
+        x.Ext.setDebug(true); // 是否输出debug日志
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
