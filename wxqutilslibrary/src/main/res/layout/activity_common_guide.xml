@@ -18,7 +18,6 @@
         android:text="立即体验"
         android:gravity="center"
         android:textColor="#FFF"
-        android:visibility="gone"
         android:background="#3f3f3f"
         android:layout_alignParentBottom="true"
         android:textSize="17sp" />

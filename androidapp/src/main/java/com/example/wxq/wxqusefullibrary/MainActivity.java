@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
@@ -153,7 +154,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.tv_wxq7:
                 Toast.makeText(MainActivity.this, "点击了wxq7", Toast.LENGTH_SHORT).show();
-
+                startActivity(new Intent(this, GuideActivity.class));
                 break;
         }
     }

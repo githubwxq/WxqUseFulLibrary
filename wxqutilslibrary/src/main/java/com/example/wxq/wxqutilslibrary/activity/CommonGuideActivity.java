@@ -73,6 +73,7 @@ public class CommonGuideActivity extends Activity {
 
         mViewPager.setOffscreenPageLimit(views.size());
       //  mViewPager.setPageMargin(-dip2px(135));
+        vpAdapter=new ViewPaperAdapter(views);
         mViewPager.setAdapter(vpAdapter);
 
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -92,7 +93,7 @@ public class CommonGuideActivity extends Activity {
             }
         });
 
-        mViewPager.setPageTransformer(true, new DepthPageTransformer());
+    //    mViewPager.setPageTransformer(true, new DepthPageTransformer());
     }
 
 
