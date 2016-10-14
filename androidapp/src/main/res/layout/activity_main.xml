@@ -37,7 +37,7 @@
         android:id="@+id/tv_wxq4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wxq"
+        android:text="dialog"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -45,14 +45,14 @@
         android:id="@+id/tv_wxq5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="wxq"
+        android:text="makesuredialog"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" /><TextView
     android:id="@+id/tv_wxq6"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="wxq"
+    android:text="eventbus"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true" />
@@ -60,12 +60,59 @@
     android:id="@+id/tv_wxq7"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="wxq"
+    android:text="guideactivity"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true" />
 
-
+    <TextView
+        android:id="@+id/tv_wxq8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="showPic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="mytab"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="picdetails"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="轮播控件"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="superrecycleview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="superlistview"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
     <TextView
         android:id="@+id/rxbus"
         android:layout_width="wrap_content"

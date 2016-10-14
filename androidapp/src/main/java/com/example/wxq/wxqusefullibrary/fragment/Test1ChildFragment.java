@@ -23,16 +23,12 @@ import butterknife.ButterKnife;
  * Created by wxq on 2016/7/12.
  */
 public class Test1ChildFragment extends Fragment {
-
-
-
     @BindView(R.id.child_fg_tablayout)
     TabLayout childFgTablayout;
     @BindView(R.id.child_fg_viewPager)
     ViewPager childFgViewPager;
+    ArrayList<Fragment> flists; /*ctrl +alt +k 生命周期排序*/
 
-    ArrayList<Fragment> flists;
-    //ctrl +alt +k 生命周期排序
     @Override
     public void onAttach(Context context) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreate...");
@@ -40,8 +36,7 @@ public class Test1ChildFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        // TODO Auto-generated method stub
+    public void onCreate(Bundle savedInstanceState) { /* TODO Auto-generated method stub*/
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreate...");
         super.onCreate(savedInstanceState);
     }
@@ -51,14 +46,11 @@ public class Test1ChildFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Log.e(this.getClass().getName(), "ArrayListFragment **** onCreateView...");
         View view = inflater.inflate(R.layout.test1childfragment, null);
-        ButterKnife.bind(this, view);
-       // tvChildFg1.setText("child1fragment");
-
-        flists=new ArrayList<Fragment>();
+        ButterKnife.bind(this, view); /* tvChildFg1.setText("child1fragment");*/
+        flists = new ArrayList<Fragment>();
         flists.add(new viewpageFragment1());
         flists.add(new viewpageFragment2());
         flists.add(new viewpageFragment3());
-
         childFgViewPager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -74,19 +66,18 @@ public class Test1ChildFragment extends Fragment {
             public CharSequence getPageTitle(int position) {
                 switch (position) {
                     case 0:
-                        return "子"+(position+1);
+                        return "子" + (position + 1);
                     case 1:
-                        return "子"+(position+1);
+                        return "子" + (position + 1);
 
                     default:
-                        return "子"+(position+1);
+                        return "子" + (position + 1);
                 }
             }
         });
 
 
         childFgTablayout.setupWithViewPager(childFgViewPager);
-
 
 
         return view;

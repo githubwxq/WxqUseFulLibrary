@@ -59,7 +59,6 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         tvHellow = (TextView) findViewById(R.id.tv_hellow);
-
         rxbus= (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
 
