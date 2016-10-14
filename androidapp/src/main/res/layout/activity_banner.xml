@@ -2,24 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
 android:background="#3f3f"
 >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="1321213131321313"
 
-        />
-    <com.example.wxq.wxqutilslibrary.widget.banner.XBanner
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/banner_1"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        app:pointsPosition="CENTER"
-        app:AutoPlayTime="3000"
-        app:pointsContainerBackground="#44aaaaaa"
-        app:pointNormal="@drawable/shape_noraml"
-        app:pointSelect="@drawable/shape_selected"
-      />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="180dp">
+        <com.example.wxq.wxqutilslibrary.widget.banner.XBanner
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/banner_1"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:pointsPosition="CENTER"
+            app:AutoPlayTime="3000"
+            app:pointsContainerBackground="#44aaaaaa"
+            app:pointNormal="@drawable/shape_noraml"
+            app:pointSelect="@drawable/shape_selected"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1321213131321313"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="10dp"
+            />
+
+    </RelativeLayout>
+
 </RelativeLayout>
