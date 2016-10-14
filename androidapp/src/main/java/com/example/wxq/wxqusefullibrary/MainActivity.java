@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.activity.BannerActivity;
 import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
@@ -45,7 +46,7 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.tv_wxq7)
     TextView tvWxq7;
     TextView rxbus;
-
+    TextView tv_wxq11;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +60,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         tvHellow = (TextView) findViewById(R.id.tv_hellow);
+        tv_wxq11 = (TextView) findViewById(R.id.tv_wxq11);
         rxbus= (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
 
@@ -73,7 +75,17 @@ public class MainActivity extends BaseActivity {
                 //   popupWindow.disspop();
             }
         });
+        tv_wxq11.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomView.dismissBottomView();
+                Intent a = new Intent(MainActivity.this, BannerActivity.class);
 
+                startActivity(a);
+
+                //   popupWindow.disspop();
+            }
+        });
         // CommonDialogUtils.showDailog(this,R.layout.activity_dialog);
 
 

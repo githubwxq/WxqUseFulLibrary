@@ -1,1 +1,2 @@
 include ':androidapp', ':wxqutilslibrary'
+include ':gDTUnionDemo'
