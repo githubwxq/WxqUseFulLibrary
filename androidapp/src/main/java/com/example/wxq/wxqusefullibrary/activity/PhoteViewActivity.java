@@ -13,9 +13,9 @@ public class PhoteViewActivity extends CommonPicViewPageActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_phote_view);
-     //   initViewPageData();
-
+        // setContentView(R.layout.activity_phote_view);
+        //   initViewPageData();
+        setTitleText("图片详情");
 
 
 

@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/tv_hellow"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="TestCommonAdapter!"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -19,7 +19,7 @@
     <TextView
         android:id="@+id/tv_wxq"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="Listview选中某个测试 !"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -28,7 +28,7 @@
     <TextView
         android:id="@+id/tv_wxq3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="baseActivity测试"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -36,7 +36,7 @@
     <TextView
         android:id="@+id/tv_wxq4"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="dialog"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -44,14 +44,14 @@
     <TextView
         android:id="@+id/tv_wxq5"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="makesuredialog"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" /><TextView
     android:id="@+id/tv_wxq6"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="20dp"
     android:text="eventbus"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
@@ -59,7 +59,7 @@
     <TextView
     android:id="@+id/tv_wxq7"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="20dp"
     android:text="guideactivity"
     android:layout_alignParentTop="true"
     android:layout_alignParentLeft="true"
@@ -68,15 +68,23 @@
     <TextView
         android:id="@+id/tv_wxq8"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="showPic"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/tv_wxq14"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="图片选择器"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
     <TextView
         android:id="@+id/tv_wxq9"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="mytab"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -84,7 +92,7 @@
     <TextView
         android:id="@+id/tv_wxq10"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="picdetails"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -92,7 +100,7 @@
     <TextView
         android:id="@+id/tv_wxq11"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="轮播控件"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -100,7 +108,7 @@
     <TextView
         android:id="@+id/tv_wxq12"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="superrecycleview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -108,17 +116,21 @@
     <TextView
         android:id="@+id/tv_wxq13"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="superlistview"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+
+
+
     <TextView
         android:id="@+id/rxbus"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:text="rxbus"
-        android:textSize="25sp"
+        android:textSize="15sp"
         android:textColor="#ff3f3f"
         />
 

@@ -14,6 +14,7 @@ import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
+import com.example.wxq.wxqutilslibrary.widget.dialog.CommonAlertDialog;
 import com.example.wxq.wxqutilslibrary.widget.dialog.CommonBottomPopDialog;
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.hwangjr.rxbus.annotation.Tag;
@@ -49,6 +50,7 @@ public class MainActivity extends BaseActivity {
     TextView rxbus;
     TextView tv_wxq11;
     TextView tv_wxq8;
+    TextView tv_wxq14;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,15 +71,11 @@ public class MainActivity extends BaseActivity {
         tv_wxq8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent a = new Intent(MainActivity.this, PhoteViewActivity.class);
-
                 startActivity(a);
-
                 //   popupWindow.disspop();
             }
         });
-
 
         tvWxq.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +99,27 @@ public class MainActivity extends BaseActivity {
                 //   popupWindow.disspop();
             }
         });
-        // CommonDialogUtils.showDailog(this,R.layout.activity_dialog);
+
+        tv_wxq14= (TextView) findViewById(R.id.tv_wxq14);
+        tv_wxq14.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bottomView.dismissBottomView();
+                Intent a = new Intent(MainActivity.this, BannerActivity.class);
+                startActivity(a);
+                //   popupWindow.disspop();
+            }
+        });
 
 
-        // popupWindow.easyPopupWindow(this,tvHellow,R.layout.activity_dialog);
+
+
+
+
+
+
+
+
 
     }
 
@@ -156,21 +171,21 @@ public class MainActivity extends BaseActivity {
 
             case R.id.tv_wxq5:
 
-//                CommonAlertDialog.getInstance().createAlertDialog(this,"注意有人来了","取消","确定",new View.OnClickListener(){
-//                            @Override
-//                            public void onClick(View v) {
-//                                showToast("no");
-//                                CommonAlertDialog.getInstance().dismiss();
-//                            }
-//                        },new View.OnClickListener(){
-//                            @Override
-//                            public void onClick(View v) {
-//                                showToast("ok");
-//                                CommonAlertDialog.getInstance().dismiss();
-//                            }
-//                        }
-//
-//                ).show();
+                CommonAlertDialog.getInstance().createAlertDialog(this,"注意有人来了","取消","确定",new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v) {
+                                showToast("no");
+                                CommonAlertDialog.getInstance().dismiss();
+                            }
+                        },new View.OnClickListener(){
+                            @Override
+                            public void onClick(View v) {
+                                showToast("ok");
+                                CommonAlertDialog.getInstance().dismiss();
+                            }
+                        }
+
+                ).show();
 
                 break;
             case R.id.tv_wxq6:
