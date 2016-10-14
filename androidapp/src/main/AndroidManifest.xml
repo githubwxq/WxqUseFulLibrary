@@ -47,6 +47,8 @@
             android:name=".activity.BannerActivity"
             android:label="@string/title_activity_guide"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.PhoteViewActivity"></activity>
+
     </application>
 
 </manifest>

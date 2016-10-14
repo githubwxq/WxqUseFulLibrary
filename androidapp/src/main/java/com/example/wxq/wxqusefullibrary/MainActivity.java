@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.activity.BannerActivity;
 import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
+import com.example.wxq.wxqusefullibrary.activity.PhoteViewActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
@@ -47,6 +48,7 @@ public class MainActivity extends BaseActivity {
     TextView tvWxq7;
     TextView rxbus;
     TextView tv_wxq11;
+    TextView tv_wxq8;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,19 @@ public class MainActivity extends BaseActivity {
         tv_wxq11 = (TextView) findViewById(R.id.tv_wxq11);
         rxbus= (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
+        tv_wxq8 = (TextView) findViewById(R.id.tv_wxq8);
+        tv_wxq8.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent a = new Intent(MainActivity.this, PhoteViewActivity.class);
+
+                startActivity(a);
+
+                //   popupWindow.disspop();
+            }
+        });
+
 
         tvWxq.setOnClickListener(new View.OnClickListener() {
             @Override
