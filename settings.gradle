@@ -1,2 +1,1 @@
-include ':androidapp', ':wxqutilslibrary'
-include ':gDTUnionDemo'
+include ':gDTUnionDemo', ':androidapp', ':wxqutilslibrary'
