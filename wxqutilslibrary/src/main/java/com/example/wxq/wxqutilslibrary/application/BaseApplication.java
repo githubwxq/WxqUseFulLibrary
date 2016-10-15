@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.squareup.leakcanary.LeakCanary;
 import com.umeng.analytics.MobclickAgent;
 
 import org.xutils.x;
@@ -32,12 +33,20 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         x.Ext.init(this);
         x.Ext.setDebug(true); // 是否输出debug日志
 
-     //   开启友盟统计
+        //   开启友盟统计
         MobclickAgent.setSessionContinueMillis(1000);
         MobclickAgent.openActivityDurationTrack(false);
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
         MobclickAgent.setDebugMode(false);
 
+        // 内存泄漏检测
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+        //   LeakCanary.install(this);
         initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

@@ -39,4 +39,7 @@ dependencies {
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'org.xutils:xutils:3.3.36'
     compile 'com.umeng.analytics:analytics:latest.integration'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
 }

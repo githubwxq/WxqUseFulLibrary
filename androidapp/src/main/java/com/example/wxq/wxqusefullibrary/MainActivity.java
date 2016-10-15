@@ -71,8 +71,6 @@ public class MainActivity extends BaseActivity {
         tv_wxq8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvWxq=null;
-                tvWxq.setText("wxq");
                 Intent a = new Intent(MainActivity.this, PhoteViewActivity.class);
                 startActivity(a);
                 //   popupWindow.disspop();
@@ -83,10 +81,11 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 bottomView.dismissBottomView();
+                int b=10;
+                int c=20;
+                int d=b+c;
                 Intent a = new Intent(MainActivity.this, Main2Activity.class);
-
                 startActivity(a);
-
                 //   popupWindow.disspop();
             }
         });
@@ -95,12 +94,7 @@ public class MainActivity extends BaseActivity {
             public void onClick(View view) {
                 bottomView.dismissBottomView();
                 Intent a = new Intent(MainActivity.this, BannerActivity.class);
-
                 startActivity(a);
-                 int v=6;
-                int b=0;
-                int c=v/b;
-                //   popupWindow.disspop();
             }
         });
 
@@ -111,10 +105,9 @@ public class MainActivity extends BaseActivity {
                 bottomView.dismissBottomView();
                 Intent a = new Intent(MainActivity.this, BannerActivity.class);
                 startActivity(a);
-                //   popupWindow.disspop();
+
             }
         });
-
 
 
 
