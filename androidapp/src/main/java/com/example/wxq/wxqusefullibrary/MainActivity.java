@@ -81,12 +81,8 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 bottomView.dismissBottomView();
-                int b=10;
-                int c=20;
-                int d=b+c;
                 Intent a = new Intent(MainActivity.this, Main2Activity.class);
                 startActivity(a);
-                //   popupWindow.disspop();
             }
         });
         tv_wxq11.setOnClickListener(new View.OnClickListener() {
