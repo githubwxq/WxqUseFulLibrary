@@ -49,9 +49,14 @@
             android:label="@string/title_activity_guide"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PhoteViewActivity"></activity>
-
-        <meta-data android:value="58010094e0f55a26d0003162" android:name="UMENG_APPKEY"></meta-data>
-        <meta-data android:value="Wandoujia" android:name="UMENG_CHANNEL"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="58010094e0f55a26d0003162" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
     </application>
 
 </manifest>

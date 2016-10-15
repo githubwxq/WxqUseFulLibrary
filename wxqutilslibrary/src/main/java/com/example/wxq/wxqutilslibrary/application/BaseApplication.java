@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import org.xutils.x;
 
@@ -30,6 +31,14 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         // 注册xutils
         x.Ext.init(this);
         x.Ext.setDebug(true); // 是否输出debug日志
+
+     //   开启友盟统计
+        MobclickAgent.setSessionContinueMillis(1000);
+        MobclickAgent.openActivityDurationTrack(false);
+        MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
+        MobclickAgent.setDebugMode(false);
+
+        initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
@@ -74,15 +83,16 @@ public abstract class BaseApplication extends Application implements Thread.Unca
 
             }
         });
-        initResourceAndother();
+
     }
 
     protected abstract void initResourceAndother();
 
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        outputError(ex);
+        Log.e("wxq", outputError(ex));
         dealWithException(ex);
+        MobclickAgent.onKillProcess(this);
         ActivityManager.getInstance().AppExit(mContext);
         android.os.Process.killProcess(android.os.Process.myPid());
 

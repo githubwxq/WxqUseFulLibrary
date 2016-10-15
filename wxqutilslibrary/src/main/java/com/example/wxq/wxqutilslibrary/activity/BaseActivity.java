@@ -16,11 +16,11 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.R;
 import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
+import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-import org.xutils.x;
 
 import specialtools.ActivityManager;
 
@@ -72,11 +72,15 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     @Override
     protected void onResume() {
         super.onResume();
+        MobclickAgent.onPageStart(this.getClass().getName());
+        MobclickAgent.onResume(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        MobclickAgent.onPageEnd(this.getClass().getName());
+        MobclickAgent.onPause(this);
     }
 
     @Override
