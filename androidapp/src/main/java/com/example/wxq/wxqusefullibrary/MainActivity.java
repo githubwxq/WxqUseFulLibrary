@@ -17,11 +17,9 @@ import com.example.wxq.wxqutilslibrary.model.MsgEvent;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.example.wxq.wxqutilslibrary.widget.dialog.CommonAlertDialog;
 import com.example.wxq.wxqutilslibrary.widget.dialog.CommonBottomPopDialog;
-import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
-import com.hwangjr.rxbus.thread.EventThread;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
@@ -29,7 +27,13 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
-    public static final String RXTAG ="MainActivity";
+    public static final String RXTAG = "MainActivity";
+
+    private final String[] mItems = {"TestCommonAdapter", "listview选中测试", "baseActivity测试"};
+    private final Class<?>[] mClasses = {TestCommonAdapterActivity.class, Main2Activity.class,
+            TestBaseActivity.class};
+
+
     BottomView bottomView = null;
     //CommonPopupWindow popupWindow;
 
@@ -52,23 +56,25 @@ public class MainActivity extends BaseActivity {
     TextView tv_wxq11;
     TextView tv_wxq8;
     TextView tv_wxq14;
+    private TextView tv_wxq12;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //  popupWindow= new CommonPopupWindow();
         RxBus.get().register(this);
         bottomView = new BottomView(this, R.style.BottomViewTheme_Defalut, R.layout.activity_dialog);
-
         bottomView.setTop(false);
         bottomView.showBottomView(true);
         bottomView.dismissBottomView();
         setContentView(R.layout.activity_main);
+        initView();
         ButterKnife.bind(this);
         tvHellow = (TextView) findViewById(R.id.tv_hellow);
         tv_wxq11 = (TextView) findViewById(R.id.tv_wxq11);
-        rxbus= (TextView) findViewById(R.id.rxbus);
+        rxbus = (TextView) findViewById(R.id.rxbus);
         tvWxq = (TextView) findViewById(R.id.tv_wxq);
-       tv_wxq8 = (TextView) findViewById(R.id.tv_wxq8);
+        tv_wxq8 = (TextView) findViewById(R.id.tv_wxq8);
         tv_wxq8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,7 +101,7 @@ public class MainActivity extends BaseActivity {
             }
         });
 
-        tv_wxq14= (TextView) findViewById(R.id.tv_wxq14);
+        tv_wxq14 = (TextView) findViewById(R.id.tv_wxq14);
         tv_wxq14.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,35 +113,26 @@ public class MainActivity extends BaseActivity {
         });
 
 
-
-
-
-
-
-
-
-
     }
 
-    @Subscribe
-    public void changerxbus(String food) {
-
-        rxbus.setText(food+"来自第三个界面的回传");
-      //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
-    }
-
-    @Subscribe(
-            thread = EventThread.MAIN_THREAD,
-            tags = {
-                    @Tag(RXTAG)
-            }
-    )
-    public void getInfoFromFragment1(String informatiion) {
-
-        tvWxq3.setText(informatiion+"<<<<<<");
-        //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
-    }
-
+//    @Subscribe
+//    public void changerxbus(String food) {
+//
+//        rxbus.setText(food+"来自第三个界面的回传");
+//      //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
+//    }
+//
+//    @Subscribe(
+//            thread = EventThread.MAIN_THREAD,
+//            tags = {
+//                    @Tag(RXTAG)
+//            }
+//    )
+//    public void getInfoFromFragment1(String informatiion) {
+//
+//        tvWxq3.setText(informatiion+"<<<<<<");
+//        //  Toast.makeText(this,food+"我在当前类",Toast.LENGTH_SHORT).show();
+//    }
 
 
     @OnClick({R.id.tv_hellow, R.id.tv_wxq3, R.id.tv_wxq4, R.id.tv_wxq5, R.id.tv_wxq6, R.id.tv_wxq7})
@@ -148,7 +145,7 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(this, TestBaseActivity.class));
                 break;
             case R.id.tv_wxq4:
-                final CommonBottomPopDialog commonBottomPopDialog=new CommonBottomPopDialog(this);
+                final CommonBottomPopDialog commonBottomPopDialog = new CommonBottomPopDialog(this);
                 commonBottomPopDialog.show();
                 commonBottomPopDialog.setListenerInterface(new CommonBottomPopDialog.ClickListenerInterface() {
                     @Override
@@ -165,13 +162,13 @@ public class MainActivity extends BaseActivity {
 
             case R.id.tv_wxq5:
 
-                CommonAlertDialog.getInstance().createAlertDialog(this,"注意有人来了","取消","确定",new View.OnClickListener(){
+                CommonAlertDialog.getInstance().createAlertDialog(this, "注意有人来了", "取消", "确定", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 showToast("no");
                                 CommonAlertDialog.getInstance().dismiss();
                             }
-                        },new View.OnClickListener(){
+                        }, new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
                                 showToast("ok");
@@ -186,7 +183,7 @@ public class MainActivity extends BaseActivity {
                 EventBus.getDefault().postSticky(new MsgEvent("From Main With Sticky"));
                 EventBus.getDefault().post("i am wxq lala main");
                 Toast.makeText(MainActivity.this, "点击了wxq6", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, LinearActivity.class));
+            //   startActivity(new Intent(this, LinearActivity.class));
 
                 break;
             case R.id.tv_wxq7:
@@ -198,7 +195,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void widgetClick(View v) {
-
+switch (v.getId()){
+    case R.id.tv_wxq12:
+        startActivity(new Intent(this, LinearActivity.class));
+        break;
+}
     }
 
     @Override
@@ -208,9 +209,19 @@ public class MainActivity extends BaseActivity {
     }
 
 
-    @org.greenrobot.eventbus.Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEvent(MsgEvent event){
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(MsgEvent event) {
         rxbus.setText(event.getJsonData());
-    //    EventBus.getDefault().removeAllStickyEvents();
+        //    EventBus.getDefault().removeAllStickyEvents();
+    }
+
+    private void initView() {
+        tv_wxq12 = (TextView) findViewById(R.id.tv_wxq12);
+        tv_wxq12.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, LinearActivity.class));
+            }
+        });
     }
 }

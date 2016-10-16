@@ -34,7 +34,7 @@ public class XRecyclerView extends RecyclerView implements LoadingMoreFooterClic
     private Adapter mAdapter;//里层的adapter
 
     private float mLastY = -1;
-    private int pageSize = 10;
+    private int pageSize = 10;  //每一页数量如果刷新后数量不足则显示点击加载更多现在被我改了
     private int visibleThreshold = 1; // list到达 最后一个item的时候 触发加载
     private LoadingListener mLoadingListener;
     private ArrowRefreshHeader mRefreshHeader;//header view
@@ -133,12 +133,14 @@ public class XRecyclerView extends RecyclerView implements LoadingMoreFooterClic
      * 重置footer.如果当前 itemCount > {@link #pageSize} 调用 {@link #stopLoadMore()} 否则调用 {@link #clickLoadMore()}
      */
     public void restoreFooter(){
+      //  LoadingState.STATE_COMPLETE
         if (loadingMoreEnabled){
             int itemCount = mAdapter.getItemCount();
             if (itemCount >= pageSize){
                 stopLoadMore();
             }else {
-                clickLoadMore();
+                //无论如何都让他加载更多不是点击加载
+             //   clickLoadMore();
             }
         }
     }
@@ -271,7 +273,7 @@ public class XRecyclerView extends RecyclerView implements LoadingMoreFooterClic
                         if (mRefreshHeader.releaseAction()) {
                             if (mLoadingListener != null) {
                                 mLoadingListener.onRefresh();
-                                hasMore = false;
+                               hasMore = false;
                             }
                         }
                     }

@@ -136,7 +136,7 @@ public class ArrowRefreshHeader extends LinearLayout {
         mArrowImageView.setVisibility(View.INVISIBLE);
         mProgressBar.setVisibility(View.INVISIBLE);
         mStatusTextView.setText(R.string.refresh_done);
-        mState = RefreshState.STATE_DONE;
+       mState = RefreshState.STATE_DONE;
     }
 
     /**

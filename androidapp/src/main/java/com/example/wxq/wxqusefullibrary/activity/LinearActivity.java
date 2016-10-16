@@ -30,8 +30,8 @@ public class LinearActivity extends BaseActivity {
         mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
         View header =   LayoutInflater.from(this).inflate(R.layout.recyclerview_header, (ViewGroup)findViewById(android.R.id.content),false);
         View header2 =   LayoutInflater.from(this).inflate(R.layout.recyclerview_header, (ViewGroup)findViewById(android.R.id.content),false);
-        mRecyclerView.addHeaderView(header);
         mRecyclerView.addHeaderView(header2);
+       // mRecyclerView.setLoadingMoreEnabled(false);
         mRecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
@@ -84,7 +84,7 @@ public class LinearActivity extends BaseActivity {
         mAdapter = new MyAdapter(listData);
         mRecyclerView.setAdapter(mAdapter);
 
-    //    mRecyclerView.clickLoadMore();
+    // mRecyclerView.clickLoadMore();
     }
 
     @Override
