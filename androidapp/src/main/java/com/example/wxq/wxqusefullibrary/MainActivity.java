@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.activity.BannerActivity;
 import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
+import com.example.wxq.wxqusefullibrary.activity.LinearActivity;
 import com.example.wxq.wxqusefullibrary.activity.PhoteViewActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
@@ -185,6 +186,8 @@ public class MainActivity extends BaseActivity {
                 EventBus.getDefault().postSticky(new MsgEvent("From Main With Sticky"));
                 EventBus.getDefault().post("i am wxq lala main");
                 Toast.makeText(MainActivity.this, "点击了wxq6", Toast.LENGTH_LONG).show();
+                startActivity(new Intent(this, LinearActivity.class));
+
                 break;
             case R.id.tv_wxq7:
                 Toast.makeText(MainActivity.this, "点击了wxq7", Toast.LENGTH_SHORT).show();
