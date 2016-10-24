@@ -7,6 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.activity.BannerActivity;
+import com.example.wxq.wxqusefullibrary.activity.CommonTabActivity;
 import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
 import com.example.wxq.wxqusefullibrary.activity.LinearActivity;
 import com.example.wxq.wxqusefullibrary.activity.PhoteViewActivity;
@@ -106,7 +107,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 bottomView.dismissBottomView();
-                Intent a = new Intent(MainActivity.this, BannerActivity.class);
+                Intent a = new Intent(MainActivity.this, CommonTabActivity.class);
                 startActivity(a);
 
             }

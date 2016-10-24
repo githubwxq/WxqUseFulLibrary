@@ -52,17 +52,17 @@
         <activity android:name=".activity.PhoteViewActivity" />
         <activity
             android:name=".activity.LinearActivity"
-            android:label="@string/title_activity_guide"
-            />
+            android:label="@string/title_activity_guide" />
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="58010094e0f55a26d0003162"></meta-data>
+            android:value="58010094e0f55a26d0003162" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Umeng"></meta-data>
+            android:value="Umeng" />
 
-        <activity android:name=".activity.MyLinearActivity"></activity>
+        <activity android:name=".activity.MyLinearActivity" />
+        <activity android:name=".activity.CommonTabActivity"></activity>
     </application>
 
 </manifest>

@@ -24,7 +24,8 @@ public class LinearActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
         mRecyclerView = (XRecyclerView)this.findViewById(R.id.recyclerview);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+   LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+       // GridLayoutManager layoutManager = new GridLayoutManager(this,3);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setArrowImageView(R.drawable.iconfont_downgrey);
