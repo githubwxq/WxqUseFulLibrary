@@ -7,12 +7,13 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 /*
 * 懒加载fragment 用到显示的时候才加载
-*
+* 王晓清10.25 防止覆盖
 *
 * */
-public abstract class BaseFragment extends Fragment {
+public abstract class SuperFragment extends Fragment {
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN"; //防止fragment重叠
 
     public String fragmentTitle;
@@ -50,6 +51,8 @@ public abstract class BaseFragment extends Fragment {
         // 取消 isFirstLoad = true的注释 , 因为上述的initData本身就是应该执行的
         // onCreateView执行 证明被移出过FragmentManager initData确实要执行.
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
+
+        //  必须设置好缓存界面否则的话对象销毁总是执行 lazyload（）mViewPager.setOffscreenPageLimit(4);
         isFirstLoad = true;
         View view = initViews(inflater, container, savedInstanceState);
         isPrepared = true;
@@ -106,7 +109,7 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void lazyLoad() {
         if (!isPrepared || !isVisible || !isFirstLoad) {
-        //if (!isAdded() || !isVisible || !isFirstLoad) {
+            //if (!isAdded() || !isVisible || !isFirstLoad) {
             return;
         }
         isFirstLoad = false;
@@ -143,18 +146,6 @@ public abstract class BaseFragment extends Fragment {
 //        只要上面的9行代码！ FragmentState没帮我们保存Hidden状态，那就我们自己来保存，在页面重启后，我们自己来决定Fragment是否显示！
 //        解决思路转变了，由Activity/父Fragment来管理子Fragment的Hidden状态转变为 由Fragment自己来管理自己的Hidden状态！
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

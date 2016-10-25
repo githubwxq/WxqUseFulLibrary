@@ -11,6 +11,10 @@ import android.view.View;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.fragment.SimpleCardFragment;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment1;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment2;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment3;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment4;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout;
 import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CustomTabEntity;
@@ -47,10 +51,17 @@ public class CommonTabActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common_tab);
-
+//        mFragments.add(new lazyFragment1());
+//        mFragments.add(new lazyFragment2());
+//        mFragments.add(new lazyFragment3());
+//        mFragments.add(new lazyFragment4());
+        mFragments2.add(new lazyFragment4());
+        mFragments2.add(new lazyFragment3());
+        mFragments2.add(new lazyFragment2());
+        mFragments2.add(new lazyFragment1());
         for (String title : mTitles) {
-            mFragments.add(SimpleCardFragment.getInstance("Switch ViewPager " + title));//不是单列
-            mFragments2.add(SimpleCardFragment.getInstance("Switch Fragment " + title));
+        //    mFragments.add(new lazyFragment1());//不是单列
+        // mFragments2.add(new lazyFragment2());
         }
 
 
@@ -60,6 +71,7 @@ public class CommonTabActivity extends BaseActivity {
 
         mDecorView = getWindow().getDecorView();
         mViewPager = ViewFindUtils.find(mDecorView, R.id.vp_2);
+        mViewPager.setOffscreenPageLimit(4);
         mViewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         dealwith1();
         dealwith2();
@@ -186,6 +198,10 @@ public class CommonTabActivity extends BaseActivity {
         public Fragment getItem(int position) {
             return mFragments.get(position);
         }
+
+
+
+
     }
 
     protected int dp2px(float dp) {
