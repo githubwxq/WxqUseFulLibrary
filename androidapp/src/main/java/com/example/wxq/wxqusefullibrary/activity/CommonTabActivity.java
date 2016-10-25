@@ -10,7 +10,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.example.wxq.wxqusefullibrary.R;
-import com.example.wxq.wxqusefullibrary.fragment.SimpleCardFragment;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment1;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment2;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment3;
@@ -35,6 +34,14 @@ public class CommonTabActivity extends BaseActivity {
     private ViewPager mViewPager;
     private CommonTabLayout mTabLayout_1;
     private CommonTabLayout mTabLayout_3;
+
+
+    private CommonTabLayout mTabLayout_4;
+    private CommonTabLayout mTabLayout_5;
+    private CommonTabLayout mTabLayout_6;
+    private CommonTabLayout mTabLayout_7;
+    private CommonTabLayout mTabLayout_8;
+
 
     private String[] mTitles = {"首页", "消息", "联系人", "更多"};
     private int[] mIconUnselectIds = {
@@ -78,9 +85,16 @@ public class CommonTabActivity extends BaseActivity {
 //        /** with Fragments */
 //        mTabLayout_3 = ViewFindUtils.find(mDecorView, R.id.tl_3);
         dealwith3();
+        dealwith4();
 
 
 
+    }
+
+    private void dealwith4() {
+        /** indicator固定宽度 */
+        mTabLayout_4 = ViewFindUtils.find(mDecorView, R.id.tl_4);
+        mTabLayout_4.setTabData(mTabEntities);
 
     }
 

@@ -63,6 +63,8 @@
 
         <activity android:name=".activity.MyLinearActivity" />
         <activity android:name=".activity.CommonTabActivity"></activity>
+        <activity android:name=".activity.SlidingTabActivity"></activity>
+
     </application>
 
 </manifest>

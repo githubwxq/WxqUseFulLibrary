@@ -77,6 +77,68 @@
 
             tl:tl_underline_height="1dp"/>
 
+
+        <com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout
+            android:id="@+id/tl_4"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#F6CE59"
+            tl:tl_iconVisible="false"
+            tl:tl_textBold="SELECT"
+            tl:tl_indicator_width="10dp"
+            tl:tl_textsize="14sp"/>
+
+        <com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout
+            tl:tl_textBold="BOTH"
+            android:id="@+id/tl_5"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#EC7263"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_corner_radius="2dp"
+            tl:tl_indicator_height="4dp"
+            tl:tl_indicator_width="4dp"
+            tl:tl_textsize="14sp"/>
+
+        <com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout
+            android:id="@+id/tl_6"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#57385C"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_corner_radius="1.5dp"
+            tl:tl_indicator_height="3dp"
+            tl:tl_indicator_width="10dp"
+            tl:tl_textsize="14sp"/>
+
+        <com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout
+            android:id="@+id/tl_7"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#E45171"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_color="#eeeeee"
+            tl:tl_indicator_corner_radius="1.5dp"
+            tl:tl_indicator_height="3dp"
+            tl:tl_indicator_style="TRIANGLE"
+            tl:tl_indicator_width="10dp"
+            tl:tl_textsize="14sp"/>
+
+        <com.example.wxq.wxqutilslibrary.widget.mulripletablayout.CommonTabLayout
+            android:id="@+id/tl_8"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#6D8FB0"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            tl:tl_iconVisible="false"
+            tl:tl_indicator_margin_left="5dp"
+            tl:tl_indicator_margin_right="5dp"
+            tl:tl_indicator_style="BLOCK"
+            tl:tl_textsize="14sp"/>
+
+
+
     </LinearLayout>
 
 

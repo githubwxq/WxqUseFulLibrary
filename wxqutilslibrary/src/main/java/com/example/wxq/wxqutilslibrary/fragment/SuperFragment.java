@@ -52,6 +52,12 @@ public abstract class SuperFragment extends Fragment {
         // onCreateView执行 证明被移出过FragmentManager initData确实要执行.
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
 
+
+
+
+
+
+
         //  必须设置好缓存界面否则的话对象销毁总是执行 lazyload（）mViewPager.setOffscreenPageLimit(4);
         isFirstLoad = true;
         View view = initViews(inflater, container, savedInstanceState);
