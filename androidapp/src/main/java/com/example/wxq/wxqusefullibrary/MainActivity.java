@@ -10,7 +10,7 @@ import com.example.wxq.wxqusefullibrary.activity.BannerActivity;
 import com.example.wxq.wxqusefullibrary.activity.GuideActivity;
 import com.example.wxq.wxqusefullibrary.activity.LinearActivity;
 import com.example.wxq.wxqusefullibrary.activity.PhoteViewActivity;
-import com.example.wxq.wxqusefullibrary.activity.SlidingTabActivity;
+import com.example.wxq.wxqusefullibrary.activity.SegmentTabActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestBaseActivity;
 import com.example.wxq.wxqusefullibrary.activity.TestCommonAdapterActivity;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
@@ -107,7 +107,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 bottomView.dismissBottomView();
-                Intent a = new Intent(MainActivity.this, SlidingTabActivity.class);
+                Intent a = new Intent(MainActivity.this, SegmentTabActivity.class);
                 startActivity(a);
 
             }
