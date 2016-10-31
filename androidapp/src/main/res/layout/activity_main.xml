@@ -3,11 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.wxq.wxqusefullibrary.MainActivity"
     android:orientation="vertical"
-
     >
+    <ListView
+        android:id="@+id/lv_functions"
+        style="@style/ListViewCommon"
+        android:divider="@color/gray"
+        android:dividerHeight="0.5dip"
+
+        >
+
+
+
+
+    </ListView>
+
     <TextView
         android:id="@+id/tv_hellow"
         android:layout_width="wrap_content"
