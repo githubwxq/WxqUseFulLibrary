@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="com.example.wxq.wxqusefullibrary.MainActivity"
     android:orientation="vertical"
-
     >
+    <ListView
+        android:id="@+id/lv_functions"
+        style="@style/ListViewCommon"
+        android:divider="@color/gray"
+        android:dividerHeight="0.5dip"
+
+        >
+
+
+
+
+    </ListView>
+
     <TextView
         android:id="@+id/tv_hellow"
         android:layout_width="wrap_content"
@@ -57,13 +69,13 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true" />
     <TextView
-    android:id="@+id/tv_wxq7"
-    android:layout_width="wrap_content"
-    android:layout_height="20dp"
-    android:text="guideactivity"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true" />
+        android:id="@+id/tv_wxq7"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="guideactivity"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/tv_wxq8"

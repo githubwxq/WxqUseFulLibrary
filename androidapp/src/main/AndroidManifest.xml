@@ -65,6 +65,7 @@
         <activity android:name=".activity.CommonTabActivity"></activity>
         <activity android:name=".activity.SlidingTabActivity"></activity>
         <activity android:name=".activity.SegmentTabActivity"></activity>
+        <activity android:name=".activity.PinnedSectionListViewActivity"></activity>
     </application>
 
 </manifest>
