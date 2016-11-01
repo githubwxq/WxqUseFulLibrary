@@ -22,7 +22,6 @@ import com.umeng.analytics.MobclickAgent;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import specialtools.ActivityManager;
 
 /**
