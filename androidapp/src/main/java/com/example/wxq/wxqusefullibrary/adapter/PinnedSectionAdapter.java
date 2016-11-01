@@ -170,7 +170,7 @@ public class PinnedSectionAdapter extends BaseAdapter implements
                 viewHolderContent.title.setText(bean.getName());
                 break;
             case 0:
-                viewHolderTime.time.setHeight(DensityUtils.dp2px(mContext,60));
+                viewHolderTime.time.setHeight(DensityUtils.dp2px(mContext, 60));
                 viewHolderTime.time.setText(list.get(position).getName());
                 break;
             case 2:

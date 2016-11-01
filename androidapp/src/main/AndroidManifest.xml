@@ -15,7 +15,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,9 +62,9 @@
             android:value="Umeng" />
 
         <activity android:name=".activity.MyLinearActivity" />
-        <activity android:name=".activity.CommonTabActivity" />
-        <activity android:name=".activity.SlidingTabActivity" />
-        <activity android:name=".activity.DataBindActivity" />
+        <activity android:name=".activity.CommonTabActivity"></activity>
+        <activity android:name=".activity.SlidingTabActivity"></activity>
+        <activity android:name=".activity.SegmentTabActivity"></activity>
         <activity android:name=".activity.PinnedSectionListViewActivity"></activity>
     </application>
 

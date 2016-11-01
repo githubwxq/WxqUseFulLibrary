@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.wxq.wxqusefullibrary.activity.MainActivity;
 import com.example.wxq.wxqusefullibrary.fragment.Test6Fragment;
 
 import butterknife.BindView;

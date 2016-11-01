@@ -1,6 +1,5 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,8 +10,6 @@ import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.listview.PinnedSectionListView;
 
 import java.util.ArrayList;
-
-import rx.functions.Func0;
 
 public class PinnedSectionListViewActivity extends BaseActivity {
     PinnedSectionListView  list;
