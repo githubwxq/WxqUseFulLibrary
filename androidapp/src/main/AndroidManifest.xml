@@ -66,6 +66,11 @@
         <activity android:name=".activity.SlidingTabActivity"></activity>
         <activity android:name=".activity.SegmentTabActivity"></activity>
         <activity android:name=".activity.PinnedSectionListViewActivity"></activity>
+        <activity android:name=".activity.TestZhuShiActivity"></activity>
+
+
+
+
     </application>
 
 </manifest>

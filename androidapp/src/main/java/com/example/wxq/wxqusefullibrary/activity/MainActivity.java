@@ -155,7 +155,7 @@ public class MainActivity extends BaseActivity {
         Function testBaseActivity=new Function();
         testBaseActivity.setType(1);
         testBaseActivity.setName("测试baseactivity");
-        testBaseActivity.setMclass(TestBaseActivity.class);
+        testBaseActivity.setMclass(TestZhuShiActivity.class);
 
         Function testtablayoutActivity=new Function();
         testtablayoutActivity.setType(1);
