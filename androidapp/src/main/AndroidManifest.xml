@@ -67,8 +67,8 @@
         <activity android:name=".activity.SegmentTabActivity"></activity>
         <activity android:name=".activity.PinnedSectionListViewActivity"></activity>
         <activity android:name=".activity.TestZhuShiActivity"></activity>
-
-
+        <activity android:name=".activity.DifferentLocationDialogActivity"></activity>
+        <activity android:name=".activity.DifferentStyleDialogActivity"></activity>
 
 
     </application>

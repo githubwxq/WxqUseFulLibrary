@@ -19,34 +19,12 @@ import java.util.List;
 
 public class MainActivity extends BaseActivity {
     public static final String RXTAG = "MainActivity";
-
     private final String[] mItems = {"TestCommonAdapter", "listview选中测试", "baseActivity测试"};
     private final Class<?>[] mClasses = {TestCommonAdapterActivity.class, Main2Activity.class,
             TestBaseActivity.class};
     private ArrayList<Function> functions=new ArrayList<>();
     ListView lv_functions;
-
     BottomView bottomView = null;
-    //CommonPopupWindow popupWindow;
-//    TextView tvWxq;
-//
-//    @BindView(R.id.tv_hellow)
-//    TextView tvHellow;
-//    @BindView(R.id.tv_wxq3)
-//    TextView tvWxq3;
-//    @BindView(R.id.tv_wxq4)
-//    TextView tvWxq4;
-//    @BindView(R.id.tv_wxq5)
-//    TextView tvWxq5;
-//    @BindView(R.id.tv_wxq6)
-//    TextView tvWxq6;
-//    @BindView(R.id.tv_wxq7)
-//    TextView tvWxq7;
-//    TextView rxbus;
-//    TextView tv_wxq11;
-//    TextView tv_wxq8;
-//    TextView tv_wxq14;
-//    private TextView tv_wxq12;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,12 +33,9 @@ public class MainActivity extends BaseActivity {
         bottomView.setTop(false);
         bottomView.showBottomView(true);
         bottomView.dismissBottomView();
-
         setContentView(R.layout.activity_main);
         initData();
         initView();
-
-
     }
 
     private void initData() {
@@ -94,6 +69,32 @@ public class MainActivity extends BaseActivity {
         banner1.setMclass(BannerActivity.class);
         functions.add(function_banner);
         functions.add(banner1);
+
+        //dialog分类
+        Function dialog=new Function();
+        dialog.setType(0);//0 标题类型
+        dialog.setName("各种dialog集合");
+        Function dialog1=new Function();
+        dialog1.setType(1);
+        dialog1.setName("不同位子dailog");
+        dialog1.setMclass(DifferentLocationDialogActivity.class);
+        Function dialog2=new Function();
+        dialog2.setType(1);
+        dialog2.setName("不同样式dialog");
+        dialog2.setMclass(DifferentStyleDialogActivity.class);
+
+        functions.add(dialog);
+        functions.add(dialog1);
+        functions.add(dialog2);
+
+
+
+
+
+
+
+
+
 
 
         //adapter 分类
@@ -146,6 +147,21 @@ public class MainActivity extends BaseActivity {
         functions.add(about_pic);
         functions.add(show_pic);
 
+        //特殊控件测试
+        Function button=new Function();
+        button.setType(0);//0 标题类型
+        button.setName("特殊button");
+        Function button1=new Function();
+        button1.setType(1);
+        button1.setName("圆形边框button");
+        button1.setMclass(TestZhuShiActivity.class);
+
+        functions.add(button);
+        functions.add(button1);
+
+
+
+
 
 
         //其他测试
@@ -155,7 +171,7 @@ public class MainActivity extends BaseActivity {
         Function testBaseActivity=new Function();
         testBaseActivity.setType(1);
         testBaseActivity.setName("测试baseactivity");
-        testBaseActivity.setMclass(TestZhuShiActivity.class);
+        testBaseActivity.setMclass(BaseActivity.class);
 
         Function testtablayoutActivity=new Function();
         testtablayoutActivity.setType(1);
@@ -165,6 +181,8 @@ public class MainActivity extends BaseActivity {
         functions.add(test);
         functions.add(testBaseActivity);
         functions.add(testtablayoutActivity);
+
+
 
 
 
