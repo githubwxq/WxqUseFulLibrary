@@ -27,11 +27,9 @@
       ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testone.jpg)
       ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testtwo.jpg)
       ![image](https://github.com/venshine/WheelView/blob/master/screenshot/screenshot2.png)
-
-| method 方法          | description 描述 |
-	|:---				 |:---|
-5989d25@venshineUpdate README.md
-venshine authored on 22 Apr
+      ##### Methods:
+    | method 方法          | description 描述 |
+	|:---				   |:---|
 	| void **setWheelAdapter**(BaseWheelAdapter<T> adapter)  	     | 设置滚轮数据源适配器（required） |
 	| void **setWheelData**(List<T> list)  	     | 设置滚轮数据（required） |
 	| void **setLoop**(boolean loop)  	     | 设置滚轮是否循环滚动 |
@@ -51,6 +49,3 @@ venshine authored on 22 Apr
 	| int **getWheelCount**() 	     | 获得滚轮数据总数 |
 	| void **setOnWheelItemSelectedListener**(OnWheelItemSelectedListener<T> onWheelItemSelectedListener) | 设置滚轮滑动停止时事件，监听滚轮选中项 |
 	| void **setOnWheelItemClickListener**(OnWheelItemClickListener<T> onWheelItemClickListener) | 设置滚轮选中项点击事件 |
-b9d0248@venshineUpdate README.md
-venshine authored on 4 May
-| Wh
