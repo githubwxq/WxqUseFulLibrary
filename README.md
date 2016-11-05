@@ -24,6 +24,6 @@
 
       ScreenShot
       --
-      ![](https://github.com/venshine/WheelView/blob/master/screenshot/screenshot.gif)
-      ![](https://github.com/venshine/WheelView/blob/master/screenshot/screenshot1.png)
+      ![](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testone.jpg)
+      ![](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testtwo.jpg)
       ![](https://github.com/venshine/WheelView/blob/master/screenshot/screenshot2.png)
