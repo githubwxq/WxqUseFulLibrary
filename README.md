@@ -20,16 +20,6 @@
       * 支持循环显示数据
       * 支持选中项添加附加文本
       * 支持设置滚轮刻度
- * ![image]( https://github.com/binIoter/GuideView/blob/master/app/src/main/assets/img1.png )
-
-* ![image]( https://github.com/binIoter/GuideView/blob/master/app/src/main/assets/img2.png )</p>
-
-
- * ![image]( https://github.com/binIoter/GuideView/blob/master/app/src/main/assets/img3.png )
-
-
- * ![image]( https://github.com/binIoter/GuideView/blob/master/app/src/main/assets/img4.png )</p>
-
 
       ScreenShot
       --
