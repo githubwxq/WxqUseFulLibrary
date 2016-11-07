@@ -20,6 +20,8 @@
       * 支持循环显示数据
       * 支持选中项添加附加文本
       * 支持设置滚轮刻度
+       ScreenShot
+            --
  * ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testone.png)
 
 * ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testtwo.png)</p>
@@ -27,12 +29,6 @@
 
  * ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/wxq.gif)
 
-
-      ScreenShot
-      --
-      ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testone.png)
-      ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testtwo.png)
-      ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/wxq.gif)
       ##### Methods:
     | method 方法          | description 描述 |
 	|:---				   |:---|
