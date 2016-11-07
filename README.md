@@ -35,7 +35,7 @@
       --
       ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testone.png)
       ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/testtwo.png)
-      ![image](https://github.com/venshine/WheelView/blob/master/screenshot/screenshot2.png)
+      ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/wxq.gif)
       ##### Methods:
     | method 方法          | description 描述 |
 	|:---				   |:---|
