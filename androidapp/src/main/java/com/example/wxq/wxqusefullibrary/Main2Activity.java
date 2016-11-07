@@ -15,6 +15,7 @@ import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
 import com.example.wxq.wxqutilslibrary.widget.adapter.QuickAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.QuickViewHolder;
 import com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView;
+import com.example.wxq.wxqutilslibrary.widget.listview.animations.SwingBottomInAnimationAdapter;
 import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.util.ArrayList;
@@ -110,7 +111,11 @@ public class Main2Activity extends BaseActivity {
 
         };
 
-        easy_list.setAdapter(quickAdapter);
+
+        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(quickAdapter);
+        swingBottomInAnimationAdapter.setListView(easy_list);
+
+        easy_list.setAdapter(swingBottomInAnimationAdapter);
         //listview刷新时调用
 
         //listview加载亘多时调用

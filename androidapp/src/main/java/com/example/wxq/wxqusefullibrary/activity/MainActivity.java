@@ -13,6 +13,7 @@ import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
+import com.example.wxq.wxqutilslibrary.widget.listview.animations.SwingLeftInAnimationAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -190,7 +191,23 @@ public class MainActivity extends BaseActivity {
 
     private void initView() {
         lv_functions= (ListView) findViewById(R.id.lv_functions);
-        lv_functions.setAdapter(new MultLayoutAdapter(this,R.layout.function_list_item0,functions));
+
+        MultLayoutAdapter multLayoutAdapter=new MultLayoutAdapter(this,R.layout.function_list_item0,functions);
+
+//        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
+//        swingBottomInAnimationAdapter.setListView(lv_functions);
+//        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
+//        SwingRightInAnimationAdapter swingRightInAnimationAdapter = new SwingRightInAnimationAdapter(swingBottomInAnimationAdapter);
+//        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
+//        SwingRightInAnimationAdapter swingRightInAnimationAdapter = new SwingRightInAnimationAdapter(swingBottomInAnimationAdapter);
+        SwingLeftInAnimationAdapter swingLeftInAnimationAdapter = new SwingLeftInAnimationAdapter(multLayoutAdapter);
+        swingLeftInAnimationAdapter.setListView(lv_functions);
+   // swingRightInAnimationAdapter.setListView(lv_functions);
+
+
+
+
+        lv_functions.setAdapter(swingLeftInAnimationAdapter);
 
 
 
