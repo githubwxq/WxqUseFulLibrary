@@ -18,9 +18,9 @@ public class BannerActivity extends BaseActivity implements XBanner.XBannerAdapt
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_banner);
+        setContentView(R.layout.activity_banner);
         banner_1= (XBanner) findViewById(R.id.banner_1);
-
+        banner_1.setPoinstPosition(2);
         mOthersList.add("http://pic33.nipic.com/20130916/3420027_192919547000_2.jpg");
         mOthersList.add("http://img05.tooopen.com/images/20140604/sy_62331342149.jpg");
         mOthersList.add("http://pic6.huitu.com/res/20130116/84481_20130116142820494200_1.jpg");

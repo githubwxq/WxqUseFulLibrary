@@ -145,8 +145,18 @@ public class MainActivity extends BaseActivity {
         show_pic.setType(1);
         show_pic.setName("phoneview图片预览");
         show_pic.setMclass(PhoteViewActivity.class);
+
+        Function show_pic2=new Function();
+        show_pic2.setType(1);
+        show_pic2.setName("图片视频一起播放预览");
+        show_pic2.setMclass(ShowPicAndVideoActivity.class);
+
+
         functions.add(about_pic);
         functions.add(show_pic);
+        functions.add(show_pic2);
+
+
 
         //特殊控件测试
         Function button=new Function();
