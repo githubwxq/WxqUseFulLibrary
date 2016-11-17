@@ -193,8 +193,20 @@ public class MainActivity extends BaseActivity {
         functions.add(testBaseActivity);
         functions.add(testtablayoutActivity);
 
+       //视频播放控件集合
+
+        Function shiping=new Function();
+        shiping.setType(0);//0 标题类型
+        shiping.setName("视频播放控件集合");
+
+        Function shiping1=new Function();
+        shiping1.setType(1);
+        shiping1.setName("测试简单的ScalableVideoActivity");
+        shiping1.setMclass(ScalableVideoActivity.class);
 
 
+        functions.add(shiping);
+        functions.add(shiping1);
 
 
     }

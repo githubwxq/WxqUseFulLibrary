@@ -5,9 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Environment;
 import android.os.Handler;
@@ -15,27 +13,23 @@ import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
-import android.view.animation.RotateAnimation;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.example.wxq.wxqusefullibrary.R;
-import com.example.wxq.wxqusefullibrary.widget.FastBlurUtil;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
-import com.nineoldandroids.view.ViewHelper;
+import com.example.wxq.wxqutilslibrary.widget.videoview.scalable.ScalableType;
+import com.example.wxq.wxqutilslibrary.widget.videoview.scalable.ScalableVideoView;
 import com.nostra13.universalimageloader.core.ImageLoader;
-import com.nostra13.universalimageloader.core.assist.ImageSize;
-
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -43,6 +37,7 @@ import java.util.ArrayList;
 public class ShowPicAndVideoActivity extends BaseActivity {
     ImageView image;
     ImageView mmohu_image;
+    ImageView video_mmohu_image ;
     String imagurl = "http://img.pconline.com.cn/images/upload/upc/tx/pcdlc/1606/02/c2/22319575_1464865502726.jpeg";
     ArrayList<String> mOthersList = new ArrayList<String>();
     ArrayList<String> videos= new ArrayList<String>();
@@ -51,20 +46,23 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     Handler mhandler;
     int i = 0;
     int total;
-    private VideoView rtsp_player;
-    private VideoView rtsp_player_mohu;
+    private ScalableVideoView rtsp_player;
+    private ScalableVideoView rtsp_player_mohu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_pic_and_video);
-        mOthersList.add("http://img.pconline.com.cn/images/upload/upc/tx/pcdlc/1606/02/c2/22319575_1464865502726.jpeg");
-        mOthersList.add("http://www.buhuiwan.com/uploadfile/2015/0611/20150611054907734.jpg");
-        mOthersList.add("http://images.liqucn.com/h33/h96/images201412070308310840_info320X534.jpg");
+
 
         //判断权限 有权限执行下面
         checkPermissionAndWriteFile();
-        mOthersList.add(videos.get(2).toString());//视频地址
+      //视频地址
+        mOthersList.add(videos.get(0).toString());
+        showLog("path"+videos.get(0).toString());
+        mOthersList.add("http://img.pconline.com.cn/images/upload/upc/tx/pcdlc/1606/02/c2/22319575_1464865502726.jpeg");
+        mOthersList.add("http://www.buhuiwan.com/uploadfile/2015/0611/20150611054907734.jpg");
+        mOthersList.add("http://images.liqucn.com/h33/h96/images201412070308310840_info320X534.jpg");
         mOthersList.add("http://pic6.huitu.com/res/20130116/84481_20130116142820494200_1.jpg");
         mOthersList.add("http://pic44.nipic.com/20140717/2531170_194615292000_2.jpg");
 
@@ -72,28 +70,32 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         mhandler = new Handler() {
             @Override
             public void handleMessage(Message msg) {
+                if(msg.obj!=null){
                 bitmap = (Bitmap) msg.obj;
-                mmohu_image.setImageBitmap(bitmap);
+                mmohu_image.setImageBitmap(bitmap);}
                 startAnim();
             }
         };
 
         image = (ImageView) findViewById(R.id.image);
         mmohu_image = (ImageView) findViewById(R.id.mmohu_image);
-        rtsp_player= (VideoView) findViewById(R.id.rtsp_player);
-        rtsp_player_mohu=(VideoView) findViewById(R.id.rtsp_player_mohu);
+        rtsp_player= (ScalableVideoView) findViewById(R.id.rtsp_player);
+        rtsp_player_mohu=(ScalableVideoView) findViewById(R.id.rtsp_player_mohu);
+        video_mmohu_image= (ImageView) findViewById(R.id.video_mmohu_image);
+
         if(mOthersList.get(0).endsWith(".mp4")){
             image.setVisibility(View.GONE);
             mmohu_image.setVisibility(View.GONE);
             rtsp_player.setVisibility(View.VISIBLE);
             rtsp_player_mohu.setVisibility(View.VISIBLE);
+            video_mmohu_image.setVisibility(View.VISIBLE);
             PlayLocalFile(mOthersList.get(0).toString());
-
         }else{
             image.setVisibility(View.VISIBLE);
             mmohu_image.setVisibility(View.VISIBLE);
             rtsp_player_mohu.setVisibility(View.GONE);
             rtsp_player.setVisibility(View.GONE);
+            video_mmohu_image.setVisibility(View.GONE);
             LoadingImgUtil.loading(mOthersList.get(i), image, null, true);
             initBlurPic();
         }
@@ -107,22 +109,47 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     }
 
     private void PlayLocalFile(String filePath){
-        rtsp_player.setVideoPath(filePath);
-        rtsp_player.requestFocus();
-        rtsp_player.start();
-        rtsp_player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-                showToast("视频播放结束了");
-                i++; //集合移动一位继续下一次操作
-                goToNext();
+        try {
+            rtsp_player.setDataSource(filePath);
+            rtsp_player.setVolume(0, 0);
+            rtsp_player.prepare(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    rtsp_player.start();
+                }
+            });
+            rtsp_player.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    showToast("视频播放结束了");
+                    i++; //集合移动一位继续下一次操作
+                    goToNext();
+                }
+            });
+            rtsp_player.setScalableType(ScalableType.FIT_XY);
+            rtsp_player.invalidate();
+            rtsp_player_mohu.setDataSource(filePath);
+            rtsp_player_mohu.prepare(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    rtsp_player_mohu.start();
+                }
+            });
+            rtsp_player_mohu.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
 
-            }
-        });
+                }
+            });
 
-        rtsp_player_mohu.setVideoPath(filePath);
-        rtsp_player_mohu.requestFocus();
-        rtsp_player_mohu.start();
+            rtsp_player_mohu.setScalableType(ScalableType.FIT_XY);
+            rtsp_player_mohu.invalidate();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void goToNext() {
@@ -130,17 +157,20 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         mmohu_image.setVisibility(View.GONE);
         rtsp_player.setVisibility(View.GONE);
         rtsp_player_mohu.setVisibility(View.GONE);
+        video_mmohu_image.setVisibility(View.GONE);
         if(mOthersList.get(i).endsWith(".mp4")){
             image.setVisibility(View.GONE);
             mmohu_image.setVisibility(View.GONE);
             rtsp_player.setVisibility(View.VISIBLE);
             rtsp_player_mohu.setVisibility(View.VISIBLE);
+            video_mmohu_image.setVisibility(View.VISIBLE);
             PlayLocalFile(mOthersList.get(i).toString());
         }else{
             image.setVisibility(View.VISIBLE);
             mmohu_image.setVisibility(View.VISIBLE);
             rtsp_player_mohu.setVisibility(View.GONE);
             rtsp_player.setVisibility(View.GONE);
+            video_mmohu_image.setVisibility(View.GONE);
             LoadingImgUtil.loading(mOthersList.get(i), image, null, true);
             initBlurPic();
         }
@@ -211,6 +241,16 @@ public class ShowPicAndVideoActivity extends BaseActivity {
             @Override
             public void run() {
                 Bitmap originBitmap = imageLoad.loadImageSync(mOthersList.get(i));  //null
+                if(originBitmap==null){
+                    Message msg = mhandler.obtainMessage();
+                    msg.arg1 = 1;
+                    msg.arg2 = 2;
+                    msg.what = 3;
+                    msg.obj = null;
+                    mhandler.sendMessage(msg);
+
+                }else{
+
                 //对bitmap处理  10模糊比例
                 Bitmap scaledBitmap = Bitmap.createScaledBitmap(originBitmap,
                         originBitmap.getWidth() / 20,
@@ -223,6 +263,7 @@ public class ShowPicAndVideoActivity extends BaseActivity {
                 msg.what = 3;
                 msg.obj = blurBitmap;
                 mhandler.sendMessage(msg);
+                }
             }
         }).start();
     }
