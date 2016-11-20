@@ -14,12 +14,18 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.R;
@@ -31,6 +37,7 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 
 //显示模糊效果普通效果的imageview
@@ -39,7 +46,9 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     ImageView mmohu_image;
     ImageView video_mmohu_image ;
     String imagurl = "http://img.pconline.com.cn/images/upload/upc/tx/pcdlc/1606/02/c2/22319575_1464865502726.jpeg";
-    ArrayList<String> mOthersList = new ArrayList<String>();
+    ArrayList<String> mOthersList = new ArrayList<String>();//图片以及视频地址
+    ArrayList<String> mVideoNameList = new ArrayList<String>();//语音名称
+    ArrayList<String> mVideoPathList = new ArrayList<String>();//语音地址
     ArrayList<String> videos= new ArrayList<String>();
     ImageLoader imageLoad = ImageLoader.getInstance();
     Bitmap bitmap;
@@ -48,23 +57,41 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     int total;
     private ScalableVideoView rtsp_player;
     private ScalableVideoView rtsp_player_mohu;
-
+   private RecyclerView id_recyclerview_horizontal;
+    private GalleryAdapter mAdapter;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_pic_and_video);
-
-
         //判断权限 有权限执行下面
         checkPermissionAndWriteFile();
       //视频地址
         mOthersList.add(videos.get(0).toString());
-        showLog("path"+videos.get(0).toString());
+        showLog("path" + videos.get(0).toString());
         mOthersList.add("http://img.pconline.com.cn/images/upload/upc/tx/pcdlc/1606/02/c2/22319575_1464865502726.jpeg");
         mOthersList.add("http://www.buhuiwan.com/uploadfile/2015/0611/20150611054907734.jpg");
         mOthersList.add("http://images.liqucn.com/h33/h96/images201412070308310840_info320X534.jpg");
         mOthersList.add("http://pic6.huitu.com/res/20130116/84481_20130116142820494200_1.jpg");
         mOthersList.add("http://pic44.nipic.com/20140717/2531170_194615292000_2.jpg");
+
+
+        mVideoNameList.add("古典");
+        mVideoNameList.add("摇滚");
+        mVideoNameList.add("电子");
+        mVideoNameList.add("古筝");
+        mVideoNameList.add("钢琴");
+        mVideoNameList.add("古典");
+        mVideoNameList.add("摇滚");
+        mVideoNameList.add("电子");
+        mVideoNameList.add("古筝");
+        mVideoNameList.add("钢琴");
+        mVideoNameList.add("古典");
+        mVideoNameList.add("摇滚");
+        mVideoNameList.add("电子");
+        mVideoNameList.add("古筝");
+        mVideoNameList.add("钢琴");
+
+
 
         // showToast(videos.get(0).toString());
         mhandler = new Handler() {
@@ -82,25 +109,32 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         rtsp_player= (ScalableVideoView) findViewById(R.id.rtsp_player);
         rtsp_player_mohu=(ScalableVideoView) findViewById(R.id.rtsp_player_mohu);
         video_mmohu_image= (ImageView) findViewById(R.id.video_mmohu_image);
+        id_recyclerview_horizontal=(RecyclerView)findViewById(R.id.id_recyclerview_horizontal);
+        LinearLayoutManager linearLayoutManager=new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(linearLayoutManager.HORIZONTAL);
+        id_recyclerview_horizontal.setLayoutManager(linearLayoutManager);
+        //设置适配器
+        mAdapter = new GalleryAdapter(this, mVideoNameList);
+        id_recyclerview_horizontal.setAdapter(mAdapter);
 
-        if(mOthersList.get(0).endsWith(".mp4")){
-            image.setVisibility(View.GONE);
-            mmohu_image.setVisibility(View.GONE);
-            rtsp_player.setVisibility(View.VISIBLE);
-            rtsp_player_mohu.setVisibility(View.VISIBLE);
-            video_mmohu_image.setVisibility(View.VISIBLE);
-            PlayLocalFile(mOthersList.get(0).toString());
-        }else{
-            image.setVisibility(View.VISIBLE);
-            mmohu_image.setVisibility(View.VISIBLE);
-            rtsp_player_mohu.setVisibility(View.GONE);
-            rtsp_player.setVisibility(View.GONE);
-            video_mmohu_image.setVisibility(View.GONE);
-            LoadingImgUtil.loading(mOthersList.get(i), image, null, true);
-            initBlurPic();
-        }
+//        if(mOthersList.get(0).endsWith(".mp4")){
+//            image.setVisibility(View.GONE);
+//            mmohu_image.setVisibility(View.GONE);
+//            rtsp_player.setVisibility(View.VISIBLE);
+//            rtsp_player_mohu.setVisibility(View.VISIBLE);
+//            video_mmohu_image.setVisibility(View.VISIBLE);
+//            PlayLocalFile(mOthersList.get(0).toString());
+//        }else{
+//            image.setVisibility(View.VISIBLE);
+//            mmohu_image.setVisibility(View.VISIBLE);
+//            rtsp_player_mohu.setVisibility(View.GONE);
+//            rtsp_player.setVisibility(View.GONE);
+//            video_mmohu_image.setVisibility(View.GONE);
+//            LoadingImgUtil.loading(mOthersList.get(i), image, null, true);
+//            initBlurPic();
+//        }
 
-
+              goToNext();
 
 
 
@@ -219,7 +253,7 @@ public class ShowPicAndVideoActivity extends BaseActivity {
                     showToast(videos.get(0).toString());
                 } else {
                     //弹dialog，让用户去设置页面打开权限
-                    Toast.makeText(this,"写文件失败,没有权限23333", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this,"写文件失败,没有权限", Toast.LENGTH_SHORT).show();
 
 //                    android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
 //                    //省略....
@@ -327,6 +361,94 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         });
 
         image.startAnimation(set);
+    }
+
+public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder>{
+   private int current=0;
+    private LayoutInflater mInflater;
+    private List<String> mDatas;
+
+    public GalleryAdapter(Context context, List<String> datats)
+    {
+        mInflater = LayoutInflater.from(context);
+        mDatas = datats;
+    }
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = mInflater.inflate(R.layout.text_recycleview_item,
+                parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
+
+        viewHolder.mTxt = (TextView) view
+                .findViewById(R.id.text);
+        return viewHolder;
+
+    }
+
+    @Override
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
+
+        if(position==current){
+            holder.mTxt.setTextColor(getResources().getColor(R.color.account_orange));
+
+        }else{
+            holder.mTxt.setTextColor(getResources().getColor(R.color.green));
+
+        }
+
+
+        holder.mTxt.setText(mDatas.get(position));
+
+        holder.mTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                current=position;
+                holder.mTxt.setTextColor(getResources().getColor(R.color.account_orange));
+                showToast("点击了" + position);
+                GalleryAdapter.this.notifyDataSetChanged();
+                //播放
+                playMedia(position);
+
+
+            }
+        });
+
+
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return mDatas.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ViewHolder(View arg0)
+        {
+            super(arg0);
+        }
+        TextView mTxt;
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
+    }
+}
+
+    private void playMedia(int position) {
+        //根据位置播放对应视频
+
+
+
+
+
+
+
+
+
     }
 
 
