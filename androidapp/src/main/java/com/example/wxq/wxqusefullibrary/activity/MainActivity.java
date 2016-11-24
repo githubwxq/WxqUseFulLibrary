@@ -27,6 +27,7 @@ public class MainActivity extends BaseActivity {
     ListView lv_functions;
     BottomView bottomView = null;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,11 +56,12 @@ public class MainActivity extends BaseActivity {
         pinnedSectionlListview.setName("PinnedSectionListView");
         pinnedSectionlListview.setMclass(PinnedSectionListViewActivity.class);
 
-
-
         functions.add(function_listview);
         functions.add(function_superlistview);
         functions.add(pinnedSectionlListview);
+
+
+
         //轮播图 分类
         Function function_banner=new Function();
         function_banner.setType(0);//0 标题类型
@@ -87,15 +89,6 @@ public class MainActivity extends BaseActivity {
         functions.add(dialog);
         functions.add(dialog1);
         functions.add(dialog2);
-
-
-
-
-
-
-
-
-
 
 
         //adapter 分类
@@ -152,10 +145,16 @@ public class MainActivity extends BaseActivity {
         show_pic2.setMclass(ShowPicAndVideoActivity.class);
 
 
+        Function imageview_gif=new Function();
+        imageview_gif.setType(1);
+        imageview_gif.setName("播放gif的imageview");
+        imageview_gif.setMclass(GifImageViewActivity.class);
+
+
         functions.add(about_pic);
         functions.add(show_pic);
         functions.add(show_pic2);
-
+        functions.add(imageview_gif);
 
 
         //特殊控件测试

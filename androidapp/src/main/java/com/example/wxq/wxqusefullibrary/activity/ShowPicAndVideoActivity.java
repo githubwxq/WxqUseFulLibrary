@@ -57,8 +57,13 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     int total;
     private ScalableVideoView rtsp_player;
     private ScalableVideoView rtsp_player_mohu;
-   private RecyclerView id_recyclerview_horizontal;
+    private RecyclerView id_recyclerview_horizontal;
     private GalleryAdapter mAdapter;
+    private MediaPlayer mMediaPlayer;
+
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,20 +84,17 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         mVideoNameList.add("摇滚");
         mVideoNameList.add("电子");
         mVideoNameList.add("古筝");
-        mVideoNameList.add("钢琴");
-        mVideoNameList.add("古典");
-        mVideoNameList.add("摇滚");
-        mVideoNameList.add("电子");
-        mVideoNameList.add("古筝");
-        mVideoNameList.add("钢琴");
-        mVideoNameList.add("古典");
-        mVideoNameList.add("摇滚");
-        mVideoNameList.add("电子");
-        mVideoNameList.add("古筝");
-        mVideoNameList.add("钢琴");
-
-
-
+//        mVideoNameList.add("钢琴");
+//        mVideoNameList.add("古典");
+//        mVideoNameList.add("摇滚");
+//        mVideoNameList.add("电子");
+//        mVideoNameList.add("古筝");
+//        mVideoNameList.add("钢琴");
+//        mVideoNameList.add("古典");
+//        mVideoNameList.add("摇滚");
+//        mVideoNameList.add("电子");
+//        mVideoNameList.add("古筝");
+//        mVideoNameList.add("钢琴");
         // showToast(videos.get(0).toString());
         mhandler = new Handler() {
             @Override
@@ -116,29 +118,7 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         //设置适配器
         mAdapter = new GalleryAdapter(this, mVideoNameList);
         id_recyclerview_horizontal.setAdapter(mAdapter);
-
-//        if(mOthersList.get(0).endsWith(".mp4")){
-//            image.setVisibility(View.GONE);
-//            mmohu_image.setVisibility(View.GONE);
-//            rtsp_player.setVisibility(View.VISIBLE);
-//            rtsp_player_mohu.setVisibility(View.VISIBLE);
-//            video_mmohu_image.setVisibility(View.VISIBLE);
-//            PlayLocalFile(mOthersList.get(0).toString());
-//        }else{
-//            image.setVisibility(View.VISIBLE);
-//            mmohu_image.setVisibility(View.VISIBLE);
-//            rtsp_player_mohu.setVisibility(View.GONE);
-//            rtsp_player.setVisibility(View.GONE);
-//            video_mmohu_image.setVisibility(View.GONE);
-//            LoadingImgUtil.loading(mOthersList.get(i), image, null, true);
-//            initBlurPic();
-//        }
-
               goToNext();
-
-
-
-
 
     }
 
@@ -236,7 +216,15 @@ public class ShowPicAndVideoActivity extends BaseActivity {
             }
         }else{
          videos= GetVideoFileName(getMediaPath(this)+"/LuPingDaShi/Rec"); //获取sd卡文件
+         mVideoPathList=GetMusicFileName(getMediaPath(this) + "/LuPingDaShi");
+
          showToast(videos.get(0).toString());
+
+
+
+
+
+
         }
     }
 
@@ -249,7 +237,9 @@ public class ShowPicAndVideoActivity extends BaseActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    videos= GetVideoFileName(getMediaPath(this)+"/LuPingDaShi/Rec"); //获取sd卡文件
+                    videos= GetVideoFileName(getMediaPath(this) + "/LuPingDaShi/Rec"); //获取sd卡文件
+                    mVideoPathList=GetMusicFileName(getMediaPath(this)+"/LuPingDaShi");
+
                     showToast(videos.get(0).toString());
                 } else {
                     //弹dialog，让用户去设置页面打开权限
@@ -263,10 +253,6 @@ public class ShowPicAndVideoActivity extends BaseActivity {
         }
 
     }
-
-
-
-
 
 
     private void initBlurPic() {
@@ -311,24 +297,16 @@ public class ShowPicAndVideoActivity extends BaseActivity {
     private void startAnim() {
         // 动画集合
         AnimationSet set = new AnimationSet(false);
-//        // 旋转动画
-//        RotateAnimation rotate = new RotateAnimation(0, 360,
-//                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
-//                0.5f);
-//        rotate.setDuration(1000);// 动画时间
-//        rotate.setFillAfter(true);// 保持动画状态
-        // 缩放动画
+
         ScaleAnimation scale = new ScaleAnimation(1, Float.valueOf("1.1"), 1, Float.valueOf("1.1"),
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
                 0.5f);
         scale.setDuration(3000);// 动画时间
         scale.setFillAfter(true);// 保持动画状态
-//        // 渐变动画
+
         AlphaAnimation alpha = new AlphaAnimation(Float.valueOf("0.5"), 1);
         alpha.setDuration(3000);// 动画时间
-      //  alpha.setFillAfter(true);// 保持动画状态
-//
-//        set.addAnimation(rotate);
+
         set.addAnimation(scale);
         if(i==mOthersList.size()-1&&!mOthersList.get(i).endsWith(".mp4")){
             set.setFillAfter(true);
@@ -440,18 +418,45 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
 
     private void playMedia(int position) {
         //根据位置播放对应视频
-
-
-
-
-
-
-
-
+      //  String path=  Environment.getExternalStorageDirectory() + "/LuPingDaShi/wxq1.mp3";
+      //  playAudio("http://quku.cn010w.com/qkca1116sp/upload_quku8\\2007830171220148.mp3");
+        playAudio(mVideoPathList.get(position));
 
     }
 
+    private void playAudio(String url) {// 播放url音乐文件
 
+        try {
+            killMediaPlayer();// 播放前，先kill原来的mediaPlayer
+            mMediaPlayer = new MediaPlayer();
+            mMediaPlayer.setDataSource(url);
+            mMediaPlayer.prepare();
+            mMediaPlayer.start();
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    private void killMediaPlayer() {
+        // TODO Auto-generated method stub
+        if (null != mMediaPlayer) {
+            mMediaPlayer.release();
+        }
+    }
+
+
+
+
+
+
+
+
+    //mohutupian
     public static Bitmap doBlur(Bitmap sentBitmap, int radius, boolean canReuseInBitmap) {
 
         Bitmap bitmap;
@@ -679,6 +684,29 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         }
         return vecFile;
     }
+    public ArrayList<String> GetMusicFileName(String fileAbsolutePath) {
+        ArrayList<String> vecFile = new ArrayList<String>();
+        File file = new File(fileAbsolutePath);
+        File[] subFile = file.listFiles();
+
+        for (int iFileLength = 0; iFileLength < subFile.length; iFileLength++) {
+            final File fi = subFile[iFileLength];
+            if (fi.isFile()) {
+                int i = fi.getPath().lastIndexOf(".");
+                if (i <= 0) {
+                    continue;
+                }
+                String substring = fi.getPath().substring(i);
+                if (substring.toLowerCase().equals(".mp3")) {
+                    vecFile.add(fi.getPath());
+                }
+            }
+
+        }
+        return vecFile;
+    }
+
+
 
     //获取sdcard路径
     public static String getMediaPath(Context context) {
@@ -699,5 +727,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         }
 
         return path == null ? "" : path;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        killMediaPlayer();//destroy中释放资源
     }
 }

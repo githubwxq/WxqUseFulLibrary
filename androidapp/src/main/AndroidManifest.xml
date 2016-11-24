@@ -72,7 +72,14 @@
         <activity android:name=".activity.DifferentLocationDialogActivity" />
         <activity android:name=".activity.DifferentStyleDialogActivity" />
         <activity android:name=".activity.ShowPicAndVideoActivity" />
-        <activity android:name=".activity.ScalableVideoActivity"></activity>
+        <activity android:name=".activity.ScalableVideoActivity" />
+        <activity android:name=".activity.GifImageViewActivity"></activity>
     </application>
+
+    <meta-data
+        android:name="com.example.wxq.wxqutilslibrary.myutils.glide.SimpleGlideModule"
+        android:value="GlideModule" />
+
+
 
 </manifest>

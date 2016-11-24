@@ -56,7 +56,7 @@ public class LoadingImgUtil {
             .bitmapConfig(Bitmap.Config.RGB_565).build();
 
     /**
-     *    /**
+     *
      * @param url
      * @param imgview
      * @param progressBar
@@ -130,11 +130,35 @@ public class LoadingImgUtil {
 
 
 
+    public static void displayFromDrawable(int imageId, ImageView imageView) {
+        // String imageUri = "drawable://" + R.drawable.image; // from drawables
+        // (only images, non-9patch)
+        ImageLoader.getInstance().displayImage("drawable://" + imageId,
+                imageView);
+    }
+    /**
+     * 从内存卡中异步加载本地图片
+     *
+     * @param uri
+     * @param imageView
+     */
+    public static void displayFromSDCard(String uri, ImageView imageView) {
+        // String imageUri = "file:///mnt/sdcard/image.png"; // from SD card
+        ImageLoader.getInstance().displayImage("file://" + uri, imageView);
+    }
 
-
-
-
-
+    /**
+     * 从assets文件夹中异步加载图片
+     *
+     * @param imageName
+     *            图片名称，带后缀的，例如：1.png
+     * @param imageView
+     */
+    public static void dispalyFromAssets(String imageName, ImageView imageView) {
+        // String imageUri = "assets://image.png"; // from assets
+        ImageLoader.getInstance().displayImage("assets://" + imageName,
+                imageView);
+    }
 
 
 
