@@ -27,7 +27,6 @@ public class MainActivity extends BaseActivity {
     ListView lv_functions;
     BottomView bottomView = null;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,12 +55,33 @@ public class MainActivity extends BaseActivity {
         pinnedSectionlListview.setName("PinnedSectionListView");
         pinnedSectionlListview.setMclass(PinnedSectionListViewActivity.class);
 
+
+
         functions.add(function_listview);
         functions.add(function_superlistview);
         functions.add(pinnedSectionlListview);
 
 
 
+        //顶部底部下拉刷新 swiperefreshlayout与其类似
+        Function refresh=new Function();
+        refresh.setType(0);//0 标题类型
+        refresh.setName("各种下拉刷新集合");
+
+        Function refresh1=new Function();
+        refresh1.setType(1);
+        refresh1.setName("springview下拉刷新");
+        refresh1.setMclass(SpringViewActivity.class);
+
+        Function refresh2=new Function();
+        refresh2.setType(1);
+        refresh2.setName("swiperefreshlayout下拉刷新");
+        refresh2.setMclass(SpringViewActivity.class);
+
+        functions.add(refresh);
+        functions.add(refresh1);
+        functions.add(refresh2);
+        
         //轮播图 分类
         Function function_banner=new Function();
         function_banner.setType(0);//0 标题类型
@@ -89,6 +109,15 @@ public class MainActivity extends BaseActivity {
         functions.add(dialog);
         functions.add(dialog1);
         functions.add(dialog2);
+
+
+
+
+
+
+
+
+
 
 
         //adapter 分类
@@ -145,15 +174,13 @@ public class MainActivity extends BaseActivity {
         show_pic2.setMclass(ShowPicAndVideoActivity.class);
 
 
+        functions.add(about_pic);
+        functions.add(show_pic);
+        functions.add(show_pic2);
         Function imageview_gif=new Function();
         imageview_gif.setType(1);
         imageview_gif.setName("播放gif的imageview");
         imageview_gif.setMclass(GifImageViewActivity.class);
-
-
-        functions.add(about_pic);
-        functions.add(show_pic);
-        functions.add(show_pic2);
         functions.add(imageview_gif);
 
 

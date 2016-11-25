@@ -106,16 +106,6 @@
         <attr name="pointLeftRightPadding" format="dimension" />
     </declare-styleable>
 
-
-
-
-
-
-
-
-
-
-
         <!-- indicator -->
         <!-- 设置显示器颜色 -->
         <attr name="tl_indicator_color" format="color"/>
@@ -360,7 +350,20 @@
     </declare-styleable>
 
 
-
+    <declare-styleable name="SpringView">
+        <attr name="type">
+            <enum name="overlap" value="0"/>
+            <enum name="follow" value="1"/>
+        </attr>
+        <attr name="give">
+            <enum name="both" value="0"/>
+            <enum name="top" value="1"/>
+            <enum name="bottom" value="2"/>
+            <enum name="none" value="3"/>
+        </attr>
+        <attr name="header" format="reference"/>
+        <attr name="footer" format="reference"/>
+    </declare-styleable>
 
     <declare-styleable name="scaleStyle">
         <attr name="scalableType">
