@@ -62,7 +62,8 @@ public class SpringListViewActivity extends BaseActivity {
         springView.setHeader(new RotationHeader(this));
 //       springView.setHeader(null);
         springView.setFooter(new RotationFooter(this));
-        springView.setGive(SpringView.Give.BOTTOM);
+
+     //   springView.setGive(SpringView.Give.BOTTOM);
     }
 
     @Override

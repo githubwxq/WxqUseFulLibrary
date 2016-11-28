@@ -8,6 +8,7 @@ import android.widget.ListView;
 
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqusefullibrary.R;
+import com.example.wxq.wxqusefullibrary.bmob.activity.BmobIndexActivity;
 import com.example.wxq.wxqusefullibrary.model.Function;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
@@ -40,6 +41,25 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData() {
+        //第三方服务集成项目
+        Function project=new Function();
+        project.setType(0);//0 标题类型
+        project.setName("Android练习项目");
+
+        Function bomb=new Function();
+        bomb.setType(1);
+        bomb.setName("基于Bmob平台项目");
+        bomb.setMclass(BmobIndexActivity.class);
+
+        Function rx=new Function();
+        rx.setType(1);
+        rx.setName("Rx系列使用demo");
+        rx.setMclass(RxIndexActivity.class);
+
+        functions.add(project);
+        functions.add(bomb);
+        functions.add(rx);
+
         //listview 分类
         Function function_listview=new Function();
         function_listview.setType(0);//0 标题类型

@@ -58,7 +58,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
             super.handleMessage(msg);
         }
     };
-
+    private LinearLayout ll_basetitle;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -119,8 +119,20 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
                 finish();
             }
         });
+        ll_basetitle=(LinearLayout)findViewById(R.id.ll_basetitle);
     }
 
+
+    public void setTitleHeadVisiable(boolean isVisiable){
+        if(isVisiable){
+            ll_basetitle.setVisibility(View.VISIBLE);
+        }else{
+
+            ll_basetitle.setVisibility(View.GONE);
+        }
+
+
+    }
     /*
     * 重写setContentView让继承者设置的view 添加到内容布局中
     * */

@@ -34,13 +34,13 @@ public class SpringViewActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.demo2:
-                intent.setClass(this, SpringListViewActivity.class);
+                intent.setClass(this, SprignView2Activity.class);
                 startActivity(intent);
                 break;
-//            case R.id.demo3:
-//                intent.setClass(this,Demo3Activity.class);
-//                startActivity(intent);
-//                break;
+            case R.id.demo3:
+                intent.setClass(this,SpringViewAnimationHeadActivity.class);
+                startActivity(intent);
+                break;
 //            case R.id.demo4:
 //                intent.setClass(this,Demo4Activity.class);
 //                startActivity(intent);

@@ -25,7 +25,7 @@
             android:id="@+id/demo3"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="demo3" />
+            android:text="头部为图片的recycleview" />
 
         <Button
             android:id="@+id/demo4"

@@ -10,6 +10,10 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
+    <meta-data
+        android:name="com.example.wxq.wxqutilslibrary.myutils.glide.SimpleGlideModule"
+        android:value="GlideModule" />
+
     <application
         android:name=".activity.MyApplication"
         android:allowBackup="true"
@@ -72,15 +76,14 @@
         <activity android:name=".activity.DifferentLocationDialogActivity" />
         <activity android:name=".activity.DifferentStyleDialogActivity" />
         <activity android:name=".activity.ShowPicAndVideoActivity" />
-        <activity android:name=".activity.ScalableVideoActivity"></activity>
-        <activity android:name=".activity.GifImageViewActivity"></activity>
+        <activity android:name=".activity.ScalableVideoActivity" />
+        <activity android:name=".activity.GifImageViewActivity" />
         <activity android:name=".activity.SpringViewActivity" />
-        <activity android:name=".activity.SpringListViewActivity"></activity>
+        <activity android:name=".activity.SpringListViewActivity" />
+        <activity android:name=".activity.SprignView2Activity" />
+        <activity android:name=".activity.SpringViewAnimationHeadActivity" />
+        <activity android:name=".bmob.activity.BmobIndexActivity" />
+        <activity android:name=".activity.RxIndexActivity"></activity>
     </application>
-
-
-    <meta-data
-        android:name="com.example.wxq.wxqutilslibrary.myutils.glide.SimpleGlideModule"
-        android:value="GlideModule" />
 
 </manifest>
