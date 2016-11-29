@@ -23,7 +23,7 @@ import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.UnreadMsgUtils;
 
 import java.util.ArrayList;
 import java.util.Random;
-
+//flyindicate
 public class CommonTabActivity extends BaseActivity {
 
     private Context mContext = this;

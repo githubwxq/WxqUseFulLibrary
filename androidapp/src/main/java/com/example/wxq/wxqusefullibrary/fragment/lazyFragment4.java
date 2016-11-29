@@ -23,7 +23,7 @@ public class lazyFragment4 extends SuperFragment {
 
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lazy_fragment12, container, false);
+        return inflater.inflate(R.layout.fragment_lazy_fragment22, container, false);
     }
 
     @Override

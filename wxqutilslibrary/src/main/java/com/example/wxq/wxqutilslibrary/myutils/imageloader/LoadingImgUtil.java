@@ -160,27 +160,6 @@ public class LoadingImgUtil {
                 imageView);
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //    //设置图片在下载期间显示的图片
 //    2     showStubImage(R.drawable.ic_launcher)
 //    3

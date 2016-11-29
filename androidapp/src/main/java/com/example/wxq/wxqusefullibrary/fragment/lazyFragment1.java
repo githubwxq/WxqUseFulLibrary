@@ -22,11 +22,10 @@ import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
  */
 public class lazyFragment1 extends SuperFragment {
 
-
-
     @Override
     protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lazy_fragment12, container, false);
+
+        return inflater.inflate(R.layout.fragment_lazy_fragment1, container, false);
     }
 
     @Override

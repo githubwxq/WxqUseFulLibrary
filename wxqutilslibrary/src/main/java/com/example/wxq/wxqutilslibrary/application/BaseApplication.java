@@ -8,6 +8,7 @@ import android.util.Log;
 
 import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
 import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 
 import org.xutils.x;
@@ -21,7 +22,12 @@ import specialtools.ActivityManager;
 public abstract class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     private int count;
     private Context mContext;
+    public static RefWatcher getRefWatcher(Context context) {
+        BaseApplication application = (BaseApplication) context.getApplicationContext();
+        return application.refWatcher;
+    }
 
+    private RefWatcher refWatcher;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -45,7 +51,7 @@ public abstract class BaseApplication extends Application implements Thread.Unca
             // You should not init your app in this process.
             return;
         }
-        LeakCanary.install(this);
+        refWatcher = LeakCanary.install(this);
         //   LeakCanary.install(this);
         initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {

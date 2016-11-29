@@ -67,7 +67,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         ActivityManager.getInstance().addActivity(this);
         //注册eventbus
         EventBus.getDefault().register(this);
-        //注册xutils
+
 
     }
 
@@ -492,6 +492,9 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 //
 //    }
 
-
+    protected int dp2px(float dp) {
+        final float scale = this.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
 
 }
