@@ -17,13 +17,16 @@ import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
  * create an instance of this fragment.
  */
 public class lazyFragment2 extends SuperFragment {
+
+
+
     @Override
-    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lazy_fragment2, container, false);
+    protected int getResourceId() {
+        return R.layout.fragment_lazy_fragment2;
     }
 
     @Override
-    protected void initData() {
+    protected void initDataAndView(View view) {
         Log.i("wxq", "initdata2");
     }
 

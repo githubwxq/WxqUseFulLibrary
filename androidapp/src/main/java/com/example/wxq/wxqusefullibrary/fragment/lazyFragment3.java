@@ -12,7 +12,7 @@ import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ *
  * Activities that contain this fragment must implement the
  * to handle interaction events.
  * create an instance of this fragment.
@@ -22,12 +22,12 @@ public class lazyFragment3 extends SuperFragment {
 
 
     @Override
-    protected View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_lazy_fragment12, container, false);
+    protected int getResourceId() {
+        return R.layout.fragment_lazy_fragment12;
     }
 
     @Override
-    protected void initData() {
+    protected void initDataAndView(View view) {
         Log.i("wxq","initdata3");
     }
 

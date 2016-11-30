@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.ThreadMode;
 
 /*
 * 懒加载fragment 用到显示的时候才加载
@@ -28,6 +29,7 @@ public abstract class SuperFragment extends Fragment {
 
     private boolean isFirstLoad = true;
 
+    private View  view ;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,11 +59,13 @@ public abstract class SuperFragment extends Fragment {
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
         //  必须设置好缓存界面否则的话对象销毁总是执行 lazyload（）mViewPager.setOffscreenPageLimit(4);
         isFirstLoad = true;
-        View view = initViews(inflater, container, savedInstanceState);
+        view=inflater.inflate(getResourceId(), container, false);
         isPrepared = true;
-        lazyLoad();
+        lazyLoad(view);
         return view;
     }
+
+    protected abstract int getResourceId();
 
     /**
      * 如果是与ViewPager一起使用，调用的是setUserVisibleHint
@@ -100,7 +104,7 @@ public abstract class SuperFragment extends Fragment {
     }
 
     protected void onVisible() {
-        lazyLoad();
+        lazyLoad(view);
     }
 
     protected void onInvisible() {
@@ -110,18 +114,17 @@ public abstract class SuperFragment extends Fragment {
      * 要实现延迟加载Fragment内容,需要在 onCreateView
      * isPrepared = true;
      */
-    protected void lazyLoad() {
+    protected void lazyLoad(View view) {
         if (!isPrepared || !isVisible || !isFirstLoad) {
             //if (!isAdded() || !isVisible || !isFirstLoad) {
             return;
         }
         isFirstLoad = false;
-        initData();
+        initDataAndView(view);
+
     }
 
-    protected abstract View initViews(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState);
-
-    protected abstract void initData();
+    protected abstract void initDataAndView(View view);
 
     public String getTitle() {
         if (null == fragmentTitle) {
@@ -135,7 +138,7 @@ public abstract class SuperFragment extends Fragment {
     }
 
     /**
-     * 设置fragment的Title直接调用 {@link BaseFragment#setTitle(String)},若不显示该title 可以不做处理
+     * 设置fragment的Title直接调用若不显示该title 可以不做处理
      *
      * @param title 一般用于显示在TabLayout的标题
      */
@@ -177,30 +180,8 @@ public abstract class SuperFragment extends Fragment {
     }
 
     public void showToast(String content) {
-
         Toast.makeText(getActivity(), content, Toast.LENGTH_SHORT).show();
-
     }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
-    }
-
-
-
-
-
-
-
-
 
 
 

@@ -18,6 +18,11 @@ import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.MsgView;
 import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.OnTabSelectListener;
 import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.UnreadMsgUtils;
 
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import java.util.ArrayList;
 
 public class BmobIndexActivity extends BaseActivity {
@@ -73,9 +78,16 @@ public class BmobIndexActivity extends BaseActivity {
         mTlBottom.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
             public void onTabSelect(int position) {
-              showToast("选中"+position);
-                if(position==2)
-                mTlBottom.hideMsg(0);
+              showToast("选中" + position);
+                if(position==2){
+                    mTlBottom.hideMsg(0);
+
+
+                    EventBus.getDefault().post("你好fragment1我来自activity");
+
+                }
+            //    EventBus.getDefault().
+
             }
 
             @Override
@@ -91,5 +103,12 @@ public class BmobIndexActivity extends BaseActivity {
             UnreadMsgUtils.setSize(rtv_2_2, dp2px(7.5f));
         }
 
+    }
+
+
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void helloEventBus(String message) {
+        showToast("activity 收到消息"+message);
     }
 }
