@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/WxqUseFulLibrary.iml" filepath="$PROJECT_DIR$/WxqUseFulLibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidapp/androidapp.iml" filepath="$PROJECT_DIR$/androidapp/androidapp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/desktop/desktop.iml" filepath="$PROJECT_DIR$/desktop/desktop.iml" />
-      <module fileurl="file://$PROJECT_DIR$/gDTUnionDemo/gDTUnionDemo.iml" filepath="$PROJECT_DIR$/gDTUnionDemo/gDTUnionDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/wxqutilslibrary/wxqutilslibrary.iml" filepath="$PROJECT_DIR$/wxqutilslibrary/wxqutilslibrary.iml" />
     </modules>
   </component>
