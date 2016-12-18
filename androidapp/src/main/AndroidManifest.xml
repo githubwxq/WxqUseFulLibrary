@@ -83,7 +83,8 @@
         <activity android:name=".activity.SprignView2Activity" />
         <activity android:name=".activity.SpringViewAnimationHeadActivity" />
         <activity android:name=".bmob.activity.BmobIndexActivity" />
-        <activity android:name=".activity.RxIndexActivity"></activity>
+        <activity android:name=".activity.RxIndexActivity" />
+        <activity android:name=".activity.ViewGroupActivity"></activity>
     </application>
 
 </manifest>

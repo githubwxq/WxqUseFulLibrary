@@ -1,12 +1,23 @@
 package com.example.wxq.wxqusefullibrary;
 
+import viewgroupadapter.IMulTypeHelper;
+
 /**
  * Created by Administrator on 2016/7/6.
  */
-public class Book {
-    String name;
-    String  price;
+public class Book implements IMulTypeHelper {
+  public  String name;
+    public  String  price;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    String type;//自己可以而外设置 接口不一定会返回 标记
     public int getTag() {
         return tag;
     }
@@ -37,5 +48,24 @@ public class Book {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    @Override
+    public int getItemLayoutId() {
+        switch (type){
+            case "flag1":
+
+                return R.layout.book_list_item;
+
+            case "flag2":
+
+                return R.layout.book_list_item2;
+            case "flag3":
+
+                return R.layout.book_list_item3;
+
+        }
+
+        return R.layout.book_list_item; //默认布局
     }
 }

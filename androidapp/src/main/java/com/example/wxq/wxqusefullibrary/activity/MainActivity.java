@@ -41,6 +41,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initData() {
+
+
+
+
+
+
+
         //第三方服务集成项目
         Function project=new Function();
         project.setType(0);//0 标题类型
@@ -148,8 +155,18 @@ public class MainActivity extends BaseActivity {
         commonadapter.setType(1);
         commonadapter.setName("CommonAdapter");
         commonadapter.setMclass(TestCommonAdapterActivity.class);
+        Function viewgroupadapter=new Function();
+        viewgroupadapter.setType(1);
+        viewgroupadapter.setName("ViewGroupAdapter");
+        viewgroupadapter.setMclass(ViewGroupActivity.class);
+
         functions.add(adapter);
         functions.add(commonadapter);
+        functions.add(viewgroupadapter);
+
+
+
+
 
 
         //tab 分类
