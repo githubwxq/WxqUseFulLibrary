@@ -84,7 +84,8 @@
         <activity android:name=".activity.SpringViewAnimationHeadActivity" />
         <activity android:name=".bmob.activity.BmobIndexActivity" />
         <activity android:name=".activity.RxIndexActivity" />
-        <activity android:name=".activity.ViewGroupActivity"></activity>
+        <activity android:name=".activity.ViewGroupActivity" />
+        <activity android:name=".activity.LinearLayoutAdapterActivity"></activity>
     </application>
 
 </manifest>

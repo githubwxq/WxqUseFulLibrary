@@ -34,20 +34,20 @@ public class TestCommonAdapterActivity extends BaseActivity {
         setContentView(R.layout.activity_test_common_adapter);
         showToast("创建了testcommonadapter");
         ButterKnife.bind(this);
-        Book book1=new Book("1","a");
+        Book book1 = new Book("1", "a");
         book1.setTag(0);
-        Book book2=new Book("2","a");
+        Book book2 = new Book("2", "a");
         book2.setTag(1);
-        Book book3=new Book("3","a");
+        Book book3 = new Book("3", "a");
         book3.setTag(2);
-        Book book4=new Book("1","a");
+        Book book4 = new Book("1", "a");
         book4.setTag(0);
-        Book book5=new Book("2","a");
+        Book book5 = new Book("2", "a");
         book5.setTag(2);
-        Book book6=new Book("3","a");
+        Book book6 = new Book("3", "a");
 
-        Book book7=new Book("3","a");
-        ArrayList <Book> list=new ArrayList<>();
+        Book book7 = new Book("3", "a");
+        ArrayList<Book> list = new ArrayList<>();
         list.add(book1);
         list.add(book2);
         list.add(book3);
@@ -56,7 +56,7 @@ public class TestCommonAdapterActivity extends BaseActivity {
 
         list.add(book5);
 
-        lvTestAdapter.addHeaderView(View.inflate(this,R.layout.activity_dialog,null));
+        lvTestAdapter.addHeaderView(View.inflate(this, R.layout.activity_dialog, null));
 
 
 //        lvTestAdapter.setAdapter(new CommonAdapter<Book>(this,R.layout.book_list_item,list) {
@@ -82,60 +82,61 @@ public class TestCommonAdapterActivity extends BaseActivity {
 //
 //            }
 //        });
-        lvTestAdapter.setAdapter(new MultLayoutAdapter(this,R.layout.book_list_item,list));
+        lvTestAdapter.setAdapter(new MultLayoutAdapter(this, R.layout.book_list_item, list));
         lvTestAdapter.setOnScrollListener(new PauseOnScrollListener(ImageLoader.getInstance(), true, true));
 
     }
-private final  class  MultLayoutAdapter extends CommonAdapter<Book>{
+
+    private final class MultLayoutAdapter extends CommonAdapter<Book> {
 
 
-    public MultLayoutAdapter(Context context, int layoutResId, List<Book> data) {
-        super(context, layoutResId, data);
-    }
+        public MultLayoutAdapter(Context context, int layoutResId, List<Book> data) {
+            super(context, layoutResId, data);
+        }
 
-    @Override
-    public void onUpdate(BaseAdapterHelper helper, Book item, int position) {
-switch (item.getTag()){
-    case 0:
-        helper.setText(R.id.tv_bookname,item.getName());
-        helper.setText(R.id.tv_price,item.getPrice());
-        break;
-    case 1:
-        helper.setText(R.id.tv_price,item.getPrice());
-        break;
-    case 2:
-        helper.setText(R.id.tv_bookname,item.getName());
-        break;
+        @Override
+        public void onUpdate(BaseAdapterHelper helper, Book item, int position) {
+            switch (item.getTag()) {
+                case 0:
+                    helper.setText(R.id.tv_bookname, item.getName());
+                    helper.setText(R.id.tv_price, item.getPrice());
+                    break;
+                case 1:
+                    helper.setText(R.id.tv_price, item.getPrice());
+                    break;
+                case 2:
+                    helper.setText(R.id.tv_bookname, item.getName());
+                    break;
 
-}
+            }
 
 
-    }
+        }
 
-    @Override
-    public int getLayoutResId(Book item, int position) {
-        int layoutResId=-1;
-        switch (item.getTag()){
-            case 0: //布局样式一
-                   layoutResId = R.layout.book_list_item;
-                   break;
-            case 1: //布局样式一
-                layoutResId = R.layout.book_list_item2;
-                break;
-            case 2: //布局样式一
-                layoutResId = R.layout.book_list_item3;
-                break;
+        @Override
+        public int getLayoutResId(Book item, int position) {
+            int layoutResId = -1;
+            switch (item.getTag()) {
+                case 0: //布局样式一
+                    layoutResId = R.layout.book_list_item;
+                    break;
+                case 1: //布局样式一
+                    layoutResId = R.layout.book_list_item2;
+                    break;
+                case 2: //布局样式一
+                    layoutResId = R.layout.book_list_item3;
+                    break;
 //            case 3: //布局样式一
 //                layoutResId = R.layout.item_none_picture;
 //                break;
 
 
+            }
+
+
+            return layoutResId;
         }
-
-
-        return layoutResId;
     }
-}
 
     //多布局文件
 //    private final class MultipleLayoutAdapter extends CommonRecyclerAdapter<Book>{
@@ -196,7 +197,7 @@ switch (item.getTag()){
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true, priority = 100)
-    public void onEvent(MsgEvent event){
+    public void onEvent(MsgEvent event) {
 
         showToast("获取参数" + event.getJsonData());
     }

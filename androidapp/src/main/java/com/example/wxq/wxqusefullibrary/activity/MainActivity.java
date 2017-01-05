@@ -160,10 +160,15 @@ public class MainActivity extends BaseActivity {
         viewgroupadapter.setName("ViewGroupAdapter");
         viewgroupadapter.setMclass(ViewGroupActivity.class);
 
+        Function viewgroupLinearadapter=new Function();
+        viewgroupLinearadapter.setType(1);
+        viewgroupLinearadapter.setName("Linearadapter复用");
+        viewgroupLinearadapter.setMclass(LinearLayoutAdapterActivity.class);
+
         functions.add(adapter);
         functions.add(commonadapter);
         functions.add(viewgroupadapter);
-
+        functions.add(viewgroupLinearadapter);
 
 
 
