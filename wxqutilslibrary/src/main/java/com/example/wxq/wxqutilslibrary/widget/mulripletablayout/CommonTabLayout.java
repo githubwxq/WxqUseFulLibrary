@@ -121,7 +121,7 @@ public class CommonTabLayout extends FrameLayout implements ValueAnimator.Animat
 
         this.mContext = context;
         mTabsContainer = new LinearLayout(context);
-        addView(mTabsContainer);
+        addView(mTabsContainer); // fragment 添加linearlayout
 
         obtainAttributes(context, attrs);
 

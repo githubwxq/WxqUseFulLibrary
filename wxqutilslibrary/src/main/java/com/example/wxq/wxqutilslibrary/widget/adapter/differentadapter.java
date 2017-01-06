@@ -35,7 +35,7 @@ package com.example.wxq.wxqutilslibrary.widget.adapter;
 // * Created by Administrator on 2017/1/5 0005.
 // */
 //
-public class differentadapter {
+public class differentadapter {  // 可以配置数据源决定样式 notifdatachange 重走4方法重新布局
 //
 //    package com.juziwl.xiaoxin.service.nearbyedu;
 //
