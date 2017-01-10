@@ -1,5 +1,6 @@
 package com.example.wxq.wxqutilslibrary.activity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,6 +16,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,6 +33,7 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +45,10 @@ import specialtools.ActivityManager;
  * 分功能为： 添加友盟统计 常用的东西 eventbus 等等
  * abstract 类可以不实现接口的方法注意！！！
  * 这是最基础的activity封装仅仅封装了标题栏以及一些工具
+ * eventbus post不同的消息对象 不同数据给接收方处理
+ *
  */
-public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener {
+public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private View mContextView = null;
     private boolean isDebug;
     private String APP_NAME;
@@ -52,6 +57,11 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     private LinearLayout llBasetitleBack;
     private TextView tvBasetitleTitle;
     private TextView tvBasetitleOK;
+    private int width;
+    private int height;
+    private float density;
+    private int densityDpi;
+
     private Handler mhandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -59,6 +69,8 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
     };
     private LinearLayout ll_basetitle;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,7 +79,12 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         ActivityManager.getInstance().addActivity(this);
         //注册eventbus
         EventBus.getDefault().register(this);
-
+        DisplayMetrics metric = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metric);
+        width = metric.widthPixels;
+        height = metric.heightPixels;
+        density = metric.density;
+        densityDpi = metric.densityDpi;
 
     }
 
@@ -119,20 +136,21 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
                 finish();
             }
         });
-        ll_basetitle=(LinearLayout)findViewById(R.id.ll_basetitle);
+        ll_basetitle = (LinearLayout) findViewById(R.id.ll_basetitle);
     }
 
 
-    public void setTitleHeadVisiable(boolean isVisiable){
-        if(isVisiable){
+    public void setTitleHeadVisiable(boolean isVisiable) {
+        if (isVisiable) {
             ll_basetitle.setVisibility(View.VISIBLE);
-        }else{
+        } else {
 
             ll_basetitle.setVisibility(View.GONE);
         }
 
 
     }
+
     /*
     * 重写setContentView让继承者设置的view 添加到内容布局中
     * */
@@ -147,6 +165,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     }
 
     //ctrl alt k
+
     /**
      * 设置中间标题文字
      *
@@ -213,7 +232,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     /**
      * View点击
      **/
-    public abstract void widgetClick(View v);
+    public abstract void widgetClick(View v);  //防止多次点击的事件监听
 
     /**
      * [防止快速点击]
@@ -243,6 +262,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
         startActivity(intent);
     }
+
 
     @SuppressWarnings("unchecked")
     public <T extends View> T $(int resId) {
@@ -324,11 +344,57 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (pxValue / scale + 0.5f) - 15;
     }
+    //内存优化处理
 
+    public static class MyHandler extends Handler {
+        WeakReference<Activity> mActivityReference;
+        public Activity activity;
+
+        public MyHandler(Activity activity) {
+            mActivityReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            activity = mActivityReference.get();
+        }
+    }
+
+    public static class MyThread extends Thread {
+        WeakReference<Activity> mWeakReference;
+        public Activity activity;
+
+        public MyThread(Activity activity) {
+            mWeakReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void run() {
+            activity = mWeakReference.get();
+
+        }
+    }
+
+    public static class MyRunable implements Runnable {
+
+        WeakReference<Activity> mWeakReference;
+        public Activity activity;
+
+        public MyRunable(Activity activity) {
+            mWeakReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void run() {
+            activity = mWeakReference.get();
+
+        }
+    }
 
 
     //6.0权限处理分装给activity
     private int REQUEST_CODE_PERMISSION = 123;
+
     /**
      * 请求权限
      *
@@ -460,6 +526,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     /**
      * 权限获取失败
+     *
      * @param requestCode
      */
     public void permissionFail(int requestCode) {

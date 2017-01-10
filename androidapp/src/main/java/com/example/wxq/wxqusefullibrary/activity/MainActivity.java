@@ -1,8 +1,12 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.view.View;
 import android.widget.ListView;
 
@@ -24,7 +28,7 @@ public class MainActivity extends BaseActivity {
     private final String[] mItems = {"TestCommonAdapter", "listview选中测试", "baseActivity测试"};
     private final Class<?>[] mClasses = {TestCommonAdapterActivity.class, Main2Activity.class,
             TestBaseActivity.class};
-    private ArrayList<Function> functions=new ArrayList<>();
+    private ArrayList<Function> functions = new ArrayList<>();
     ListView lv_functions;
     BottomView bottomView = null;
 
@@ -38,15 +42,17 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         initData();
         initView();
+
+        //测试权限
+        requestPermission(new String[]{Manifest.permission.CALL_PHONE}, 0x0001);
+        requestPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x0002);
+
+
     }
 
+
+
     private void initData() {
-
-
-
-
-
-
 
         //第三方服务集成项目
         Function project=new Function();
@@ -82,13 +88,9 @@ public class MainActivity extends BaseActivity {
         pinnedSectionlListview.setName("PinnedSectionListView");
         pinnedSectionlListview.setMclass(PinnedSectionListViewActivity.class);
 
-
-
         functions.add(function_listview);
         functions.add(function_superlistview);
         functions.add(pinnedSectionlListview);
-
-
 
         //顶部底部下拉刷新 swiperefreshlayout与其类似
         Function refresh=new Function();
@@ -137,16 +139,6 @@ public class MainActivity extends BaseActivity {
         functions.add(dialog1);
         functions.add(dialog2);
 
-
-
-
-
-
-
-
-
-
-
         //adapter 分类
         Function adapter=new Function();
         adapter.setType(0);//0 标题类型
@@ -170,10 +162,6 @@ public class MainActivity extends BaseActivity {
         functions.add(viewgroupadapter);
         functions.add(viewgroupLinearadapter);
 
-
-
-
-
         //tab 分类
         Function tab=new Function();
         tab.setType(0);//0 标题类型
@@ -193,13 +181,10 @@ public class MainActivity extends BaseActivity {
         tab_seg.setName("SegmentTab");
         tab_seg.setMclass(SegmentTabActivity.class);
 
-
         functions.add(tab);
         functions.add(tab_slib);
         functions.add(commonTab);
         functions.add(tab_seg);
-
-
 
         //图片相关 分类
         Function about_pic=new Function();
@@ -215,7 +200,6 @@ public class MainActivity extends BaseActivity {
         show_pic2.setName("图片视频一起播放预览");
         show_pic2.setMclass(ShowPicAndVideoActivity.class);
 
-
         functions.add(about_pic);
         functions.add(show_pic);
         functions.add(show_pic2);
@@ -224,7 +208,6 @@ public class MainActivity extends BaseActivity {
         imageview_gif.setName("播放gif的imageview");
         imageview_gif.setMclass(GifImageViewActivity.class);
         functions.add(imageview_gif);
-
 
         //特殊控件测试
         Function button=new Function();
@@ -237,11 +220,6 @@ public class MainActivity extends BaseActivity {
 
         functions.add(button);
         functions.add(button1);
-
-
-
-
-
 
         //其他测试
         Function test=new Function();
@@ -271,19 +249,13 @@ public class MainActivity extends BaseActivity {
         shiping1.setType(1);
         shiping1.setName("测试简单的ScalableVideoActivity");
         shiping1.setMclass(ScalableVideoActivity.class);
-
-
         functions.add(shiping);
         functions.add(shiping1);
-
-
     }
 
     private void initView() {
         lv_functions= (ListView) findViewById(R.id.lv_functions);
-
         MultLayoutAdapter multLayoutAdapter=new MultLayoutAdapter(this,R.layout.function_list_item0,functions);
-
 //        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
 //        swingBottomInAnimationAdapter.setListView(lv_functions);
 //        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
@@ -293,19 +265,7 @@ public class MainActivity extends BaseActivity {
         SwingLeftInAnimationAdapter swingLeftInAnimationAdapter = new SwingLeftInAnimationAdapter(multLayoutAdapter);
         swingLeftInAnimationAdapter.setListView(lv_functions);
    // swingRightInAnimationAdapter.setListView(lv_functions);
-
-
-
-
         lv_functions.setAdapter(swingLeftInAnimationAdapter);
-
-
-
-
-
-
-
-
 
     }
 
@@ -319,7 +279,6 @@ public class MainActivity extends BaseActivity {
         public MultLayoutAdapter(Context context, int layoutResId, List<Function> data) {
             super(context, layoutResId, data);
         }
-
         @Override
         public void onUpdate(BaseAdapterHelper helper, Function item, final int position) {
             switch (item.getType()) {
@@ -335,14 +294,11 @@ public class MainActivity extends BaseActivity {
                         }
                     });
 
-
                     break;
 
 
             }
         }
-
-
         @Override
         public int getLayoutResId(Function item, int position) {
             int layoutResId = -1;
@@ -357,5 +313,32 @@ public class MainActivity extends BaseActivity {
             return layoutResId;
         }
 
+    }
+    @Override
+    public void permissionSuccess(int requestCode) {
+        super.permissionSuccess(requestCode);
+        switch (requestCode) {
+            case 0x0001:
+
+                showToast("电话权限");
+                break;
+            case 0x0002:
+
+                showToast("sd卡权限");
+                break;
+        }
+
+    }
+    @Override
+    public void permissionFail(int requestCode) {
+        super.permissionFail(requestCode);
+        switch (requestCode) {
+            case 0x0001:
+                showToast("电话权限拒绝");
+                break;
+            case 0x0002:
+                showToast("sd权限拒绝");
+                break;
+        }
     }
 }

@@ -1,12 +1,10 @@
 package com.example.wxq.wxqusefullibrary.fragment;
 
+import android.Manifest;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
@@ -36,13 +34,29 @@ public class lazyFragment1 extends SuperFragment {
     protected void initDataAndView(View view) {
 
         Log.i("wxq", "initdata1");
-        mTest1= (TextView) view.findViewById(R.id.test1);
+        mTest1 = (TextView) view.findViewById(R.id.test1);
         mTest1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post("我来自fragment1");
             }
         });
+
+
+        performCodeWithPermission("XX App请求访问相机权限", new PermissionCallback() {
+            @Override
+            public void hasPermission() {
+                //执行打开相机相关代码
+                showToast("获取到了执行相机的权限"); // 异步人家成功后调用你的
+            }
+
+            @Override
+            public void noPermission() {
+                showToast("获取到了相机的权限失败"); // 异步人家成功后调用你的
+            }
+        }, Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+
     }
 
     @Override
