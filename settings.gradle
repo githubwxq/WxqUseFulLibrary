@@ -1,2 +1,5 @@
-include ':androidapp', ':wxqutilslibrary'
+include ':gDTUnionDemo', ':androidapp', ':wxqutilslibrary', ':android声波技术'
+include ':desktop'
 
+include ':camerademo'
+include ':eZConnectProvisioning'

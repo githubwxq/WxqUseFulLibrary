@@ -48,7 +48,7 @@ public class BmobIndexActivity extends BaseActivity {
 
 
     }
-
+//
     private void initFixedData() {
         mFragments.add(new lazyFragment1());
         mFragments.add(new lazyFragment2());
