@@ -22,6 +22,7 @@ import specialtools.ActivityManager;
 public abstract class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     private int count;
     private Context mContext;
+
     public static RefWatcher getRefWatcher(Context context) {
         BaseApplication application = (BaseApplication) context.getApplicationContext();
         return application.refWatcher;
@@ -52,7 +53,7 @@ public abstract class BaseApplication extends Application implements Thread.Unca
             return;
         }
         refWatcher = LeakCanary.install(this);
-        //  LeakCanary.install(this);
+         LeakCanary.install(this);
         initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
