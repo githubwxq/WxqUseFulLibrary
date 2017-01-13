@@ -2,9 +2,11 @@ package com.example.wxq.wxqutilslibrary.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -46,7 +48,6 @@ import specialtools.ActivityManager;
  * abstract 类可以不实现接口的方法注意！！！
  * 这是最基础的activity封装仅仅封装了标题栏以及一些工具
  * eventbus post不同的消息对象 不同数据给接收方处理
- *
  */
 public abstract class BaseActivity extends FragmentActivity implements View.OnClickListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private View mContextView = null;
@@ -61,32 +62,76 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     private int height;
     private float density;
     private int densityDpi;
-
-    private Handler mhandler = new Handler() {
+    public Handler mhandler = new MyHandler(this) {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            if (activity != null && !activity.isFinishing()) {
+                dealWithHandMessage(msg);
+            }
         }
     };
-    private LinearLayout ll_basetitle;
 
+
+    private LinearLayout ll_basetitle;
+    // 处理系统发出的广播
+    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            dealWithBroadcastAction(intent.getAction());//之类可以覆盖
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);//父类的带货有自己的
+        // 初始化基类activity控件
         findView();
         ActivityManager.getInstance().addActivity(this);
+        //注册广播
+        initBroadcastAction();
         //注册eventbus
         EventBus.getDefault().register(this);
+        // 获取简单的一些参数
         DisplayMetrics metric = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metric);
         width = metric.widthPixels;
         height = metric.heightPixels;
         density = metric.density;
         densityDpi = metric.densityDpi;
-
+        //初始化子类activity的数据
+//        initData();
+//        initView();
+//        initListener();
     }
+//    public  void initView(){}
+//    public  void initData(){}
+//    public  void initListener(){}
+
+    private void initBroadcastAction() {
+        if (setBroadcastAction() != null && setBroadcastAction().size() > 0) {
+            IntentFilter intentFilter = new IntentFilter();
+            for (String action : setBroadcastAction()
+                    ) {
+                intentFilter.addAction(action);
+            }
+            registerReceiver(broadcastReceiver, intentFilter);
+        } else {
+        }
+    }
+
+    // 之类添加的action
+    public ArrayList<String> setBroadcastAction() {
+        return null; //默认返回空之类可以添加
+    }
+
+    public void dealWithBroadcastAction(String action) {
+    }
+
+    public void dealWithHandMessage(Message msg) {
+    }
+
 
     @Override
     protected void onRestart() {
@@ -121,6 +166,10 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     protected void onDestroy() {
         super.onDestroy();
         EventBus.getDefault().unregister(this);
+        if (broadcastReceiver != null) {
+            unregisterReceiver(broadcastReceiver);
+            broadcastReceiver = null;
+        }
         ActivityManager.getInstance().killActivity(this);
 
     }
@@ -144,11 +193,8 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         if (isVisiable) {
             ll_basetitle.setVisibility(View.VISIBLE);
         } else {
-
             ll_basetitle.setVisibility(View.GONE);
         }
-
-
     }
 
     /*
@@ -533,7 +579,36 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         Log.d(TAG, "获取权限失败=" + requestCode);
     }
 
+    protected int dp2px(float dp) {
+        final float scale = this.getResources().getDisplayMetrics().density;
+        return (int) (dp * scale + 0.5f);
+    }
+
+}
+//activity注意项//不退出进入后台
+//  =================== =================== =================== =================== =================== =================== =================== ===================
+//    @Override
+//    public boolean onKeyDown(int keyCode, KeyEvent event) {
+//        if (keyCode == KeyEvent.KEYCODE_BACK
+//                || keyCode == KeyEvent.KEYCODE_HOME) {
+//            moveTaskToBack(true);
+//            return true;
+//        }
+//        return super.onKeyDown(keyCode, event);
+//    }
+//
+//    //singtask 模式下启动当前页面走onNewIntent方法
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//        setIntent(intent);// must store the new intent unless getIntent() will return the old one
+//        Bundle bundle = getIntent().getExtras();
+//        if (bundle != null) {
+//            mTabHost.setCurrentTab(bundle.getInt("id"));
+//        }
+//    }
 //权限子activity处理用法
+//  =================== =================== =================== =================== =================== =================== =================== ===================
+
 //    /**
 //     * 打电话
 //     *
@@ -559,9 +634,5 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 //
 //    }
 
-    protected int dp2px(float dp) {
-        final float scale = this.getResources().getDisplayMetrics().density;
-        return (int) (dp * scale + 0.5f);
-    }
 
-}
+//  =================== =================== =================== =================== =================== =================== =================== ===================

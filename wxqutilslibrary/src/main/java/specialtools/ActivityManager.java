@@ -92,9 +92,12 @@ public class ActivityManager {
      * @param cls Activity的class对象
      */
     public void killActivity(Class<?> cls) {
-        for (Activity activity : activitys) {
-            if (activity.getClass().equals(cls))
-                killActivity(activity);
+        if (cls != null && activitys != null) {
+            for (int i = activitys.size() - 1; i >= 0; i--) {
+                if (activitys.get(i).getClass().equals(cls)) {
+                    killActivity(activitys.get(i));
+                }
+            }
         }
     }
 
@@ -102,10 +105,18 @@ public class ActivityManager {
      * 关闭存放在堆栈中所有的activity
      */
     public void killAllActivity() {
-        for (Activity a : activitys) {
-            if (null != a) {
-                a.finish();
+//        for (Activity a : activitys) {
+//            if (null != a) {
+//                a.finish();
+//            }
+//        }
+        if (activitys != null) {
+            for (int i = 0, size = activitys.size(); i < size; i++) {
+                if (null != activitys.get(i)) {
+                    activitys.get(i).finish();
+                }
             }
+            activitys.clear();
         }
         activitys.clear();//清空堆栈
     }
@@ -121,6 +132,7 @@ public class ActivityManager {
 //			activityMgr.restartPackage(context.getPackageName());
 //			System.exit(0);
         } catch (Exception e) {
+
         }
     }
 }

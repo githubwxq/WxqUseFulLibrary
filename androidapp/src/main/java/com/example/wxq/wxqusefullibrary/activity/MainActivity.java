@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 
@@ -19,6 +22,10 @@ import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
 import com.example.wxq.wxqutilslibrary.widget.listview.animations.SwingLeftInAnimationAdapter;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -339,6 +346,67 @@ public class MainActivity extends BaseActivity {
             case 0x0002:
                 showToast("sd权限拒绝");
                 break;
+        }
+    }
+
+//不退出进入后台
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                || keyCode == KeyEvent.KEYCODE_HOME) {
+            moveTaskToBack(true);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    //activity 中常见操作
+    @Override
+    public ArrayList<String> setBroadcastAction() {
+        ArrayList<String> actions=new ArrayList<>();
+        actions.add(WifiManager.WIFI_STATE_CHANGED_ACTION);
+        actions.add(WifiManager.NETWORK_STATE_CHANGED_ACTION);
+        return actions;
+    }
+    @Override
+    public void dealWithBroadcastAction(String action) {
+     switch (action){
+         case WifiManager.WIFI_STATE_CHANGED_ACTION:
+             showToast("wifi状态改变了");
+             mhandler.sendEmptyMessage(1);
+             break;
+         case WifiManager.NETWORK_STATE_CHANGED_ACTION:
+          //   showToast("网络状态改变了状态改变了");
+             break;
+     }
+    }
+    @Override
+    public void dealWithHandMessage(Message msg) {
+        switch (msg.what){
+            case 1:
+                showToast("handler处理wifi状态改变了");
+                EventBus.getDefault().post(new MainActivityMedium(100,"我自己发给自己的消息处理"));
+                break;
+            case 2:
+                showToast("handler处理网络状态改变了状态改变了");
+                break;
+        }
+    }
+// 通信集中处理处
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void helloEventBus(MainActivityMedium  message) {
+        showToast("MainActivityMedium 的类型和内容为" + message.type+message.content);
+    }
+
+
+
+
+    private static  class MainActivityMedium {
+        public   int type;
+        public  String content;
+        public MainActivityMedium(int type, String content) {
+            this.type = type;
+            this.content = content;
         }
     }
 }
