@@ -297,7 +297,10 @@ public class MainActivity extends BaseActivity {
                         @Override
                         public void onClick(View v) {
                             Intent intent=new Intent(MainActivity.this,functions.get(position).getMclass());
-                            startActivity(intent);
+                            if(functions.get(position).getMclass()==BmobIndexActivity.class){
+                                startActivityForResult(intent,1);
+                            }else{
+                            startActivity(intent);}
                         }
                     });
 
@@ -392,21 +395,43 @@ public class MainActivity extends BaseActivity {
                 break;
         }
     }
-// 通信集中处理处
+
+   // 通信集中处理处
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void helloEventBus(MainActivityMedium  message) {
-        showToast("MainActivityMedium 的类型和内容为" + message.type+message.content);
+        switch (message.type){
+            case 100:
+                showToast("100");
+                break;
+            case 200:
+                showToast("200");
+                break;
+        }
     }
 
-
-
-
-    private static  class MainActivityMedium {
+    public static  class MainActivityMedium {
         public   int type;
         public  String content;
         public MainActivityMedium(int type, String content) {
             this.type = type;
             this.content = content;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        switch (requestCode){
+            case 1:
+                if (resultCode == 11) {
+                    showToast("从bmobindexactivity回来"+data.getStringExtra("name"));
+                }else{
+                    showToast("从bmobindexactivity回来未携带数据");
+                }
+
+                break;
+            case 2:
+
+                break;
         }
     }
 }

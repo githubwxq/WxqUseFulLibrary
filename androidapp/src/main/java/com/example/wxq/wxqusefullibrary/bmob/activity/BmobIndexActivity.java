@@ -1,11 +1,13 @@
 package com.example.wxq.wxqusefullibrary.bmob.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.example.wxq.wxqusefullibrary.R;
+import com.example.wxq.wxqusefullibrary.activity.MainActivity;
 import com.example.wxq.wxqusefullibrary.activity.TabEntity;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment1;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment2;
@@ -81,7 +83,13 @@ public class BmobIndexActivity extends BaseActivity {
                     EventBus.getDefault().post("你好fragment1我来自activity");
                 }
                 //    EventBus.getDefault().
-
+                EventBus.getDefault().post(new MainActivity.MainActivityMedium(200,"mainactivity收到来之bmob的消息"));
+                Intent intent = getIntent();
+////放数据
+//                intent.putExtra("name","wxq");
+////注意
+//                setResult(100,intent);
+//                finish();
             }
 
             @Override
@@ -103,5 +111,11 @@ public class BmobIndexActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void helloEventBus(String message) {
         showToast("activity 收到消息" + message);
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
     }
 }

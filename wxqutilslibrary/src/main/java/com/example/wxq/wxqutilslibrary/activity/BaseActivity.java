@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -75,17 +76,18 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     private LinearLayout ll_basetitle;
     // 处理系统发出的广播
-    private BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            dealWithBroadcastAction(intent.getAction());//之类可以覆盖
-        }
-    };
+    private BroadcastReceiver broadcastReceiver ;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_base);//父类的带货有自己的
+        //写死竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        //处理Intent(主要用来获取其中携带的参数)
+        if (getIntent() != null){
+            handleIntent(getIntent());
+        }
         // 初始化基类activity控件
         findView();
         ActivityManager.getInstance().addActivity(this);
@@ -105,12 +107,20 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 //        initView();
 //        initListener();
     }
+
+    public  void handleIntent(Intent intent){};
 //    public  void initView(){}
 //    public  void initData(){}
 //    public  void initListener(){}
 
     private void initBroadcastAction() {
         if (setBroadcastAction() != null && setBroadcastAction().size() > 0) {
+            broadcastReceiver= new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    dealWithBroadcastAction(intent.getAction());//之类可以覆盖
+                }
+            };
             IntentFilter intentFilter = new IntentFilter();
             for (String action : setBroadcastAction()
                     ) {
@@ -164,14 +174,15 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     @Override
     protected void onDestroy() {
+        // 需要activity对象所以在destory之前调用
+        if (broadcastReceiver != null) {
+
+            unregisterReceiver(broadcastReceiver);
+
+        }
         super.onDestroy();
         EventBus.getDefault().unregister(this);
-        if (broadcastReceiver != null) {
-            unregisterReceiver(broadcastReceiver);
-            broadcastReceiver = null;
-        }
         ActivityManager.getInstance().killActivity(this);
-
     }
 
     private void findView() {
