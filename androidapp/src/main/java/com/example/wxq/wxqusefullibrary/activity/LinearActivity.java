@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.xrecycleview.XRecyclerView;
+import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -23,8 +24,10 @@ public class LinearActivity extends BaseActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
+
+
         mRecyclerView = (XRecyclerView)this.findViewById(R.id.recyclerview);
-   LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
        // GridLayoutManager layoutManager = new GridLayoutManager(this,3);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(layoutManager);

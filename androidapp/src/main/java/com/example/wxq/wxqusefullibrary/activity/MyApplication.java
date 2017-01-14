@@ -13,7 +13,17 @@ import com.example.wxq.wxqutilslibrary.application.BaseApplication;
  * Created by Administrator on 2016/10/4.
  */
 public class MyApplication extends BaseApplication {
+    private static MyApplication instance;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        instance = this;
+    }
+
+    public static MyApplication getInstance(){
+        return instance;
+    }
 
     @Override
     protected void initResourceAndother() {
