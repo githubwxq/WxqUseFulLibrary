@@ -126,8 +126,21 @@ public class MainActivity extends BaseActivity {
         banner1.setType(1);
         banner1.setName("无动画轮播控件");
         banner1.setMclass(BannerActivity.class);
+
+        Function banner2=new Function();
+        banner2.setType(1);
+        banner2.setName("有动画轮播控件");
+        banner2.setMclass(CustomBannerActivity.class);
+
         functions.add(function_banner);
         functions.add(banner1);
+        functions.add(banner2);
+
+
+
+
+
+
 
         //dialog分类
         Function dialog=new Function();
@@ -330,11 +343,11 @@ public class MainActivity extends BaseActivity {
         switch (requestCode) {
             case 0x0001:
 
-                showToast("电话权限");
+                showToast("有电话权限");
                 break;
             case 0x0002:
 
-                showToast("sd卡权限");
+                showToast("有sd卡权限");
                 break;
         }
 

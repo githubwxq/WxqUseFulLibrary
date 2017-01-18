@@ -27,7 +27,7 @@ import specialtools.ActivityManager;
 
 public abstract class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     private int count;
-    private Context mContext;
+    public static Context mContext;
 
     public static RefWatcher getRefWatcher(Context context) {
         BaseApplication application = (BaseApplication) context.getApplicationContext();
