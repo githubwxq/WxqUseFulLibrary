@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.myutils.glide;
+package com.example.wxq.wxqusefullibrary.utils;
 
 import android.content.Context;
 import android.os.Environment;
@@ -14,8 +14,6 @@ import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.GlideModule;
 
 import java.io.File;
-
-import commontools.FileUtils;
 
 public class SimpleGlideModule implements GlideModule {
     public static DiskCache cache;

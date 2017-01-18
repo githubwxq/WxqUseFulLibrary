@@ -38,7 +38,10 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import specialtools.ActivityManager;
 
@@ -76,7 +79,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
     private LinearLayout ll_basetitle;
     // 处理系统发出的广播
-    private BroadcastReceiver broadcastReceiver ;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -85,7 +88,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         //写死竖屏
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         //处理Intent(主要用来获取其中携带的参数)
-        if (getIntent() != null){
+        if (getIntent() != null) {
             handleIntent(getIntent());
         }
         // 初始化基类activity控件
@@ -108,14 +111,17 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 //        initListener();
     }
 
-    public  void handleIntent(Intent intent){};
+    public void handleIntent(Intent intent) {
+    }
+
+    ;
 //    public  void initView(){}
 //    public  void initData(){}
 //    public  void initListener(){}
 
     private void initBroadcastAction() {
         if (setBroadcastAction() != null && setBroadcastAction().size() > 0) {
-            broadcastReceiver= new BroadcastReceiver() {
+            broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     dealWithBroadcastAction(intent.getAction());//之类可以覆盖
@@ -595,6 +601,55 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         return (int) (dp * scale + 0.5f);
     }
 
+
+    public static void skipAnotherActivity(Activity activity,
+                                           Class<? extends Activity> cls) {
+        Intent intent = new Intent(activity, cls);
+        activity.startActivity(intent);
+        activity.finish();
+    }
+
+    public static void skipAnotherActivity(Activity activity,
+                                           Class<? extends Activity> cls,
+                                           HashMap<String, ? extends Object> hashMap) {
+        Intent intent = new Intent(activity, cls);
+        Iterator<?> iterator = hashMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            @SuppressWarnings("unchecked")
+            Map.Entry<String, Object> entry = (Map.Entry<String, Object>) iterator
+                    .next();
+            String key = entry.getKey();
+            Object value = entry.getValue();
+            if (value instanceof String) {
+                intent.putExtra(key, (String) value);
+            }
+            if (value instanceof Boolean) {
+                intent.putExtra(key, (boolean) value);
+            }
+            if (value instanceof Integer) {
+                intent.putExtra(key, (int) value);
+            }
+            if (value instanceof Float) {
+                intent.putExtra(key, (float) value);
+            }
+            if (value instanceof Double) {
+                intent.putExtra(key, (double) value);
+            }
+        }
+        activity.startActivity(intent);
+    }
+    //实例化一个SerializableBook对象
+//    SerializableBook book = new SerializableBook();
+//    book.setAuthor("walfred");
+//    book.setName("How to learn Android");
+//    book.setPrice(10.00f);
+//    book.setPubdate("2014-01-01");
+//
+//    Bundle extras = new Bundle();
+//    extras.putSerializable(SerializableKey, book);
+//
+//    in.putExtras(extras);
+//    startActivity(in);
 }
 //activity注意项//不退出进入后台
 //  =================== =================== =================== =================== =================== =================== =================== ===================

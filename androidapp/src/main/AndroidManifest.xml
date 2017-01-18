@@ -10,14 +10,9 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
-
-    <uses-permission android:name="android.permission.CAMERA"/>
-
+    <uses-permission android:name="android.permission.CAMERA" />
 
 
-    <meta-data
-        android:name="com.example.wxq.wxqutilslibrary.myutils.glide.SimpleGlideModule"
-        android:value="GlideModule" />
 
     <application
         android:name=".activity.MyApplication"
@@ -40,6 +35,13 @@
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".Main2Activity" />
         <activity android:name=".MyRxActivity" />
+
+
+        <meta-data
+            android:name="com.example.wxq.wxqusefullibrary.utils.SimpleGlideModule"
+            android:value="GlideModule" />
+
+
 
         <receiver
             android:name=".MyReceiver"
@@ -90,7 +92,8 @@
         <activity android:name=".bmob.activity.BmobIndexActivity" />
         <activity android:name=".activity.RxIndexActivity" />
         <activity android:name=".activity.ViewGroupActivity" />
-        <activity android:name=".activity.LinearLayoutAdapterActivity"></activity>
+        <activity android:name=".activity.LinearLayoutAdapterActivity" />
+        <activity android:name=".activity.CustomBannerActivity"></activity>
     </application>
 
 </manifest>

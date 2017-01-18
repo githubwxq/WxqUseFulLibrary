@@ -107,7 +107,7 @@ public class LoadingImgUtil {
     public static void initImageLoader(Context context) {
         @SuppressWarnings("deprecation")
         File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-                "wxq/Cache");// 获取到缓存的目录地址
+                "wxq/ImageLoadPic");// 获取到缓存的目录地址
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
                 context).threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()
