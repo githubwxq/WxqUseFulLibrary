@@ -189,7 +189,7 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         File cacheFile = null;
         String externalStorageState = Environment.getExternalStorageState();
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            cacheFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "WXQEXCEPTION");
+            cacheFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "wxq/ErrorException");
             if (!cacheFile.exists()) {
                 cacheFile.mkdir();
             }
@@ -206,7 +206,15 @@ public abstract class BaseApplication extends Application implements Thread.Unca
     }
 
 
-
+//各种路径
+//    Log.i("wxq",mContext.getExternalCacheDir().getAbsolutePath());
+//    Log.i("wxq",Environment.getExternalStorageDirectory().getAbsolutePath());
+//    Log.i("wxq",mContext.getCacheDir().getAbsolutePath());
+//    Log.i("wxq",mContext.getFilesDir().getAbsolutePath());
+//    y I/wxq: /storage/emulated/0/Android/data/com.example.wxq.wxqusefullibrary/cache
+//    01-18 18:03:00.120 3379-3379/com.example.wxq.wxqusefullibrary I/wxq: /storage/emulated/0
+//    01-18 18:03:00.120 3379-3379/com.example.wxq.wxqusefullibrary I/wxq: /data/data/com.example.wxq.wxqusefullibrary/cache
+//    01-18 18:03:00.120 3379-3379/com.example.wxq.wxqusefullibrary I/wxq: /data/data/com.example.wxq.wxqusefullibrary/files
 
 
 }
