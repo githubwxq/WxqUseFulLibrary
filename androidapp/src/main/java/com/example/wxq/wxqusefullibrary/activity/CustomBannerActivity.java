@@ -15,9 +15,10 @@ import java.util.List;
 
 import banner.Banner;
 import banner.BannerConfig;
+import banner.listener.OnBannerClickListener;
 
 public class CustomBannerActivity extends
-        BaseActivity {
+        BaseActivity implements OnBannerClickListener {
     Banner banner1,banner2,banner3;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -51,4 +52,16 @@ public class CustomBannerActivity extends
     public void widgetClick(View v) {
 
     }
+
+    @Override
+    public void OnBannerClick(int position) {
+        showToast("点击为"+position);
+    }
+//样式
+//            banner.updateBannerStyle(BannerConfig.NOT_INDICATOR);
+//            banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+//            banner.updateBannerStyle(BannerConfig.NUM_INDICATOR);
+//            banner.updateBannerStyle(BannerConfig.NUM_INDICATOR_TITLE);
+//            banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+//            banner.updateBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
 }
