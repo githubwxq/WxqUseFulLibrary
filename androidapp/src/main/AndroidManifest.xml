@@ -11,8 +11,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.CAMERA" />
-
-
+    <uses-permission  android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
         android:name=".activity.MyApplication"
@@ -36,12 +36,9 @@
         <activity android:name=".Main2Activity" />
         <activity android:name=".MyRxActivity" />
 
-
         <meta-data
             android:name="com.example.wxq.wxqusefullibrary.utils.SimpleGlideModule"
             android:value="GlideModule" />
-
-
 
         <receiver
             android:name=".MyReceiver"
@@ -93,7 +90,8 @@
         <activity android:name=".activity.RxIndexActivity" />
         <activity android:name=".activity.ViewGroupActivity" />
         <activity android:name=".activity.LinearLayoutAdapterActivity" />
-        <activity android:name=".activity.CustomBannerActivity"></activity>
+        <activity android:name=".activity.CustomBannerActivity" />
+        <activity android:name=".activity.RecordVoiceActivity"></activity>
     </application>
 
 </manifest>

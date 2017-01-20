@@ -206,6 +206,29 @@ public class MainActivity extends BaseActivity {
         functions.add(commonTab);
         functions.add(tab_seg);
 
+        // 多媒体语音视频
+        Function voiceandshiping=new Function();
+        voiceandshiping.setType(0);//0 标题类型
+        voiceandshiping.setName("多媒体语音视频录制");
+
+        Function recordvoice=new Function();
+        recordvoice.setType(1);
+        recordvoice.setName("语音录制与播放");
+        recordvoice.setMclass(RecordVoiceActivity.class);
+
+
+
+
+
+
+        functions.add(voiceandshiping);
+        functions.add(recordvoice);
+
+
+
+
+
+
         //图片相关 分类
         Function about_pic=new Function();
         about_pic.setType(0);//0 标题类型
@@ -248,7 +271,7 @@ public class MainActivity extends BaseActivity {
         Function testBaseActivity=new Function();
         testBaseActivity.setType(1);
         testBaseActivity.setName("测试baseactivity");
-        testBaseActivity.setMclass(BaseActivity.class);
+        testBaseActivity.setMclass(TestBaseActivity.class);
 
         Function testtablayoutActivity=new Function();
         testtablayoutActivity.setType(1);
