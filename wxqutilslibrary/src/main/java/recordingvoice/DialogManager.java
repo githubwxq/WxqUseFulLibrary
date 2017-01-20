@@ -78,7 +78,7 @@ public class DialogManager {
            mIcon.setVisibility(View.VISIBLE);
            mVoice.setVisibility(View.GONE);
            mLable.setVisibility(View.VISIBLE);
-           mIcon.setImageResource(R.drawable.cancel);
+           mIcon.setImageResource(R.mipmap.cancel);
            mLable.setText("松开手指，取消发送");
        }
    }
@@ -94,7 +94,7 @@ public class DialogManager {
            mIcon.setVisibility(View.VISIBLE);
            mVoice.setVisibility(View.GONE);
            mLable.setVisibility(View.VISIBLE);
-           mIcon.setImageResource(R.drawable.voice_to_short);
+           mIcon.setImageResource(R.mipmap.voice_to_short);
            mLable.setText("录音时间过短");
        }
    }
@@ -119,7 +119,7 @@ public class DialogManager {
            mVoice.setVisibility(View.VISIBLE);
            mLable.setVisibility(View.VISIBLE);
            //设置图片的id，我们放在drawable中的声音图片是以v+数字格式的
-           int resId = mContext.getResources().getIdentifier("v" + level, "drawable", mContext.getPackageName());
+           int resId = mContext.getResources().getIdentifier("v" + level, "mipmap", mContext.getPackageName());
            mVoice.setImageResource(resId);
        }
    }

@@ -226,12 +226,12 @@ public class AudioRecorderButton extends Button {
             mCurrentState = state;
             switch (state) {
                 case STATE_NORMAL:
-                    setBackgroundResource(R.drawable.voice1);
+                    setBackgroundResource(R.mipmap.voice1);
                     setText("按下录音");
                     break;
 
                 case STATE_RECORDING:
-                    setBackgroundResource(R.drawable.voice2);
+                    setBackgroundResource(R.mipmap.voice2);
                     setText("松开结束");
                     if (isRecording) {
                         mDialogManager.recording();
@@ -239,7 +239,7 @@ public class AudioRecorderButton extends Button {
                     break;
 
                 case STATE_CANCEL:
-                    setBackgroundResource(R.drawable.voice1);
+                    setBackgroundResource(R.mipmap.voice1);
                     mDialogManager.wantToCancel();
                     setText("松开取消发送");
                     break;
