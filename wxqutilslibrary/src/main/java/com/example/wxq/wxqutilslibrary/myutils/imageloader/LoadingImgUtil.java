@@ -205,5 +205,30 @@ public class LoadingImgUtil {
 //    IN_SAMPLE_INT:图像将被二次采样的整数倍
 //    IN_SAMPLE_POWER_OF_2:图片将降低2倍，直到下一减少步骤，使图像更小的目标大小
 //    NONE:图片不会调整
-
+//DisplayImageOptions options = new DisplayImageOptions.Builder()
+//        // // 设置图片在下载期间显示的图片
+//        .showImageOnLoading(R.drawable.default_load_bg)
+//                // // 设置图片Uri为空或是错误的时候显示的图片
+//        .showImageForEmptyUri(R.drawable.default_fail_bg)
+//                // // 设置图片加载/解码过程中错误时候显示的图片
+//        .showImageOnFail(R.drawable.default_fail_bg)
+//        .cacheInMemory(true)
+//                // 设置下载的图片是否缓存在内存中
+//        .cacheOnDisc(true)
+//                // 设置下载的图片是否缓存在SD卡中
+//        .considerExifParams(true)
+//        .imageScaleType(ImageScaleType.EXACTLY)// 设置图片以如何的编码方式显示
+//        .bitmapConfig(Bitmap.Config.RGB_565)// 设置图片的解码类型
+//                // .decodingOptions(android.graphics.BitmapFactory.Options
+//                // decodingOptions)//设置图片的解码配置
+//        .considerExifParams(true)
+//                // 设置图片下载前的延迟
+//                // .delayBeforeLoading(int delayInMillis)//int
+//                // delayInMillis为你设置的延迟时间
+//                // 设置图片加入缓存前，对bitmap进行设置
+//                // 。preProcessor(BitmapProcessor preProcessor)
+//        .resetViewBeforeLoading(true)// 设置图片在下载前是否重置，复位
+//                // .displayer(new RoundedBitmapDisplayer(20))//是否设置为圆角，弧度为多少
+//        .displayer(new FadeInBitmapDisplayer(400))// 淡入
+//        .build();
 }

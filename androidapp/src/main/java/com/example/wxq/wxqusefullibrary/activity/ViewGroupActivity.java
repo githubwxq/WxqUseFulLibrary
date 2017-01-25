@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.wxq.wxqusefullibrary.Book;
+import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.model.MulBean1;
 import com.example.wxq.wxqusefullibrary.model.MulBean2;

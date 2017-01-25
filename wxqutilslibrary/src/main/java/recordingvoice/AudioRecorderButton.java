@@ -97,7 +97,7 @@ public class AudioRecorderButton extends Button {
         super(context, attrs);
         mDialogManager = new DialogManager(context);
         //录音文件存放地址
-        String dir = Environment.getExternalStorageDirectory() + "/ldm_voice";
+        String dir = Environment.getExternalStorageDirectory() + "/wxq/voice/";
         mAudioManager = AudioManager.getInstance(dir);
         // 回调接口执行顺序不定
         mAudioManager.setOnAudioStateListener(new AudioManager.AudioStateListener() {   //回调到这里来执行

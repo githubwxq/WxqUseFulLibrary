@@ -364,7 +364,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     }
 
     public void showToast(String content) {
-        Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
     }
 
 

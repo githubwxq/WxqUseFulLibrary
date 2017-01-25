@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class HisMsg implements Serializable{
 	
 	private static final long serialVersionUID = 2367464348263411331L;
-	public String id ="";
+	public String id =""; // 唯一标识
 	public String fromId="";
 	public String msgImg=""; 
 	public String msgText="";

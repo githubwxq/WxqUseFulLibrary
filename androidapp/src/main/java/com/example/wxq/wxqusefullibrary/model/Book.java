@@ -1,4 +1,6 @@
-package com.example.wxq.wxqusefullibrary;
+package com.example.wxq.wxqusefullibrary.model;
+
+import com.example.wxq.wxqusefullibrary.R;
 
 import viewgroupadapter.IMulTypeHelper;
 
@@ -8,7 +10,7 @@ import viewgroupadapter.IMulTypeHelper;
 public class Book implements IMulTypeHelper {
   public  String name;
     public  String  price;
-
+public int id;
     public String getType() {
         return type;
     }
@@ -34,6 +36,9 @@ public class Book implements IMulTypeHelper {
         this.price = price;
     }
 
+    public Book() {
+
+    }
     public String getName() {
         return name;
     }

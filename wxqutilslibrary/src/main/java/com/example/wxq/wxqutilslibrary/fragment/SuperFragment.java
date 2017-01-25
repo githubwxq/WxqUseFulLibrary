@@ -70,8 +70,12 @@ public abstract class SuperFragment extends Fragment {
         isFirstLoad = true;
         view = inflater.inflate(getResourceId(), container, false);
         isPrepared = true;
+        commonLoad(view);
         lazyLoad(view);
         return view;
+    }
+     // 普通加载
+    public void commonLoad(View view) {
     }
 
     protected abstract int getResourceId();

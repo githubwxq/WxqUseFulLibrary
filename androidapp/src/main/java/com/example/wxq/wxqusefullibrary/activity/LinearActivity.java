@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.xrecycleview.XRecyclerView;
-import com.github.jdsjlzx.recyclerview.LRecyclerViewAdapter;
+
 
 import java.util.ArrayList;
 

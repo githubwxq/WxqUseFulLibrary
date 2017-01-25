@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
 
 /**

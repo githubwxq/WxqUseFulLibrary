@@ -29,7 +29,7 @@ public class TabsActivity extends BaseActivity {
         setContentView(R.layout.activity_tabs);
         ButterKnife.bind(this);
 
-        RxBus.get().register(this);//创建rxbus添加监听器 当前activity被监听到
+    //    RxBus.get().register(this);//创建rxbus添加监听器 当前activity被监听到
         tabs= (TabLayout) findViewById(R.id.tablayout);
 
         viewPager= (NoScrollViewPager) findViewById(R.id.viewPager);

@@ -8,8 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.wxq.wxqusefullibrary.Book;
 import com.example.wxq.wxqusefullibrary.R;
+import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqusefullibrary.widget.MyTopViewPager;
 import com.example.wxq.wxqutilslibrary.widget.adapter.QuickPageAdapter;
 

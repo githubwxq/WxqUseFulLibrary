@@ -15,7 +15,7 @@ public class DbHelper {
     private DatabaseHelper mDbHelper;
     private SQLiteDatabase mDb;
     private static DbHelper openHelper = null;
-    private static int version = 4;
+    private static int version =1;
     private static String myDBName = "wxq.db";
     private final Context mCtx;
 
@@ -45,27 +45,10 @@ public class DbHelper {
 
         public void onCreate(SQLiteDatabase db) {
             db.execSQL(DBManager.CREATE_TBL_USERMODEL);
-//            db.execSQL(DBManager.CREATE_TAB_WEIDUMSG);
-//            db.execSQL(DBManager.CREATE_TAB_SERVICE_ITEM);
-//            db.execSQL(DBManager.CREATE_TAB_CLAZZS);
-//            db.execSQL(DBManager.CREATE_TBL_USERINFOINFO);
-//            db.execSQL(DBManager.CREATE_TAB_SCHOOLNEWS);
-//            db.execSQL(DBManager.CREATE_TAB_CLAZZDYNAMIC);
-//            db.execSQL(DBManager.CREATE_TAB_STARTENDTIME);
-//            db.execSQL(DBManager.CREATE_TBL_HISMSG);
-//            db.execSQL(DBManager.CREATE_TBL_MSG);
-//            db.execSQL(DBManager.CREATE_TAB_NEARBYEDUSEARCHHISTORY);
-//            db.execSQL(DBManager.CREATE_TAB_CITYLIST);
-//            db.execSQL(DBManager.CREATE_TAB_NEWTIME);
-//            db.execSQL(DBManager.CREATE_TAB_ONLINESCHOOLARTICLE);
-//            db.execSQL(DBManager.CREATE_TAB_MYCOURSEFILE);
-//            db.execSQL(DBManager.CREATE_TAB_ONLINESCHOOL);
-//            db.execSQL(DBManager.CREATE_TAB_SNHIS);
-//            db.execSQL(DBManager.CREATE_TAB_CLASSDYNAMIC_NEW);
         }
 
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-  //          LogUtil.i("oldVersion=" + oldVersion + "\tnewVersion=" + newVersion);
+            //          LogUtil.i("oldVersion=" + oldVersion + "\tnewVersion=" + newVersion);
             // onCreate(db);
 //            if (oldVersion == 1) {
 //                Cursor userCursor = db.rawQuery("select distinct userId from SERVICE_ITEM", null);
@@ -166,7 +149,7 @@ public class DbHelper {
 //                    userCursor.close();
 //                }
 
- //           }
+            //           }
         }
     }
 
@@ -212,6 +195,9 @@ public class DbHelper {
             return null;
         }
     }
+
+    //一些公用的操作封装
+
 
     public int queryId() {
         int id = 0;
@@ -350,7 +336,7 @@ public class DbHelper {
         }
         return flag;
     }
-//
+    //
     public Cursor queryMsgLists(String mid) {
         Cursor cursor = null;
         try {

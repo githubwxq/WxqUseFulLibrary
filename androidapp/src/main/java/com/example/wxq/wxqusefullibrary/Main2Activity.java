@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.MyBaseHolder;
@@ -16,7 +17,7 @@ import com.example.wxq.wxqutilslibrary.widget.adapter.QuickAdapter;
 import com.example.wxq.wxqutilslibrary.widget.adapter.QuickViewHolder;
 import com.example.wxq.wxqutilslibrary.widget.listview.RefreshListView;
 import com.example.wxq.wxqutilslibrary.widget.listview.animations.SwingBottomInAnimationAdapter;
-import com.hwangjr.rxbus.annotation.Subscribe;
+//import com.hwangjr.rxbus.annotation.Subscribe;
 
 import java.util.ArrayList;
 
@@ -39,7 +40,7 @@ public class Main2Activity extends BaseActivity {
         setContentView(R.layout.activity_main2);
         ButterKnife.bind(this);
 
-        RxBus.get().register(this);
+     //   RxBus.get().register(this);
         btnTabs = (Button) findViewById(R.id.btn_tabs);
         btnTabs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,10 +56,10 @@ public class Main2Activity extends BaseActivity {
 
                 Book book = new Book("main2activiy ", "1000");
 
-                RxBus.get().post(book);
+          //      RxBus.get().post(book);
 
-                Intent intent = new Intent(Main2Activity.this, MyRxActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(Main2Activity.this, MyRxActivity.class);
+//                startActivity(intent);
             }
         });
         //   easyListHold = new EasyListHold(this);
@@ -176,7 +177,7 @@ public class Main2Activity extends BaseActivity {
     }
 
 
-    @Subscribe
+
     public void eat(String food) {
         //  Toast.makeText(this,food,Toast.LENGTH_SHORT).show();
 
@@ -188,7 +189,7 @@ public class Main2Activity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         //销毁
-        RxBus.get().unregister(this);
+        //RxBus.get().unregister(this);
     }
 
     @Override

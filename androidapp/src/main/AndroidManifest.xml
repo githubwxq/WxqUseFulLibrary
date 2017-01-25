@@ -11,8 +11,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission  android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".activity.MyApplication"
@@ -91,7 +94,12 @@
         <activity android:name=".activity.ViewGroupActivity" />
         <activity android:name=".activity.LinearLayoutAdapterActivity" />
         <activity android:name=".activity.CustomBannerActivity" />
-        <activity android:name=".activity.RecordVoiceActivity"></activity>
+        <activity android:name=".activity.RecordVoiceActivity" />
+        <activity android:name=".activity.RecordVideoActivity" />
+        <activity android:name=".activity.VideoPreviewActivity" />
+        <activity android:name=".bmob.activity.BmobStartActivity" />
+        <activity android:name=".bmob.activity.LoginActivity" />
+        <activity android:name=".bmob.activity.RegisterActivity"></activity>
     </application>
 
 </manifest>

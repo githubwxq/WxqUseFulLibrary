@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.activity.MainActivity;
 import com.example.wxq.wxqusefullibrary.activity.TabEntity;
-import com.example.wxq.wxqusefullibrary.fragment.lazyFragment1;
+import com.example.wxq.wxqusefullibrary.bmob.activity.homepage.HomeFragment;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment2;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment3;
 import com.example.wxq.wxqusefullibrary.fragment.lazyFragment4;
@@ -26,6 +26,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
+import cn.bmob.v3.Bmob;
+
 public class BmobIndexActivity extends BaseActivity {
 
     private CommonTabLayout mTlBottom;
@@ -37,13 +39,28 @@ public class BmobIndexActivity extends BaseActivity {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private String[] mTitles = {"首页", "消息", "联系人", "更多"};
+    private String[] mTitles = {"首页", "消息", "联系人", "我的"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmob_index);
+        //第一：默认初始化
+    Bmob.initialize(this, "e2403b02ad752d9577698fc49504b980");
+
+        //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
+        //BmobConfig config =new BmobConfig.Builder(this)
+        ////设置appkey
+        //.setApplicationId("Your Application ID")
+        ////请求超时时间（单位为秒）：默认15s
+        //.setConnectTimeout(30)
+        ////文件分片上传时每片的大小（单位字节），默认512*1024
+        //.setUploadBlockSize(1024*1024)
+        ////文件的过期时间(单位为秒)：默认1800s
+        //.setFileExpiration(2500)
+        //.build();
+        //Bmob.initialize(config);
         initFixedData();
         initView();
         setTitleHeadVisiable(false);
@@ -52,7 +69,7 @@ public class BmobIndexActivity extends BaseActivity {
     }
 //
     private void initFixedData() {
-        mFragments.add(new lazyFragment1());
+        mFragments.add(HomeFragment.newInstance());
         mFragments.add(new lazyFragment2());
         mFragments.add(new lazyFragment3());
         mFragments.add(new lazyFragment4());

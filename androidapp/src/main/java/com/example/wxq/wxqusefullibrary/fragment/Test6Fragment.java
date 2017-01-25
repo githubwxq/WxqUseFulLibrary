@@ -5,9 +5,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.wxq.wxqusefullibrary.R;
-import com.hwangjr.rxbus.annotation.Subscribe;
-import com.hwangjr.rxbus.annotation.Tag;
-import com.hwangjr.rxbus.thread.EventThread;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -54,12 +52,12 @@ public class Test6Fragment extends BaseFragment {
         }
     }
 
-    @Subscribe(
-            thread = EventThread.MAIN_THREAD,
-            tags = {
-                    @Tag(RXTAG)
-            }
-    )
+//    @Subscribe(
+//            thread = EventThread.MAIN_THREAD,
+//            tags = {
+//                    @Tag(RXTAG)
+//            }
+//    )
     public void getInforn(String info) {
         tvF6.setText("我接受到了"+info);
     }

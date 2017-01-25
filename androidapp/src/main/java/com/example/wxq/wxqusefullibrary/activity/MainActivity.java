@@ -3,12 +3,9 @@ package com.example.wxq.wxqusefullibrary.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Message;
-import android.support.v4.app.ActivityCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
@@ -16,6 +13,7 @@ import android.widget.ListView;
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.bmob.activity.BmobIndexActivity;
+import com.example.wxq.wxqusefullibrary.bmob.activity.BmobStartActivity;
 import com.example.wxq.wxqusefullibrary.model.Function;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
@@ -69,7 +67,8 @@ public class MainActivity extends BaseActivity {
         Function bomb=new Function();
         bomb.setType(1);
         bomb.setName("基于Bmob平台项目");
-        bomb.setMclass(BmobIndexActivity.class);
+       // bomb.setMclass(BmobIndexActivity.class);
+        bomb.setMclass(BmobStartActivity.class);
 
         Function rx=new Function();
         rx.setType(1);
@@ -216,14 +215,17 @@ public class MainActivity extends BaseActivity {
         recordvoice.setName("语音录制与播放");
         recordvoice.setMclass(RecordVoiceActivity.class);
 
-
+        Function recordvideo=new Function();
+        recordvideo.setType(1);
+        recordvideo.setName("视频录制与播放");
+        recordvideo.setMclass(RecordVideoActivity.class);
 
 
 
 
         functions.add(voiceandshiping);
         functions.add(recordvoice);
-
+        functions.add(recordvideo);
 
 
 
