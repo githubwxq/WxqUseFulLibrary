@@ -54,4 +54,24 @@
         <item name="btnStrokeWidth">1px</item>
     </style>
 
+    <style name="AppTheme.LauncherTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/colorPrimary</item>
+    </style>
+
+    <style name="commontextstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/pink</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="commontextviewstyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/pink</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>

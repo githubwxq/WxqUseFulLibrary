@@ -2,6 +2,7 @@ package com.example.wxq.wxqutilslibrary.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,6 +15,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,9 @@ import java.lang.ref.WeakReference;
 *
 * */
 public abstract class SuperFragment extends Fragment {
+
+    private  SparseArray<View> mViewMap = new SparseArray<View>();
+
     private static final String STATE_SAVE_IS_HIDDEN = "STATE_SAVE_IS_HIDDEN"; //防止fragment重叠
 
     public String fragmentTitle;
@@ -39,6 +44,7 @@ public abstract class SuperFragment extends Fragment {
 
     private View view;
 
+    public Context mcontent;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,13 +74,28 @@ public abstract class SuperFragment extends Fragment {
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
         //  必须设置好缓存界面否则的话对象销毁总是执行 lazyload（）mViewPager.setOffscreenPageLimit(4);
         isFirstLoad = true;
+        mcontent=getActivity();
         view = inflater.inflate(getResourceId(), container, false);
+        // 初始化 不用强转
+        //ViewFinder.initContentView(getActivity(), getResourceId()) ;
         isPrepared = true;
         commonLoad(view);
         lazyLoad(view);
         return view;
     }
-     // 普通加载
+    public  <T extends View> T findViewById(int viewId) {
+        // 先从view map中查找,如果有的缓存的话直接使用,否则再从mContentView中找
+        View tagetView = mViewMap.get(viewId);
+        if (tagetView == null) {
+            tagetView = view.findViewById(viewId);
+            mViewMap.put(viewId, tagetView);
+        }
+        return tagetView == null ? null : (T) view.findViewById(viewId);
+    }
+
+
+
+    // 普通加载
     public void commonLoad(View view) {
     }
 

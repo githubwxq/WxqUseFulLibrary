@@ -15,6 +15,10 @@ public abstract class NestFullListViewAdapter<T> {
         this.mDatas=mDatas;
 
     }
+    public NestFullListViewAdapter(){
+
+
+    }
     /**
      * 被FullListView调用
      *

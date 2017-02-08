@@ -26,7 +26,7 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
-import cn.bmob.v3.Bmob;
+import swipemenu.view.SwipeMenu;
 
 public class BmobIndexActivity extends BaseActivity {
 
@@ -39,15 +39,20 @@ public class BmobIndexActivity extends BaseActivity {
             R.mipmap.tab_home_select, R.mipmap.tab_speech_select,
             R.mipmap.tab_contact_select, R.mipmap.tab_more_select};
     private ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-    private String[] mTitles = {"首页", "消息", "联系人", "我的"};
+    private String[] mTitles = {"bmob", "消息传递", "数据库", "其他"};
     private ArrayList<Fragment> mFragments = new ArrayList<>();
-
+    private SwipeMenu main_swipemenu;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmob_index);
+        setTheme(R.style.AppTheme_NoActionBar);
+       setTitleHeadVisiable(false);
+//        main_swipemenu= (SwipeMenu) findViewById(R.id.main_swipemenu);
+//        main_swipemenu.setChangedBlur(this, R.mipmap.dayu, R.color.colorPrimary);
+//        main_swipemenu.setStyleCode(12111);
         //第一：默认初始化
-    Bmob.initialize(this, "e2403b02ad752d9577698fc49504b980");
+       //  Bmob.initialize(this, "e2403b02ad752d9577698fc49504b980");
 
         //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，
         //BmobConfig config =new BmobConfig.Builder(this)
@@ -63,9 +68,9 @@ public class BmobIndexActivity extends BaseActivity {
         //Bmob.initialize(config);
         initFixedData();
         initView();
-        setTitleHeadVisiable(false);
-
-
+       //   setTitleHeadVisiable(false);
+        setTitleText("android知识技巧大整合");
+      
     }
 //
     private void initFixedData() {

@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wxq.wxqusefullibrary">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 网络状态权限 -->
@@ -37,7 +38,6 @@
             android:label="@string/title_activity_fullscreen"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".Main2Activity" />
-        <activity android:name=".MyRxActivity" />
 
         <meta-data
             android:name="com.example.wxq.wxqusefullibrary.utils.SimpleGlideModule"
@@ -99,7 +99,19 @@
         <activity android:name=".activity.VideoPreviewActivity" />
         <activity android:name=".bmob.activity.BmobStartActivity" />
         <activity android:name=".bmob.activity.LoginActivity" />
-        <activity android:name=".bmob.activity.RegisterActivity"></activity>
+        <activity android:name=".bmob.activity.RegisterActivity" />
+        <activity android:name=".activity.ChoosePicActivity"></activity>
+
+
+        <activity
+
+            android:name="me.iwf.photopicker.PhotoPickerActivity"
+            />
+
+        <activity
+
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            />
     </application>
 
 </manifest>

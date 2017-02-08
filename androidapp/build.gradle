@@ -35,8 +35,14 @@ dependencies {
     compile project(':wxqutilslibrary')
     apt 'com.jakewharton:butterknife-compiler:8.2.1'
     // compile 'com.google.code.gson:gson:2.7'
-//    compile 'io.reactivex:rxjava:1.1.5'
-//    compile 'io.reactivex:rxandroid:1.2.0'
+//    compile ('io.reactivex:rxandroid:1.2.0'){
+//        exclude group: 'io.reactivex:rxandroid'
+//    }
+//
+//
+//    compile ('io.reactivex:rxjava:1.1.6'){
+//        exclude group: 'io.reactivex:rxjava'
+//    }
     //    compile 'com.squareup.retrofit2:retrofit:2.1.0'
     //    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     //    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
@@ -60,6 +66,7 @@ dependencies {
     //    compile 'cn.bmob.android:bmob-sms:1.0.1'
     //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
     // compile 'cn.bmob.android:http-legacy:1.0'
+    compile project(':PhotoPicker')
 
 
     compile 'cn.bmob.android:bmob-sdk:3.5.0'

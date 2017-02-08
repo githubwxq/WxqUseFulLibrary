@@ -3,8 +3,6 @@ package com.example.wxq.wxqusefullibrary.utils;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.example.wxq.wxqusefullibrary.activity.MyApplication;
 import com.example.wxq.wxqutilslibrary.myutils.glide.GlideUtil;
 
 import banner.loader.ImageLoader;
@@ -19,6 +17,7 @@ public class GlideImageLoader extends ImageLoader {
 //                .crossFade()
 //                .into(imageView);
 
-    GlideUtil.getInstance().loadCornerImage(context,imageView,(String)path);
+ //   GlideUtil.getInstance().loadCornerImage(context,imageView,(String)path);
+    GlideUtil.getInstance().loadImage(context,imageView,(String)path,true);
     }
 }

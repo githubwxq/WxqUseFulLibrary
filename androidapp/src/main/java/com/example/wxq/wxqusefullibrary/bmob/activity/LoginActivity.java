@@ -28,7 +28,7 @@ import imageview.CircleImageView;
 public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
     private static final int REGISTER_REQUEST_CODE = 100;
-    private static final int REGISTER_RESULT_CODE =  200 ;
+    private static final int REGISTER_RESULT_CODE = 200;
     final float radius = 8;
     final double scaleFactor = 10;
     private CircleImageView userIcon;
@@ -43,6 +43,18 @@ public class LoginActivity extends BaseActivity {
     // private UserProxy userProxy ;  // 用户操作代理
     private String userNameStr = null;
     private Animation animation; // 登录icon 旋转 动画
+    private TextView one_add;
+    private TextView one_del;
+    private TextView one_update;
+    private TextView one_query;
+    private TextView one_more_add;
+    private TextView one_more_del;
+    private TextView one_more_update;
+    private TextView one_more_query;
+    private TextView more_more_add;
+    private TextView more_more_del;
+    private TextView more_more_update;
+    private TextView more_more_query;
 
     //  private YmApplication ymApplication ;
     @Override
@@ -55,7 +67,7 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void initView() {
-        context=this;
+        context = this;
         userIcon = (CircleImageView) findViewById(R.id.userIcon);
         userNameInput = (DeletableEditText) findViewById(R.id.user_name_input);
         userPwdInput = (DeletableEditText) findViewById(R.id.user_pwd_input);
@@ -74,6 +86,7 @@ public class LoginActivity extends BaseActivity {
         // userProxy.setOnLoginListener(this);
         registerLink.setOnClickListener(this);
 
+
     }
 
     @Override
@@ -89,8 +102,8 @@ public class LoginActivity extends BaseActivity {
     }
 
     private void register() {
-        Intent intent = new Intent() ;
-         intent.setClass(this,RegisterActivity.class) ;
+        Intent intent = new Intent();
+        intent.setClass(this, RegisterActivity.class);
             /*if (background != null) {
                 intent.putExtra("background", background);
             }*/
@@ -130,7 +143,6 @@ public class LoginActivity extends BaseActivity {
         }
 
 
-
         MyUser user = new MyUser();
         user.setUsername(name);
         user.setPassword(password);
@@ -141,9 +153,9 @@ public class LoginActivity extends BaseActivity {
                     //如果是自定义用户对象MyUser，可通过MyUser user = BmobUser.getCurrentUser(MyUser.class)获取自定义用户信息
                     startActivity(new Intent(LoginActivity.this, BmobIndexActivity.class));
                     finish();
-                }else{
+                } else {
                     showToast("用户名或密码出错！");
-                   // userIcon.startAnimation(animation);
+                    // userIcon.startAnimation(animation);
                     userIcon.clearAnimation();
                 }
             }
@@ -158,19 +170,20 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (resultCode){ // 结果数
+        switch (resultCode) { // 结果数
             case REGISTER_RESULT_CODE:
-                String name = data.getStringExtra("username") ;
-                String password = data.getStringExtra("password") ;
+                String name = data.getStringExtra("username");
+                String password = data.getStringExtra("password");
                 userNameInput.setText(name);
                 userPwdInput.setText(password);
-                break ;
+                break;
         }
     }
+
     /**
      * 登录按钮状态
      */
-    public void updateLoginButton(){
+    public void updateLoginButton() {
         if (userNameInput.getText().length() == 0) {
             loginButton.setEnabled(false);
             return;

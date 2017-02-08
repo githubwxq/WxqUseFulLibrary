@@ -21,6 +21,7 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -213,13 +214,23 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
             ll_basetitle.setVisibility(View.GONE);
         }
     }
-
+    View view ;
+    private SparseArray<View> mViewMap = new SparseArray<View>();
+    public  <T extends View> T FindViewById(int viewId) {
+        // 先从view map中查找,如果有的缓存的话直接使用,否则再从mContentView中找
+        View tagetView = mViewMap.get(viewId);
+        if (tagetView == null) {
+            tagetView = view.findViewById(viewId);
+            mViewMap.put(viewId, tagetView);
+        }
+        return tagetView == null ? null : (T) view.findViewById(viewId);
+    }
     /*
     * 重写setContentView让继承者设置的view 添加到内容布局中
     * */
     @Override
     public void setContentView(int layoutResID) {
-        View view = getLayoutInflater().inflate(layoutResID, null);
+         view = getLayoutInflater().inflate(layoutResID, null);
         RelativeLayout.LayoutParams lp = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         lp.addRule(RelativeLayout.BELOW, R.id.ll_basetitle);
         if (null != llRoot)

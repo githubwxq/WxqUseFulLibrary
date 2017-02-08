@@ -1,1 +1,1 @@
-include ':androidapp', ':wxqutilslibrary'
+include ':androidapp', ':wxqutilslibrary', ':PhotoPicker'

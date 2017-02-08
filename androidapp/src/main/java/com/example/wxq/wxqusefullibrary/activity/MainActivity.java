@@ -19,7 +19,6 @@ import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
-import com.example.wxq.wxqutilslibrary.widget.listview.animations.SwingLeftInAnimationAdapter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -27,6 +26,8 @@ import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import swipemenu.view.SwipeMenu;
 
 public class MainActivity extends BaseActivity {
     public static final String RXTAG = "MainActivity";
@@ -36,7 +37,7 @@ public class MainActivity extends BaseActivity {
     private ArrayList<Function> functions = new ArrayList<>();
     ListView lv_functions;
     BottomView bottomView = null;
-
+    private SwipeMenu main_swipemenu;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -235,6 +236,11 @@ public class MainActivity extends BaseActivity {
         Function about_pic=new Function();
         about_pic.setType(0);//0 标题类型
         about_pic.setName("图片相关");
+        Function choosepic=new Function();
+        choosepic.setType(1);
+        choosepic.setName("图片选择");
+        choosepic.setMclass(ChoosePicActivity.class);
+
         Function show_pic=new Function();
         show_pic.setType(1);
         show_pic.setName("phoneview图片预览");
@@ -246,6 +252,7 @@ public class MainActivity extends BaseActivity {
         show_pic2.setMclass(ShowPicAndVideoActivity.class);
 
         functions.add(about_pic);
+        functions.add(choosepic);
         functions.add(show_pic);
         functions.add(show_pic2);
         Function imageview_gif=new Function();
@@ -299,6 +306,12 @@ public class MainActivity extends BaseActivity {
     }
 
     private void initView() {
+      //  setTheme(R.style.AppTheme_NoActionBar);
+//        setTitleHeadVisiable(false);
+//        main_swipemenu= (SwipeMenu) findViewById(R.id.main_swipemenu);
+//        main_swipemenu.setChangedBlur(this, R.mipmap.dayu, R.color.colorPrimary);
+//        main_swipemenu.setStyleCode(12111);
+
         lv_functions= (ListView) findViewById(R.id.lv_functions);
         MultLayoutAdapter multLayoutAdapter=new MultLayoutAdapter(this,R.layout.function_list_item0,functions);
 //        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
@@ -307,10 +320,10 @@ public class MainActivity extends BaseActivity {
 //        SwingRightInAnimationAdapter swingRightInAnimationAdapter = new SwingRightInAnimationAdapter(swingBottomInAnimationAdapter);
 //        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter = new SwingBottomInAnimationAdapter(multLayoutAdapter);
 //        SwingRightInAnimationAdapter swingRightInAnimationAdapter = new SwingRightInAnimationAdapter(swingBottomInAnimationAdapter);
-        SwingLeftInAnimationAdapter swingLeftInAnimationAdapter = new SwingLeftInAnimationAdapter(multLayoutAdapter);
-        swingLeftInAnimationAdapter.setListView(lv_functions);
+//        SwingLeftInAnimationAdapter swingLeftInAnimationAdapter = new SwingLeftInAnimationAdapter(multLayoutAdapter);
+//        swingLeftInAnimationAdapter.setListView(lv_functions);
    // swingRightInAnimationAdapter.setListView(lv_functions);
-        lv_functions.setAdapter(swingLeftInAnimationAdapter);
+        lv_functions.setAdapter(multLayoutAdapter);
 
     }
 

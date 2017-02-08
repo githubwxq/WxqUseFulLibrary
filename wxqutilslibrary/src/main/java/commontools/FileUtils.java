@@ -554,6 +554,8 @@ public class FileUtils {
     }
 
 
+
+
     /**
      *
      * @param path  路径
@@ -1002,4 +1004,28 @@ public class FileUtils {
             e.printStackTrace();
         }
     }
+
+    // 删除某一目录下所有文件
+    private void deleteAllFiles(File root) {
+        File files[] = root.listFiles();
+        if (files != null)
+            for (File f : files) {
+                if (f.isDirectory()) { // 判断是否为文件夹
+                    deleteAllFiles(f);
+                    try {
+                        f.delete();
+                    } catch (Exception e) {
+                    }
+                } else {
+                    if (f.exists()) { // 判断是否存在
+                        deleteAllFiles(f);
+                        try {
+                            f.delete();
+                        } catch (Exception e) {
+                        }
+                    }
+                }
+            }
+    }
+
 }

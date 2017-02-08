@@ -4,10 +4,21 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.example.wxq.wxqusefullibrary.R;
+import com.example.wxq.wxqusefullibrary.bmob.activity.homepage.childfragment.BmobDataConectionFragment;
+import com.example.wxq.wxqusefullibrary.bmob.activity.homepage.childfragment.RecommendFragment;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment2;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment3;
+import com.example.wxq.wxqusefullibrary.fragment.lazyFragment4;
 import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
+import com.example.wxq.wxqutilslibrary.widget.mulripletablayout.SlidingTabLayout;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,13 +33,10 @@ public class HomeFragment extends SuperFragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
     private OnFragmentInteractionListener mListener;
-
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -54,14 +62,7 @@ public class HomeFragment extends SuperFragment {
         HomeFragment fragment = new HomeFragment();
         return fragment;
     }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+
 
     @Override
     protected int getResourceId() {
@@ -70,6 +71,21 @@ public class HomeFragment extends SuperFragment {
 
     @Override
     protected void initDataAndView(View view) {
+        /**自定义部分属性*/
+        mFragments.add(BmobDataConectionFragment.newInstance());
+        mFragments.add(RecommendFragment.newInstance());
+        mFragments.add(new lazyFragment3());
+        mFragments.add(new lazyFragment2());
+        mFragments.add(new lazyFragment3());
+        mFragments.add(new lazyFragment4());
+        SlidingTabLayout tabLayout_2 = (SlidingTabLayout) view.findViewById(R.id.tl_2);
+        ViewPager vp = (ViewPager) view.findViewById(R.id.vp);
+        mAdapter = new MyPagerAdapter(getChildFragmentManager());
+        vp.setAdapter(mAdapter);
+        tabLayout_2.setViewPager(vp);
+
+
+
 
     }
 
@@ -77,12 +93,39 @@ public class HomeFragment extends SuperFragment {
     protected void setDefaultFragmentTitle(String title) {
 
     }
-
+    private final String[] mTitles = {
+            "bombdataconnection", "recommendfragment", "edittext"
+            , "button", "viewpage", "toast"
+    };
+    private MyPagerAdapter mAdapter;
+    private ArrayList<Fragment> mFragments = new ArrayList<>();
+    //普通加载
     @Override
     public void commonLoad(View view) {
-        super.commonLoad(view);
+
     }
 
+
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+        public MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragments.size();
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mTitles[position];
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragments.get(position);
+        }
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

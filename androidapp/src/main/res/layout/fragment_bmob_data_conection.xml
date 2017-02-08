@@ -1,0 +1,145 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.wxq.wxqusefullibrary.bmob.activity.homepage.childfragment.BmobDataConectionFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/pink"
+        android:text="一对一"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/one_add"
+            android:text="一对一增"
+            style="@style/commontextstyle" />
+
+        <TextView
+            android:id="@+id/one_del"
+            android:text="一对一删"
+            style="@style/commontextviewstyle" />
+
+        <TextView
+            android:id="@+id/one_update"
+            android:text="一对一改"
+            style="@style/commontextviewstyle" />
+
+        <TextView
+            android:id="@+id/one_query"
+            android:text="一对一查"
+            style="@style/commontextviewstyle" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="一对多"
+      />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:textSize="20sp">
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/one_more_add"
+            android:text="一对多增"
+          />
+
+        <TextView
+
+            android:id="@+id/one_more_del"
+            android:text="一对多删"
+            style="@style/commontextviewstyle" />
+
+        <TextView
+
+            android:id="@+id/one_more_update"
+            android:text="一对多改"
+
+            style="@style/commontextviewstyle"/>
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/one_more_query"
+            android:text="一对多查"
+           />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/commontextviewstyle"
+        android:text="多对多"
+        android:textSize="20sp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/more_more_add"
+            android:text="多对多增"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/more_more_del"
+            android:text="多对多删"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/more_more_update"
+            android:text="多对多改"
+            android:textSize="20sp" />
+
+        <TextView
+            style="@style/commontextviewstyle"
+            android:id="@+id/more_more_query"
+            android:text="多对多查"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <Button
+
+        android:id="@+id/btn_loginout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="loginout"
+        />
+
+    <Button
+        android:id="@+id/add_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="addpic"
+        />
+       <ImageView
+        android:id="@+id/header"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+
+           />
+    <Button
+        android:id="@+id/upload_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="upload_pic"
+        />
+</LinearLayout>
