@@ -24,13 +24,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.widget.videoview.scalable.ScalableType;
 import com.example.wxq.wxqutilslibrary.widget.videoview.scalable.ScalableVideoView;
 import com.nostra13.universalimageloader.core.ImageLoader;

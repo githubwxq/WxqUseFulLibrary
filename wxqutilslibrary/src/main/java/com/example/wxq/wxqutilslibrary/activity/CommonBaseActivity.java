@@ -8,7 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.wxq.wxqutilslibrary.R;
-import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
+import com.example.wxq.wxqutilslibrary.imageloadutils.log.LogUtils;
 
 /**
  * Created by Administrator on 2016/8/17 0017.

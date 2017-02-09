@@ -16,7 +16,6 @@ import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.Target;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
-import com.example.wxq.wxqutilslibrary.myutils.glide.GlideUtil;
 
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 

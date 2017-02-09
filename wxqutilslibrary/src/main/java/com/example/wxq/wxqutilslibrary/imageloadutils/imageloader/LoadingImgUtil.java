@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.myutils.imageloader;
+package com.example.wxq.wxqutilslibrary.imageloadutils.imageloader;
 
 import android.content.Context;
 import android.graphics.Bitmap;

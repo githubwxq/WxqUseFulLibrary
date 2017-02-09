@@ -10,8 +10,8 @@ import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.model.MsgEvent;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
-import com.example.wxq.wxqutilslibrary.myutils.xutils.NetConnectTools;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.xutils.NetConnectTools;
 import com.google.gson.Gson;
 
 import org.greenrobot.eventbus.EventBus;

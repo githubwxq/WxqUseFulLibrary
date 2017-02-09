@@ -1,11 +1,9 @@
-package com.example.wxq.wxqutilslibrary.myutils.xutils;
+package com.example.wxq.wxqutilslibrary.imageloadutils.xutils;
 
 import android.content.Context;
 import android.util.ArrayMap;
-import android.view.View;
 import android.widget.Toast;
 
-import com.example.wxq.wxqutilslibrary.widget.dialog.CommonAlertDialog;
 import com.example.wxq.wxqutilslibrary.widget.dialog.CommonLoadDialog;
 
 import org.xutils.common.Callback;

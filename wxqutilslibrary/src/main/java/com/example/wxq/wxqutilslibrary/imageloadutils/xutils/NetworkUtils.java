@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.myutils.xutils;
+package com.example.wxq.wxqutilslibrary.imageloadutils.xutils;
 
 import android.content.Context;
 import android.location.LocationManager;

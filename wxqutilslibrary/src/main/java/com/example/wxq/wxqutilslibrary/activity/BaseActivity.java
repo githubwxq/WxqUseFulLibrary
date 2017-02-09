@@ -30,7 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.R;
-import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
+import com.example.wxq.wxqutilslibrary.imageloadutils.log.LogUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;

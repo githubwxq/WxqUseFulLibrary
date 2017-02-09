@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.widget.banner.XBanner;
 
 import java.util.ArrayList;

@@ -9,7 +9,7 @@ import android.widget.ImageView;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.bmob.activity.model.RecommendItem;
-import com.example.wxq.wxqutilslibrary.myutils.glide.GlideUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.glide.GlideUtil;
 
 import java.util.List;
 

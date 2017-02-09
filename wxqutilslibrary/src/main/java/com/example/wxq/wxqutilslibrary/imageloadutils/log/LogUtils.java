@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.myutils.log;
+package com.example.wxq.wxqutilslibrary.imageloadutils.log;
 
 import android.util.Log;
 

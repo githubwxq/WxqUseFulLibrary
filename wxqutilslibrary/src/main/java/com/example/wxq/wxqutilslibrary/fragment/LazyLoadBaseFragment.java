@@ -5,7 +5,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 
 
-import com.example.wxq.wxqutilslibrary.myutils.log.LogUtils;
+import com.example.wxq.wxqutilslibrary.imageloadutils.log.LogUtils;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -5,11 +5,10 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.ImageView;
 
 import com.example.wxq.wxqutilslibrary.R;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.widget.photoview.PhotoView;
 
 import java.util.ArrayList;

@@ -1,16 +1,26 @@
-package com.example.wxq.wxqutilslibrary.myutils.glide;
+package com.example.wxq.wxqutilslibrary.imageloadutils.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.target.Target;
 import com.example.wxq.wxqutilslibrary.R;
+
+import org.xutils.common.util.LogUtil;
 
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -309,27 +319,72 @@ public class GlideUtil {
         };
 
 
-
-
-
-
-
-
-
-
-
-
-
     }
 
+  // e学带进度加载
+    public static void loadimg(String url, ImageView imgview,
+                               final ProgressBar progressBar, Context context) {
+        if (imgview == null || imgview.getContext() == null)
+            return;
+     //   int resId = flag ? R.mipmap.default_head : R.mipmap.falseimg;
+        Glide.with(context).load(url.replace("https://", "http://"))
+                .placeholder(R.drawable.default_image)
+                .error(R.drawable.default_image)
+                .fallback(R.drawable.default_image)
+//                .thumbnail(0.1f)
+                .skipMemoryCache(false)
+                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                .listener(new LoggingListener<String, GlideDrawable>())
+                .into(new GlideDrawableImageViewTarget(imgview) {
 
+                    private void setVisibility(boolean visible) {
+                        if (progressBar != null) {
+                            progressBar.setVisibility(visible ? View.VISIBLE : View.GONE);
+                        }
+                    }
 
+                    @Override
+                    public void onLoadStarted(Drawable placeholder) {
+                        super.onLoadStarted(placeholder);
+                        setVisibility(true);
+                    }
 
+                    @Override
+                    public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                        super.onLoadFailed(e, errorDrawable);
+                        setVisibility(false);
+                    }
 
+                    @Override
+                    public void onLoadCleared(Drawable placeholder) {
+                        super.onLoadCleared(placeholder);
+                        setVisibility(false);
+                    }
 
+                    @Override
+                    public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                        super.onResourceReady(resource, animation);
+                        setVisibility(false);
+                    }
+                });
+
+    }
+    public static class LoggingListener<T, R> implements RequestListener<T, R> {
+
+        @Override
+        public boolean onException(Exception e, Object model, Target target, boolean isFirstResource) {
+            LogUtil.d("onException", e);
+            return false;
+        }
+
+        @Override
+        public boolean onResourceReady(Object resource, Object model, Target target, boolean isFromMemoryCache, boolean isFirstResource) {
+            LogUtil.d("onResourceReady=" + model.toString());
+            return false;
+        }
+    }
 
     //其他不常用方法
     //.skipMemoryCache( true )跳过 内存缓存
-
 
 }

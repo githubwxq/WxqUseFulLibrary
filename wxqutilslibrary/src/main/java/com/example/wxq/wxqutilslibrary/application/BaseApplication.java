@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 

@@ -1,15 +1,12 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
@@ -18,7 +15,7 @@ import android.widget.ImageView;
 
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.example.wxq.wxqutilslibrary.widget.photoview.Info;
 import com.example.wxq.wxqutilslibrary.widget.photoview.PhotoView;
 

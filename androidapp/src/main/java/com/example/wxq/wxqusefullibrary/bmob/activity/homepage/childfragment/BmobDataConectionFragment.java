@@ -16,7 +16,7 @@ import com.example.wxq.wxqusefullibrary.bmob.activity.model.Post;
 import com.example.wxq.wxqusefullibrary.luban.Luban;
 import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
-import com.example.wxq.wxqutilslibrary.myutils.imageloader.LoadingImgUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 
 import java.io.File;
 import java.util.ArrayList;

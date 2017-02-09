@@ -3,7 +3,7 @@ package com.example.wxq.wxqusefullibrary.utils;
 import android.content.Context;
 import android.widget.ImageView;
 
-import com.example.wxq.wxqutilslibrary.myutils.glide.GlideUtil;
+import com.example.wxq.wxqutilslibrary.imageloadutils.glide.GlideUtil;
 
 import banner.loader.ImageLoader;
 
