@@ -2,6 +2,7 @@ package specialtools;
 
 /**
  * Created by Administrator on 2016/10/4.
+ * 缓存工具类可以缓存对象以及集合
  */
 
 import android.content.Context;

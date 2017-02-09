@@ -267,3 +267,15 @@ public class CircleImageView extends ImageView {
 
 
 }
+//<imageview.CircleImageView
+//        android:id="@+id/userIcon"
+//        xmlns:app="http://schemas.android.com/apk/res-auto"
+//        android:layout_width="83dp"
+//        android:layout_height="83dp"
+//        android:layout_gravity="center_horizontal"
+//        android:layout_marginBottom="30dp"
+//        android:layout_marginTop="60dp"
+//        android:src="@mipmap/user_icon_default_main"
+//        app:border_color="@color/green"
+//        app:border_width="2dp"/>
+//

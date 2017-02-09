@@ -490,4 +490,7 @@
         <!--全局背景的模糊度-->
         <attr name="sm_fullimageblur" format="float"/>
     </declare-styleable>
+
+
+
 </resources>
