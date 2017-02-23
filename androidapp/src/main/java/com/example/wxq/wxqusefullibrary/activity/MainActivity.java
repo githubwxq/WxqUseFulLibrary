@@ -80,6 +80,36 @@ public class MainActivity extends BaseActivity {
         functions.add(bomb);
         functions.add(rx);
 
+        //android项目优化
+        Function youhua=new Function();
+        youhua.setType(0);//0 标题类型
+        youhua.setName("Android项目优化");
+
+        Function neichun=new Function();
+        neichun.setType(1);
+        neichun.setName("内存优化");
+        // bomb.setMclass(BmobIndexActivity.class);
+        neichun.setMclass(MemoryActivity.class);
+
+
+        Function rendering=new Function();
+        rendering.setType(1);
+        rendering.setName("渲染机制");
+        // bomb.setMclass(BmobIndexActivity.class);
+        rendering.setMclass(RenderingActivity.class);
+
+
+
+        functions.add(youhua);
+        functions.add(neichun);
+        functions.add(rendering);
+
+
+
+
+
+
+
         //listview 分类
         Function function_listview=new Function();
         function_listview.setType(0);//0 标题类型
@@ -246,6 +276,14 @@ public class MainActivity extends BaseActivity {
         show_pic.setName("phoneview图片预览");
         show_pic.setMclass(PhoteViewActivity.class);
 
+
+
+        Function show_pic_weixin=new Function();
+        show_pic_weixin.setType(1);
+        show_pic_weixin.setName("仿微信图片预览");
+        show_pic_weixin.setMclass(weixinActivity.class);
+
+
         Function show_pic2=new Function();
         show_pic2.setType(1);
         show_pic2.setName("图片视频一起播放预览");
@@ -255,11 +293,15 @@ public class MainActivity extends BaseActivity {
         functions.add(choosepic);
         functions.add(show_pic);
         functions.add(show_pic2);
+        functions.add(show_pic_weixin);
+
         Function imageview_gif=new Function();
         imageview_gif.setType(1);
         imageview_gif.setName("播放gif的imageview");
         imageview_gif.setMclass(GifImageViewActivity.class);
         functions.add(imageview_gif);
+
+
 
         //特殊控件测试
         Function button=new Function();

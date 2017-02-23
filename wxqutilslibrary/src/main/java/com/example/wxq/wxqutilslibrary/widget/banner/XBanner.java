@@ -162,6 +162,12 @@ public class XBanner extends RelativeLayout {
         }
         //添加ViewPager
         mViewPager = new ViewPager(context);
+//        android:clipToPadding="false"
+//        android:paddingLeft="80dp"
+//        android:paddingRight="80dp"
+//        mViewPager.setClipToPadding(false);
+//    //    mViewPager.setPaddingRelative(200,0,200,0);
+//        mViewPager.setPadding(200,0,200,0);
         addView(mViewPager, new LayoutParams(RMP, RMP));
         //设置指示器背景容器
         RelativeLayout pointContainerRl = new RelativeLayout(context);

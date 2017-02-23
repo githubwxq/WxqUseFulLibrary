@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
+import com.example.wxq.wxqutilslibrary.Global;
 import com.example.wxq.wxqutilslibrary.R;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
@@ -106,8 +107,10 @@ public class LoadingImgUtil {
 
     public static void initImageLoader(Context context) {
         @SuppressWarnings("deprecation")
+//        File cacheDir = StorageUtils.getOwnCacheDirectory(context,
+//                "wxq/ImageLoadPic");// 获取到缓存的目录地址
         File cacheDir = StorageUtils.getOwnCacheDirectory(context,
-                "wxq/ImageLoadPic");// 获取到缓存的目录地址
+                Global.IMAGELOADPIC);// 获取到缓存的目录地址
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
                 context).threadPriority(Thread.NORM_PRIORITY - 2)
                 .denyCacheImageMultipleSizesInMemory()

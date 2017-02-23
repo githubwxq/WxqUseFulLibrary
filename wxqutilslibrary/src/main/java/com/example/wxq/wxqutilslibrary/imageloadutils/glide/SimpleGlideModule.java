@@ -12,6 +12,7 @@ import com.bumptech.glide.load.engine.cache.DiskLruCacheWrapper;
 import com.bumptech.glide.load.engine.cache.LruResourceCache;
 import com.bumptech.glide.load.engine.cache.MemorySizeCalculator;
 import com.bumptech.glide.module.GlideModule;
+import com.example.wxq.wxqutilslibrary.Global;
 
 import java.io.File;
 
@@ -54,7 +55,9 @@ public class SimpleGlideModule implements GlideModule {
     public  File getOwnCacheDirectory(Context context, String cacheDir) {
         File appCacheDir = null;
         if("mounted".equals(Environment.getExternalStorageState()) && hasExternalStoragePermission(context)) {
-            appCacheDir = new File(Environment.getExternalStorageDirectory(), cacheDir);
+         //   appCacheDir = new File(Environment.getExternalStorageDirectory(), cacheDir);
+            appCacheDir = new File(Global.GLIDEPIC);
+
         }
 
         if(appCacheDir == null || !appCacheDir.exists() && !appCacheDir.mkdirs()) {

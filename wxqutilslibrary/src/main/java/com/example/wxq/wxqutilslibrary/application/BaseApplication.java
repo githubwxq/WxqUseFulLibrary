@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 
+import com.example.wxq.wxqutilslibrary.Global;
 import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
@@ -188,7 +189,8 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         File cacheFile = null;
         String externalStorageState = Environment.getExternalStorageState();
         if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-            cacheFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "wxq/ErrorException");
+        //    cacheFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator + "wxq/ErrorException");
+            cacheFile = new File(Global.ERROREXCEPTION);
             if (!cacheFile.exists()) {
                 cacheFile.mkdir();
             }
