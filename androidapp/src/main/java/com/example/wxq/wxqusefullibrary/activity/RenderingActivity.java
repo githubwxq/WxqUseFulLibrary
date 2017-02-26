@@ -1,12 +1,10 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.TextView;
 
-import com.android.debug.hv.ViewServer;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 
@@ -21,17 +19,17 @@ public class RenderingActivity extends BaseActivity {
         view = stub.inflate();
         tv_tab_title= (TextView) view.findViewById(R.id.tv_tab_title);
         tv_tab_title.setText("ewewwewwe");
-        ViewServer.get(this).addWindow(this);
+   //     ViewServer.get(this).addWindow(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ViewServer.get(this).removeWindow(this);
+        //     ViewServer.get(this).removeWindow(this);
     }
     public void onResume() {
         super.onResume();
-        ViewServer.get(this).setFocusedWindow(this);
+        //        ViewServer.get(this).setFocusedWindow(this);
     }
 
     @Override

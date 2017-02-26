@@ -109,7 +109,7 @@ public class ImageWatcher extends FrameLayout implements GestureDetector.OnGestu
         tCurrentIdx.setTextColor(0xFFFFFFFF);
         tCurrentIdx.setGravity(Gravity.CENTER_HORIZONTAL);
         DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
-        tCurrentIdx.setTranslationY(CommonTools.getScreenHeight(context) - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 50, displayMetrics) + 0.5f);
+        tCurrentIdx.setTranslationY(CommonTools.getScreenHeight(context) - TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 100, displayMetrics) + 0.5f);
     }
 
     /**

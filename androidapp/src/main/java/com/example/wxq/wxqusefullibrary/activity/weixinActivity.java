@@ -1,14 +1,9 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
-import android.graphics.Color;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,6 +16,7 @@ import java.util.List;
 
 import imagewatch.ImageWatcher;
 import imagewatch.MessagePicturesLayout;
+import imagewatch.PicSaveDialog;
 import imagewatch.SpaceItemDecoration;
 import imagewatch.Utils;
 
@@ -55,13 +51,13 @@ public class weixinActivity extends
         adapter.set(Data.get());
 
 //        // 一般来讲， ImageWatcher 需要占据全屏的位置
-//        vImageWatcher = (ImageWatcher) findViewById(R.id.v_image_watcher);
-//        // 如果是透明状态栏，你需要给ImageWatcher标记 一个偏移值，以修正点击ImageView查看的启动动画的Y轴起点的不正确
-//        vImageWatcher.setTranslucentStatus(!isTranslucentStatus ? Utils.calcStatusBarHeight(this) : 0);
-//        // 配置error图标
-//        vImageWatcher.setErrorImageRes(R.drawable.default_image);
-//        // 长按图片的回调，你可以显示一个框继续提供一些复制，发送等功能
-//        vImageWatcher.setOnPictureLongPressListener(this);
+        vImageWatcher = (ImageWatcher) findViewById(R.id.v_image_watcher);
+        // 如果是透明状态栏，你需要给ImageWatcher标记 一个偏移值，以修正点击ImageView查看的启动动画的Y轴起点的不正确
+        vImageWatcher.setTranslucentStatus(!isTranslucentStatus ? Utils.calcStatusBarHeight(this) : 0);
+        // 配置error图标
+        vImageWatcher.setErrorImageRes(R.drawable.default_image);
+        // 长按图片的回调，你可以显示一个框继续提供一些复制，发送等功能
+      vImageWatcher.setOnPictureLongPressListener(this);
 
         Utils.fitsSystemWindows(isTranslucentStatus, findViewById(R.id.v_fit));
 
@@ -79,6 +75,9 @@ public class weixinActivity extends
     @Override
     public void onPictureLongPress(ImageView v, String url, int pos) {
         Toast.makeText(v.getContext().getApplicationContext(), "长按了第" + (pos + 1) + "张图片", Toast.LENGTH_SHORT).show();
+        PicSaveDialog.getInstance().createSavePicDialog(this,vImageWatcher,url,null);
+
+
     }
 
     @Override

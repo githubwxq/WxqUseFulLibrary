@@ -276,7 +276,12 @@ public class FileUtils {
     public static void  movePicToDir(File file,String fileDir) {
         try {
             File afile = file;
-            if (afile.renameTo(new File(fileDir + CommonTools.getMsgCurrentTime().trim()+".png"))) {
+
+            File  cacheFile = new File(fileDir);
+            if (!cacheFile.exists()) {
+                cacheFile.mkdir();
+            }
+            if (afile.renameTo(new File(cacheFile, CommonTools.getMsgCurrentTime().trim()+".png"))) {
                 System.out.println("File is moved successful!");
                 afile.delete();
             } else {

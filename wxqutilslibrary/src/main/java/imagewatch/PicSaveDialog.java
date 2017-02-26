@@ -19,16 +19,18 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.example.wxq.wxqutilslibrary.Global;
 import com.example.wxq.wxqutilslibrary.R;
-
 
 import java.io.File;
 
 import commontools.CommonTools;
+import commontools.FileUtils;
 
 /**
  * 选择更新用的dialog
@@ -147,15 +149,17 @@ public class PicSaveDialog implements OnClickListener{
 
                 try {
                     MediaStore.Images.Media.insertImage(mcontext.getContentResolver(), resource.getAbsolutePath(), "wxq", null);
-//                    CommonTools.updateAlbum(mcontext.getApplicationContext());
-//                    CommonTools.showToast(mcontext, "保存成功");
-//                    //将文件转移到另外目录
-//                    FileUtils.movePicToDir(resource,Global.SAVEPICTURE);
+                   // CommonTools.updateAlbum(mcontext.getApplicationContext());
+                    Toast.makeText(mcontext,"保存成功", Toast.LENGTH_LONG).show();
+                    //dd
+                    //将文件转移到另外目录
+                    FileUtils.movePicToDir(resource, Global.SAVEIMAGE);
                     if (savePicDialog != null) {
                         savePicDialog.dismiss();
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
+                    Toast.makeText(mcontext,"保存失败", Toast.LENGTH_LONG).show();
                  //   CommonTools.showToast(mcontext, "保存失败");
                     if (savePicDialog != null) {
                         savePicDialog.dismiss();

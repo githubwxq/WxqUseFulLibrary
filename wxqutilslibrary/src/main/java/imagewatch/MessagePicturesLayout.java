@@ -11,8 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-import com.bumptech.glide.Glide;
 import com.example.wxq.wxqutilslibrary.R;
 import com.example.wxq.wxqutilslibrary.imageloadutils.glide.GlideUtil;
 
@@ -120,9 +118,9 @@ public class MessagePicturesLayout extends FrameLayout implements View.OnClickLi
         }
 
 //
-//        tOverflowCount.setVisibility(urlListSize > MAX_DISPLAY_COUNT ? View.VISIBLE : View.GONE);
-//        tOverflowCount.setText("+ " + (urlListSize - MAX_DISPLAY_COUNT));
-//        tOverflowCount.setLayoutParams(lpChildImage);
+        tOverflowCount.setVisibility(urlListSize > MAX_DISPLAY_COUNT ? View.VISIBLE : View.GONE);
+        tOverflowCount.setText("+ " + (urlListSize - MAX_DISPLAY_COUNT));
+        tOverflowCount.setLayoutParams(lpChildImage);
 
         mVisiblePictureList.clear();  //可见的
         for (int i = 0; i < iPictureList.size(); i++) {
@@ -144,10 +142,10 @@ public class MessagePicturesLayout extends FrameLayout implements View.OnClickLi
                 iPicture.setVisibility(View.GONE);
             }
 
-//            if (i == MAX_DISPLAY_COUNT - 1) {     //最后一个8 数字加上去
-//                tOverflowCount.setTranslationX((i % column) * (imageSize + mSpace));  //view相对原始位置的偏移量
-//                tOverflowCount.setTranslationY((i / column) * (imageSize + mSpace));
-//            }
+            if (i == MAX_DISPLAY_COUNT - 1) {     //最后一个8 数字加上去
+                tOverflowCount.setTranslationX((i % column) * (imageSize + mSpace));  //view相对原始位置的偏移量
+                tOverflowCount.setTranslationY((i / column) * (imageSize + mSpace));
+            }
         }
 
 
