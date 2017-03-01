@@ -1,7 +1,9 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,6 +15,8 @@ import java.util.ArrayList;
 
 import me.iwf.photopicker.PhotoPickUtils;
 import me.iwf.photopicker.PhotoPicker;
+import me.iwf.photopicker.utils.BimpUtils;
+import me.iwf.photopicker.utils.ImagePreference;
 import me.iwf.photopicker.widget.MultiPickResultView;
 
 public class ChoosePicActivity extends BaseActivity implements View.OnClickListener {
@@ -24,6 +28,8 @@ public class ChoosePicActivity extends BaseActivity implements View.OnClickListe
     private Button button_multiple_picked;
     private MultiPickResultView recycler_view;
     private MultiPickResultView recycler_onlylook;
+    private MultiPickResultView recyclerView;
+
     ArrayList<String> selectedPhotos = new ArrayList<>();
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -48,27 +54,42 @@ public class ChoosePicActivity extends BaseActivity implements View.OnClickListe
         button_multiple_picked = (Button) findViewById(R.id.button_multiple_picked);
         recycler_view = (MultiPickResultView) findViewById(R.id.recycler_view);
         recycler_onlylook = (MultiPickResultView) findViewById(R.id.recycler_onlylook);
+        recyclerView= (MultiPickResultView) findViewById(R.id.recyclerView);
 
         button.setOnClickListener(this);
         button_no_camera.setOnClickListener(this);
         button_one_photo.setOnClickListener(this);
         button_photo_gif.setOnClickListener(this);
         button_multiple_picked.setOnClickListener(this);
+        ImagePreference.getInstance(getApplicationContext()).clearAllImagesList();
+        BimpUtils.deleteFile(this);
+       // resultView.init(8, this, MultiPickResultView.ACTION_SELECT, ImagePreference.getInstance(getApplicationContext()).getImagesList(ImagePreference.DRR));
+        recyclerView.init(8,this,MultiPickResultView.ACTION_SELECT,ImagePreference.getInstance(this).getImagesList(ImagePreference.DRR));
+    //    recycler_view.init(this, MultiPickResultView.ACTION_SELECT, null);
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        ImagePreference.getInstance(getApplicationContext()).clearAllImagesList();
+        BimpUtils.deleteFile(this);
+        sendBroadcast(new Intent(
+                Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://"
+                + Environment.getExternalStorageDirectory())));
+        super.onDestroy();
 
 
-
-        recycler_view.init(this, MultiPickResultView.ACTION_SELECT, null);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.button:
-                PhotoPicker.builder()
-                        .setPhotoCount(4)
-                        .setShowCamera(true)
-                        .setSelected(selectedPhotos)
-                        .start(this);
+//                PhotoPicker.builder()
+//                        .setPhotoCount(4)
+//                        .setShowCamera(true)
+//                        .setSelected(selectedPhotos)
+//                        .start(this);
                 break;
 
             case R.id.button_no_camera:
@@ -86,6 +107,7 @@ public class ChoosePicActivity extends BaseActivity implements View.OnClickListe
         }
     }
     @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        recyclerView.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
 //
 //        recyclerView.onActivityResult(requestCode, resultCode, data);
@@ -95,37 +117,40 @@ public class ChoosePicActivity extends BaseActivity implements View.OnClickListe
 //
 //
 //        recyclerViewShowOnly.showPics(recyclerView.getPhotos());
-       selectedPhotos=recycler_view.getPhotos();
-        recycler_view.onActivityResult(requestCode, resultCode, data);
-   PhotoPickUtils.onActivityResult(requestCode, resultCode, data, new PhotoPickUtils.PickHandler() {
-      @Override
-      public void onPickSuccess(ArrayList<String> photos) {
-          showToast("onPickSuccess"+photos.size());
-   //     photoAdapter.add(photos);
-      }
+//       selectedPhotos=recycler_view.getPhotos();
+//        recycler_view.onActivityResult(requestCode, resultCode, data);
+//   PhotoPickUtils.onActivityResult(requestCode, resultCode, data, new PhotoPickUtils.PickHandler() {
+//      @Override
+//      public void onPickSuccess(ArrayList<String> photos) {
+//          showToast("onPickSuccess"+photos.size());
+//   //     photoAdapter.add(photos);
+//      }
+//
+//      @Override
+//      public void onPreviewBack(ArrayList<String> photos) {
+//     //   photoAdapter.refresh(photos);
+//          showToast("onPreviewBack"+photos.size());
+//      }
+//
+//      @Override
+//      public void onPickFail(String error) {
+////        Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
+////        selectedPhotos.clear();
+////        photoAdapter.notifyDataSetChanged();
+//      }
+//
+//      @Override
+//      public void onPickCancle() {
+//        //Toast.makeText(MainActivity.this,"取消选择",Toast.LENGTH_LONG).show();
+//      }
 
-      @Override
-      public void onPreviewBack(ArrayList<String> photos) {
-     //   photoAdapter.refresh(photos);
-          showToast("onPreviewBack"+photos.size());
-      }
 
-      @Override
-      public void onPickFail(String error) {
-//        Toast.makeText(MainActivity.this, error, Toast.LENGTH_LONG).show();
-//        selectedPhotos.clear();
-//        photoAdapter.notifyDataSetChanged();
-      }
 
-      @Override
-      public void onPickCancle() {
-        //Toast.makeText(MainActivity.this,"取消选择",Toast.LENGTH_LONG).show();
-      }
-    });
+
+//
+//    });
 
         //photoAdapter.refresh();
-
-
 
 
    /* if (resultCode == RESULT_OK &&
@@ -144,6 +169,79 @@ public class ChoosePicActivity extends BaseActivity implements View.OnClickListe
       photoAdapter.notifyDataSetChanged();
     }*/
     }
+
+
+
+    // 处理取消图片
+//    private void cancelWithFirstPic() {
+//        ImagePreference instance = ImagePreference.getInstance(getApplicationContext());
+//        ArrayList<String> drr = instance.getImagesList(ImagePreference.DRR);
+//        if (drr.size() == 0) {
+//
+//        } else if (drr.size() == 1) {
+//            rl_photo2.setVisibility(View.GONE);
+//
+//            mTakePhoto.setVisibility(View.VISIBLE);
+//            mTakePhoto.setBackgroundResource(R.mipmap.tw_camera_nor);
+//            mPhoto.setImageResource(R.mipmap.scenery_bg);
+//            cancel_photo.setVisibility(View.GONE);
+//        } else if (drr.size() == 2) {
+//            LoadingImgUtil.loadingLocalImage(drr.get(1), new ImageSize(100, 100), mPhoto);
+//
+//            // 第二张为初始状态
+//            rl_photo2.setVisibility(View.GONE);
+//            mTakePhoto.setVisibility(View.VISIBLE);
+//            mTakePhoto.setBackgroundResource(R.mipmap.tw_add_nor);
+//
+//        } else if (drr.size() == 3) {
+//            LoadingImgUtil.loadingLocalImage(drr.get(1), new ImageSize(100, 100), mPhoto);
+//            LoadingImgUtil.loadingLocalImage(drr.get(2), new ImageSize(100, 100), iv_photo2);
+//            //    第三张为初始状态
+//            rl_photo3.setVisibility(View.GONE);
+//            take_photo2.setVisibility(View.VISIBLE);
+//        }
+//        instance.removeOnePath(ImagePreference.DRR, 0);
+//        instance.removeOnePath(ImagePreference.UPLOADDIR, 0);
+//        instance.removeOnePath(ImagePreference.CACHEDIR, 0);
+//    }
+//
+//    private void cancelWithSecond() {
+//        ImagePreference instance = ImagePreference.getInstance(getApplicationContext());
+//        ArrayList<String> drr = instance.getImagesList(ImagePreference.DRR);
+//
+//        if (drr.size() == 2) {
+//            // 第二张为初始状态
+//
+//            rl_photo2.setVisibility(View.GONE);
+//            mTakePhoto.setVisibility(View.VISIBLE);
+//            mTakePhoto.setBackgroundResource(R.mipmap.tw_add_nor);
+//        } else if (drr.size() == 3) {
+//
+//            LoadingImgUtil.loadingLocalImage(drr.get(2), new ImageSize(100, 100), iv_photo2);
+//            rl_photo3.setVisibility(View.GONE);
+//
+//            take_photo2.setVisibility(View.VISIBLE);
+//            iv_photo2.setImageResource(R.mipmap.tw_add_nor);
+//        }
+//        instance.removeOnePath(ImagePreference.DRR, 1);
+//        instance.removeOnePath(ImagePreference.UPLOADDIR, 1);
+//        instance.removeOnePath(ImagePreference.CACHEDIR, 1);
+//    }
+//
+//    private void cancelWithThirdPic() {
+//        ImagePreference instance = ImagePreference.getInstance(getApplicationContext());
+//
+//        if (instance.getImagesList(ImagePreference.DRR).size() == 3) {
+//            instance.removeOnePath(ImagePreference.DRR, 2);
+//            instance.removeOnePath(ImagePreference.UPLOADDIR, 2);
+//            instance.removeOnePath(ImagePreference.CACHEDIR, 2);
+//
+//            // 第二张为初始状态
+//            rl_photo3.setVisibility(View.GONE);
+//            take_photo2.setVisibility(View.VISIBLE);
+//            take_photo2.setBackgroundResource(R.mipmap.tw_add_nor);
+//        }
+//    }
 //    package me.iwf.PhotoPickerDemo;
 //
 //    import android.content.Intent;

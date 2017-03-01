@@ -64,12 +64,12 @@ public class RecommendFragment extends SuperFragment implements SwipeRefreshLayo
         oneRecycleAdapter=new OneRecycleAdapter(mcontent);
         nestFullListViewAdapter=new NestRecycleViewAdapter(mcontent);
         recyclerView= (RecyclerView) view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false)); //主要布局
-        recyclerView.setAdapter(nestFullListViewAdapter);
+//        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 2, GridLayoutManager.VERTICAL, false)); //主要布局
+//        recyclerView.setAdapter(nestFullListViewAdapter);
 
         //        recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(), LinearLayoutManager.VERTICAL, false));
-//        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false));
-//        recyclerView.setAdapter(oneRecycleAdapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(recyclerView.getContext(), 6, GridLayoutManager.VERTICAL, false));
+        recyclerView.setAdapter(oneRecycleAdapter);
 //        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         lay_refresh= (SwipeRefreshLayout) view.findViewById(R.id.lay_refresh);
