@@ -14,7 +14,22 @@
     android:gravity="center"
     android:textSize="25sp"
      />
+    <emoji.ExpressionView
+        android:id="@+id/emoji_relative"
+        android:layout_width="match_parent"
+        android:layout_height="380dp"
+        />
 
+    <EditText
+        android:id="@+id/et_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <emoji.MTextView
+        android:id="@+id/mtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 
 </LinearLayout>

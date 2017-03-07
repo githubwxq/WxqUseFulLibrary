@@ -517,4 +517,7 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="MTextView">
+        <attr name="isMatchParent" format="boolean" />
+    </declare-styleable>
 </resources>
