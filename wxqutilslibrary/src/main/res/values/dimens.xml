@@ -8,4 +8,6 @@
     <dimen name="textandiconmargin">10dp</dimen>
     <dimen name="progress_bar_size">20dp</dimen>
     <dimen name="space">10dp</dimen>
+    <dimen name="refresh_header_height_twitter">80dp</dimen>
+    <dimen name="load_more_footer_height_classic">60dp</dimen>
 </resources>

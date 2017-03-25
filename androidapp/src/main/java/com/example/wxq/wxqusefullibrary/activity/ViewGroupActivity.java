@@ -31,7 +31,7 @@ public class ViewGroupActivity extends BaseActivity {
 
     private ArrayList<Book> books;
     private ArrayList<Book> differbooks;
-    private List alldifferbooks;
+    private List<IMulTypeHelper> alldifferbooks;
 
     OnItemClickListener onItemClickListener;
 
@@ -40,12 +40,9 @@ public class ViewGroupActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_group);
         //设置OnItemClickListener
-        onItemClickListener = new OnItemClickListener() {
-            @Override
-            public void onItemClick(ViewGroup parent, View itemView, int position) {
-                Toast.makeText(ViewGroupActivity.this, "通过OnItemClickListener设置:" + position, Toast.LENGTH_SHORT).show();
-            }
-        };
+        int myposition=0;
+
+        onItemClickListener = new MyOnItemClickListener(myposition);
         initData();
         initView();
 
@@ -76,8 +73,9 @@ public class ViewGroupActivity extends BaseActivity {
         differbooks.add(b2);
         differbooks.add(b3);
         differbooks.add(b4);
-        alldifferbooks=new ArrayList();
-        alldifferbooks.add(new MulBean1("http://p14.go007.com/2014_11_02_05/a03541088cce31b8_1.jpg"));
+        alldifferbooks=new ArrayList<IMulTypeHelper>();
+        MulBean1 bean1 = new MulBean1("http://p14.go007.com/2014_11_02_05/a03541088cce31b8_1.jpg");
+        alldifferbooks.add(bean1);
         alldifferbooks.add(new MulBean2("张旭童"));
         alldifferbooks.add(new MulBean1("http://4493bz.1985t.com/uploads/allimg/150127/4-15012G52133.jpg"));
     }
@@ -94,27 +92,7 @@ public class ViewGroupActivity extends BaseActivity {
 
 
         //单一ItemView
-        ViewGroupUtils.addViews(ll_content, new SingleAdapter<Book>(this, books, R.layout.book_list_item) {
-            @Override
-            public void onBindView(ViewGroup parent, View itemView, final Book data, int pos) {
-                TextView price = (TextView) itemView.findViewById(R.id.tv_price);
-                price.setText("价格为" + data.getPrice());
-                ((TextView) itemView.findViewById(R.id.tv_bookname)).setText(data.getName());
-                price.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showToast("点击了价格为" + data.getPrice());
-                    }
-                });
-                ((TextView) itemView.findViewById(R.id.tv_bookname)).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        showToast("点击了姓名为" + data.getName());
-                    }
-                });
-
-            }
-        }, onItemClickListener);
+        ViewGroupUtils.addViews(ll_content, new BookSingleAdapter(), onItemClickListener);
 
 
         //多种ItemViewType，但是数据结构相同，可以传入数据结构泛型，避免强转
@@ -171,8 +149,47 @@ public class ViewGroupActivity extends BaseActivity {
     }
 
 
+    private class MyOnItemClickListener implements OnItemClickListener {
+        private final int myposition;
 
+        public MyOnItemClickListener(int myposition) {
+            this.myposition = myposition;
+        }
 
+        @Override
+        public void onItemClick(ViewGroup parent, View itemView, int position) {
+            Toast.makeText(ViewGroupActivity.this, "通过OnItemClickListener设置:" + myposition + books.size(), Toast.LENGTH_SHORT).show();
+        }
+    }
 
+    private class BookSingleAdapter extends SingleAdapter<Book> {
+        public BookSingleAdapter() {
+            super(ViewGroupActivity.this, ViewGroupActivity.this.books, R.layout.book_list_item);
+        }
 
+        @Override
+        public View getView(ViewGroup parent, int pos, Book data) {
+            return super.getView(parent, pos, data);
+        }
+
+        @Override
+        public void onBindView(ViewGroup parent, View itemView, final Book data, int pos) {
+            TextView price = (TextView) itemView.findViewById(R.id.tv_price);
+            price.setText("价格为" + data.getPrice());
+            ((TextView) itemView.findViewById(R.id.tv_bookname)).setText(data.getName());
+            price.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showToast("点击了价格为" + data.getPrice());
+                }
+            });
+            ((TextView) itemView.findViewById(R.id.tv_bookname)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    showToast("点击了姓名为" + data.getName());
+                }
+            });
+
+        }
+    }
 }

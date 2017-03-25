@@ -45,27 +45,7 @@ public class SprignView2Activity extends BaseActivity {
 
         springView = (SpringView) findViewById(R.id.springview);
         springView.setType(SpringView.Type.FOLLOW);
-        springView.setListener(new SpringView.OnFreshListener() {
-            @Override
-            public void onRefresh() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        springView.onFinishFreshAndLoad();
-                    }
-                }, 1000);
-            }
-
-            @Override
-            public void onLoadmore() {
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        springView.onFinishFreshAndLoad();
-                    }
-                }, 1000);
-            }
-        });
+        springView.setListener(new MyOnFreshListener());
         springView.setHeader(new AliHeader(this,R.drawable.ali,true));   //参数为：logo图片资源，是否显示文字
         springView.setFooter(new AliFooter(this,false));
 
@@ -125,4 +105,25 @@ public class SprignView2Activity extends BaseActivity {
     }
 
 
+    private class MyOnFreshListener implements SpringView.OnFreshListener {
+        @Override
+        public void onRefresh() {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    springView.onFinishFreshAndLoad();
+                }
+            }, 1000);
+        }
+
+        @Override
+        public void onLoadmore() {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    springView.onFinishFreshAndLoad();
+                }
+            }, 1000);
+        }
+    }
 }
