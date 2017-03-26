@@ -26,7 +26,10 @@ public class RenderingActivity extends BaseActivity implements OnRefreshListener
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_twitter_listview);
+    //    setContentView(R.layout.activity_twitter_listview);
+   setContentView(R.layout.activity_nav_jd);
+
+
         swipeToLoadLayout = (SwipeToLoadLayout) findViewById(R.id.swipeToLoadLayout);
         swipe_target = (ListView) findViewById(R.id.swipe_target);
         List<String> datas = new ArrayList<>();

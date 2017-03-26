@@ -10,4 +10,6 @@
     <dimen name="space">10dp</dimen>
     <dimen name="refresh_header_height_twitter">80dp</dimen>
     <dimen name="load_more_footer_height_classic">60dp</dimen>
+    <!-- jd -->
+    <dimen name="refresh_header_height_jd">100dp</dimen>
 </resources>
