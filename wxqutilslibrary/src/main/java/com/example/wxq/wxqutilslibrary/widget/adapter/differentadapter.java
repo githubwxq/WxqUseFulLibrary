@@ -97,7 +97,7 @@ public class differentadapter {  // 可以配置数据源决定样式 notifdatac
 //    import java.text.SimpleDateFormat;
 //    import java.util.ArrayList;
 //
-//
+//多种不同布局参考
 //    /**  不同数据不同数量加载跟多适配器  避免了多个fragment 多个listview  listview的不同布局然后加上头部 实现复杂布局
 //     * Created by Administrator on 2016/11/5 0005.
 //     */
@@ -378,6 +378,7 @@ public class differentadapter {  // 可以配置数据源决定样式 notifdatac
 //                footer = (FooterViewHolder) convertView.getTag();
 //            }
 //            if (loadMoreListener != null) {
+//                加载跟多显示
 //                loadMoreListener.loadMore(convertView);
 //            }
 //            return convertView;

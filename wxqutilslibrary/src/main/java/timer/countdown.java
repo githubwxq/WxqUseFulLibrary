@@ -126,3 +126,191 @@
 //
 //    timer.schedule(new MyTimerTask(),0, 1000);
 //}
+//==========================================================================================================================================================================================
+
+//方法一
+//
+//        Timer与TimerTask（Java实现）
+//public class timerTask extends Activity{
+//
+//    private int recLen = 11;
+//    private TextView txtView;
+//    Timer timer = new Timer();
+//
+//    public void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.timertask);
+//        txtView = (TextView)findViewById(R.id.txttime);
+//
+//        timer.schedule(task, 1000, 1000);       // timeTask
+//    }
+//
+//    TimerTask task = new TimerTask() {
+//        @Override
+//        public void run() {
+//
+//            runOnUiThread(new Runnable() {      // UI thread
+//                @Override
+//                public void run() {
+//                    recLen--;
+//                    txtView.setText(""+recLen);
+//                    if(recLen < 0){
+//                        timer.cancel();
+//                        txtView.setVisibility(View.GONE);
+//                    }
+//                }
+//            });
+//        }
+//    };
+//}
+//
+//
+//
+//方法二
+//        TimerTask与Handler（不用Timer的改进型）
+//public class timerTask extends Activity{
+//    private int recLen = 11;
+//    private TextView txtView;
+//    Timer timer = new Timer();
+//
+//    public void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.timertask);
+//        txtView = (TextView)findViewById(R.id.txttime);
+//
+//        timer.schedule(task, 1000, 1000);       // timeTask
+//    }
+//
+//    final Handler handler = new Handler(){
+//        @Override
+//        public void handleMessage(Message msg){
+//            switch (msg.what) {
+//                case 1:
+//                    txtView.setText(""+recLen);
+//                    if(recLen < 0){
+//                        timer.cancel();
+//                        txtView.setVisibility(View.GONE);
+//                    }
+//            }
+//        }
+//    };
+//
+//    TimerTask task = new TimerTask() {
+//        @Override
+//        public void run() {
+//            recLen--;
+//            Message message = new Message();
+//            message.what = 1;
+//            handler.sendMessage(message);
+//        }
+//    };
+//}
+//
+//
+//方法三
+//        Handler与Message（不用TimerTask）
+//
+//public class timerTask extends Activity{
+//    private int recLen = 11;
+//    private TextView txtView;
+//
+//    public void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.timertask);
+//        txtView = (TextView)findViewById(R.id.txttime);
+//
+//        Message message = handler.obtainMessage(1);     // Message
+//        handler.sendMessageDelayed(message, 1000);
+//    }
+//
+//    final Handler handler = new Handler(){
+//
+//        public void handleMessage(Message msg){         // handle message
+//            switch (msg.what) {
+//                case 1:
+//                    recLen--;
+//                    txtView.setText("" + recLen);
+//
+//                    if(recLen > 0){
+//                        Message message = handler.obtainMessage(1);
+//                        handler.sendMessageDelayed(message, 1000);      // send message
+//                    }else{
+//                        txtView.setVisibility(View.GONE);
+//                    }
+//            }
+//
+//            super.handleMessage(msg);
+//        }
+//    };
+//}
+//
+//
+//方法四
+//
+//        Handler与Thread（不占用UI线程）
+//public class timerTask extends Activity{
+//    private int recLen = 0;
+//    private TextView txtView;
+//
+//    public void onCreate(Bundle savedInstanceState){
+//        super.onCreate(savedInstanceState);
+//
+//        setContentView(R.layout.timertask);
+//        txtView = (TextView)findViewById(R.id.txttime);
+//
+//        new Thread(new MyThread()).start();         // start thread
+//    }
+//
+//    final Handler handler = new Handler(){          // handle
+//        public void handleMessage(Message msg){
+//            switch (msg.what) {
+//                case 1:
+//                    recLen++;
+//                    txtView.setText("" + recLen);
+//            }
+//            super.handleMessage(msg);
+//        }
+//    };
+//
+//    public class MyThread implements Runnable{      // thread
+//        @Override
+//        public void run(){
+//            while(true){
+//                try{
+//                    Thread.sleep(1000);     // sleep 1000ms
+//                    Message message = new Message();
+//                    message.what = 1;
+//                    handler.sendMessage(message);
+//                }catch (Exception e) {
+//                }
+//
+//
+//                方法五
+//                Handler与Runnable（最简单型）
+//
+//                public class timerTask extends Activity{
+//                    private int recLen = 0;
+//                    private TextView txtView;
+//
+//                    public void onCreate(Bundle savedInstanceState){
+//                        super.onCreate(savedInstanceState);
+//
+//                        setContentView(R.layout.timertask);
+//                        txtView = (TextView)findViewById(R.id.txttime);
+//
+//                        handler.postDelayed(runnable, 1000);
+//                    }
+//
+//                    Handler handler = new Handler();
+//                    Runnable runnable = new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            recLen++;
+//                            txtView.setText("" + recLen);
+//                            handler.postDelayed(this, 1000);
+//                        }
+//                    };
+//                }
