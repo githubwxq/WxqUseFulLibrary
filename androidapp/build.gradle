@@ -5,7 +5,14 @@ apply plugin: 'android-apt'
 android {
     compileSdkVersion 23
     buildToolsVersion '24.0.0'
-
+    signingConfigs {
+        config {
+            keyAlias 'wxq'
+            keyPassword 'qq8903505wxq'
+            storeFile file('C:/wxq.jks')
+            storePassword 'qq8903505wxq'
+        }
+    }
     defaultConfig {
         applicationId "com.example.wxq.wxqusefullibrary"
         minSdkVersion 16
@@ -13,13 +20,26 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+
+
+
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            multiDexEnabled true
         }
 
-
+        debug {
+//            minifyEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+            // Enabling multidex support.
+            multiDexEnabled true
+//            multiDexKeepFile file("dex.keep")
+        }
         dataBinding {
             //noinspection GroovyAssignabilityCheck
             enabled true
@@ -75,5 +95,5 @@ dependencies {
     compile 'com.android.support:cardview-v7:23.4.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jakewharton:butterknife:8.2.0'
-    compile project(':dzpiclibrary')
+    compile project(':PhotoPicker')
 }

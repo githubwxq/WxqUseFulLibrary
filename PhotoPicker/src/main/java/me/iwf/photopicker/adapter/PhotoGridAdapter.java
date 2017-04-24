@@ -8,11 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import me.iwf.photopicker.R;
 import me.iwf.photopicker.entity.Photo;
 import me.iwf.photopicker.entity.PhotoDirectory;
@@ -78,7 +81,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     View itemView = inflater.inflate(R.layout.__picker_item_photo, parent, false);
     PhotoViewHolder holder = new PhotoViewHolder(itemView);
     if (viewType == ITEM_TYPE_CAMERA) {
-      holder.vSelected.setVisibility(View.GONE);
+      holder.vSelected.setVisibility(View.GONE);   //、、Camera取消选中框
       holder.ivPhoto.setScaleType(ImageView.ScaleType.CENTER);
 
       holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +95,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     return holder;
   }
 
-
+//、、绑定数据给viewholder
   @Override public void onBindViewHolder(final PhotoViewHolder holder, int position) {
 
     if (getItemViewType(position) == ITEM_TYPE_PHOTO) {
@@ -100,7 +103,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
       List<Photo> photos = getCurrentPhotos();
       final Photo photo;
 
-      if (showCamera()) {
+      if (showCamera()) {  //有camera  则位置往后挪一位  否则 而已自己添加一个特殊对象然后更具类型显示不同样式
         photo = photos.get(position - 1);
       } else {
         photo = photos.get(position);
@@ -116,8 +119,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
           .error(R.drawable.__picker_ic_broken_image_black_48dp)
           .into(holder.ivPhoto);
 
-      final boolean isChecked = isSelected(photo);
-
+      final boolean isChecked = isSelected(photo);  // 判断当前是否选中 显示不同ui
       holder.vSelected.setSelected(isChecked);
       holder.cover.setSelected(isChecked);
 
@@ -126,8 +128,10 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
           if (onPhotoClickListener != null) {
             int pos = holder.getAdapterPosition();
             if (previewEnable) {
-              onPhotoClickListener.onClick(view, pos, showCamera());
+             // 可以预览则回调给上层处理
+              onPhotoClickListener.onClick(view, pos, showCamera());  // 回调点击事件 是预览还是拍照等等 否则执行选中往下面走
             } else {
+              // 可以预览则回调给上层处理 否则就是   让控件执行button点击事件
               holder.vSelected.performClick();
             }
           }
@@ -135,17 +139,20 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
       });
       holder.vSelected.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View view) {
-          int pos = holder.getAdapterPosition();
+          int pos = holder.getAdapterPosition();  // 获取设配器中的位子
           boolean isEnable = true;
 
           if (onItemCheckListener != null) {
             isEnable = onItemCheckListener.OnItemCheck(pos, photo, isChecked,
                 getSelectedPhotos().size());
           }
+          // 没有达到最大
           if (isEnable) {
             toggleSelection(photo);
-            notifyItemChanged(pos);
+            notifyItemChanged(pos);  // 跟新某个条目根据在设配器中的位置
           }
+
+
         }
       });
 
@@ -155,6 +162,8 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
   }
 
 
+
+  // notifidata 重新计算数量 然后刷新适配器
   @Override public int getItemCount() {
     int photosCount =
         photoDirectories.size() == 0 ? 0 : getCurrentPhotos().size();
@@ -164,7 +173,7 @@ public class PhotoGridAdapter extends SelectableAdapter<PhotoGridAdapter.PhotoVi
     return photosCount;
   }
 
-
+// 常见viewholder
   public static class PhotoViewHolder extends RecyclerView.ViewHolder {
     private ImageView ivPhoto;
     private View vSelected;

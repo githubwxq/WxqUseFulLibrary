@@ -19,6 +19,8 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder>
   //初始进入时已选的照片 original selected photos
   protected ArrayList<String> originalPhotos = null;
 
+
+  //、、默认为全部的缩影0  文件夹集合中的第一个集合就是所有图片的对应的文件夹
   public int currentDirectoryIndex = 0;
 
 
@@ -33,12 +35,13 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder>
    *
    * @param photo Photo of the item to check
    * @return true if the item is selected, false otherwise
+   * 这边添加
    */
-  @Override public boolean isSelected(Photo photo) {
+  @Override public boolean isSelected(Photo photo) {  //图片是否已经被选中
     if (originalPhotos != null && originalPhotos.contains(photo.getPath()) && !selectedPhotos.contains(photo)) {
       selectedPhotos.add(photo);
     }
-    return getSelectedPhotos().contains(photo);
+    return getSelectedPhotos().contains(photo);  // 选中图片集合 添加选中的图片
   }
 
 
@@ -46,14 +49,20 @@ public abstract class SelectableAdapter<VH extends RecyclerView.ViewHolder>
    * Toggle the selection status of the item at a given position
    *
    * @param photo Photo of the item to toggle the selection status for
+   * 这边添加对象和路径
    */
   @Override public void toggleSelection(Photo photo) {
+   // 、、 根据是否纯在继续判断 加入到已选中的集合中去 最后这个已选的集合得回调给
     if (selectedPhotos.contains(photo)) {
       selectedPhotos.remove(photo);
       if(originalPhotos!=null &&originalPhotos.contains(photo.getPath())){
         originalPhotos.remove(photo.getPath());
       }
     } else {
+      ///
+
+
+
       selectedPhotos.add(photo);
     }
   }

@@ -13,7 +13,7 @@ public class PhotoPickUtils {
     public static void onActivityResult(int requestCode, int resultCode, Intent data,PickHandler pickHandler ) {
 
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == PhotoPicker.REQUEST_CODE) {//第一次，选择图片后返回
+            if (requestCode == PhotoPicker.REQUEST_CODE) { //第一次，选择图片后返回
                 if (data != null) {
                     ArrayList<String> photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
                     pickHandler.onPickSuccess(photos);
@@ -48,11 +48,11 @@ public class PhotoPickUtils {
 
     }
 
-    public static void startPick(Activity context,ArrayList<String> photos){
+    public static void startPick(Activity context,boolean showGif,int photoCount,ArrayList<String> photos){
         PhotoPicker.builder()
-                .setPhotoCount(9)
-                .setShowCamera(true)
-                .setShowGif(true)
+                .setPhotoCount(photoCount)
+                .setShowCamera(false)
+                .setShowGif(showGif)
                 .setSelected(photos)
                 .setPreviewEnabled(true)
                 .start(context, PhotoPicker.REQUEST_CODE);

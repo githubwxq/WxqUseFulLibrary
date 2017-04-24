@@ -67,7 +67,7 @@ public class ImageCaptureManager {
       // Continue only if the File was successfully created
       if (photoFile != null) {
         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT,
-                Uri.fromFile(photoFile));
+            Uri.fromFile(photoFile));
       }
     }
     return takePictureIntent;

@@ -30,7 +30,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wxq.wxqutilslibrary.R;
-import com.example.wxq.wxqutilslibrary.imageloadutils.log.LogUtils;
 import com.umeng.analytics.MobclickAgent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -44,6 +43,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import klog.KLog;
 import specialtools.ActivityManager;
 
 /**
@@ -380,7 +380,14 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
 
     public void showLog(String content) {
-        LogUtils.i(TAG, content);
+    //    LogUtils.i(TAG, content);
+
+        KLog.i(TAG, content);
+
+    }
+    public void showJsonLog(String content) {
+        //    LogUtils.i(TAG, content)
+        KLog.json(TAG, content);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -713,3 +720,14 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
 
 //  =================== =================== =================== =================== =================== =================== =================== ===================
+
+
+
+// 日志打印
+
+
+
+
+
+
+

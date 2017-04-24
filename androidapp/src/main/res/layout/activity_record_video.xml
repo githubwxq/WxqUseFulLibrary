@@ -34,49 +34,13 @@
                 android:text="松开取消"
                 android:textColor="#ffffff"
                 android:visibility="gone" />
-
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:scaleType="center"
-                android:src="@mipmap/area_left_down" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:scaleType="center"
-                android:src="@mipmap/area_left_up" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:scaleType="center"
-                android:src="@mipmap/area_right_down" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="center"
-                android:layout_margin="30dp"
-                android:scaleType="center"
-                android:src="@mipmap/area_right_up" />
         </RelativeLayout>
     </FrameLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:background="#f0f0f0">
 
         <RelativeLayout

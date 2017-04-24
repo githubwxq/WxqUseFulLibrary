@@ -25,13 +25,15 @@ import me.iwf.photopicker.adapter.PhotoPagerAdapter;
 
 /**
  * Created by donglua on 15/6/21.
+ *
+ * 图片展开页面
  */
 public class ImagePagerFragment extends Fragment {
 
   public final static String ARG_PATH = "PATHS";
   public final static String ARG_CURRENT_ITEM = "ARG_CURRENT_ITEM";
 
-  private ArrayList<String> paths;
+  private ArrayList<String> paths;  // 所有图片的集合
   private ViewPager mViewPager;
   private PhotoPagerAdapter mPagerAdapter;
 

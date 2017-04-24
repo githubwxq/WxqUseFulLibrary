@@ -5,9 +5,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.Menu;
@@ -23,15 +23,16 @@ import me.iwf.photopicker.widget.MultiPickResultView;
 import me.iwf.photopicker.widget.Titlebar;
 
 import static me.iwf.photopicker.PhotoPicker.KEY_SELECTED_PHOTOS;
-import static me.iwf.photopicker.PhotoPreview.EXTRA_ACTION;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_CURRENT_ITEM;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_PHOTOS;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_SHOW_DELETE;
+import static me.iwf.photopicker.PhotoPreview.EXTRA_ACTION;
 
 /**
  * Created by donglua on 15/6/24.
+ * 图片预览页面
  */
-public class PhotoPagerActivity extends FragmentActivity {
+public class PhotoPagerActivity extends AppCompatActivity {
 
   private ImagePagerFragment pagerFragment;
 
@@ -56,6 +57,17 @@ public class PhotoPagerActivity extends FragmentActivity {
     pagerFragment.setPhotos(paths, currentItem);
     titlebar = (Titlebar) findViewById(R.id.titlebar);
     titlebar.init(this);
+    titlebar.setLeftOnclickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+        Intent intent = new Intent();
+        intent.putExtra(KEY_SELECTED_PHOTOS, pagerFragment.getPaths());
+        setResult(RESULT_OK, intent);
+        finish();
+
+      }
+    });
     if (action == MultiPickResultView.ACTION_SELECT){
       titlebar.setRitht(getApplicationContext().getResources().getDrawable(R.drawable.__picker_delete), "", new View.OnClickListener() {
         @Override
@@ -78,16 +90,7 @@ public class PhotoPagerActivity extends FragmentActivity {
 
     titlebar.setTitle(getString(R.string.__picker_preview));
 
-    titlebar.setLeftOnclickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
 
-        Intent intent = new Intent();
-        intent.putExtra(KEY_SELECTED_PHOTOS, pagerFragment.getPaths());
-        setResult(RESULT_OK, intent);
-        finish();
-      }
-    });
     /*Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(mToolbar);
 

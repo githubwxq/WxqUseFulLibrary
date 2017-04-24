@@ -87,7 +87,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
       holder.ivPhoto.setPadding(padding,padding,padding,padding);
 
 
-      if (position == getItemCount() -1){//最后一个始终是+号，点击能够跳去添加图片
+      if (position == getItemCount() -1){ //最后一个始终是+号，点击能够跳去添加图片
         Glide.with(mContext)
                 .load("")
                 .centerCrop()
@@ -95,13 +95,21 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
                 .placeholder(R.drawable.icon_pic_default)
                 .error(R.drawable.icon_pic_default)
                 .into(holder.ivPhoto);
+
+          if (photoPaths != null && photoPaths.size() ==9){
+              holder.ivPhoto.setVisibility(View.GONE);
+          }else {
+              holder.ivPhoto.setVisibility(View.VISIBLE);
+          }
+
+
         holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
             if (photoPaths != null && photoPaths.size() ==9){
               Toast.makeText(mContext,"已选了9张图片",Toast.LENGTH_SHORT).show();
             }else {
-              PhotoPickUtils.startPick((Activity) mContext,photoPaths);
+              PhotoPickUtils.startPick((Activity) mContext,false,9,photoPaths);// 、、 选择工具
             }
           }
         });
@@ -109,6 +117,13 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
         holder.deleteBtn.setVisibility(View.GONE);
 
       }else {
+
+              holder.ivPhoto.setVisibility(View.VISIBLE);
+
+
+
+
+
         String str = photoPaths.get(position);
         Log.e("file",str);
         Uri uri = Uri.fromFile(new File(photoPaths.get(position)));
@@ -158,7 +173,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
       holder.ivPhoto.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
+//    前往预览删除等等功能的预览页面
           PhotoPreview.builder()
                   .setPhotos(photoPaths)
                   .setAction(action)
@@ -177,7 +192,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<PhotoAdapter.PhotoViewHol
 
 
   @Override public int getItemCount() {
-    return action == MultiPickResultView.ACTION_SELECT ? photoPaths.size()+1 : photoPaths.size();
+    return action == MultiPickResultView.ACTION_SELECT ? photoPaths.size()+1 : photoPaths.size();// 有没有最后一个
   }
 
 

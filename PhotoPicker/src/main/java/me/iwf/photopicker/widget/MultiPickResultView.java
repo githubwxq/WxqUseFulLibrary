@@ -35,7 +35,7 @@ public class MultiPickResultView extends FrameLayout {
 
 
 
-    public static final int ACTION_SELECT = 1;//该组件用于图片选择
+    public static final int ACTION_SELECT = 1;//该组件用于图片选择   带有减号的
     public static final int ACTION_ONLY_SHOW = 2;//该组件仅用于图片显示
 
     private int action;
@@ -82,6 +82,7 @@ public class MultiPickResultView extends FrameLayout {
         this(context, attrs, defStyleAttr);
     }
 
+
     public void init(Activity context,@MultiPicAction  int action, ArrayList<String> photos){
         this.action = action;
         if (action == MultiPickResultView.ACTION_ONLY_SHOW){//当只用作显示图片时,一行显示3张
@@ -118,9 +119,10 @@ public class MultiPickResultView extends FrameLayout {
 
 
 
-
+  // 控件需要调用这个初始化好接口的实现类onActivityResult
     public  void onActivityResult(int requestCode, int resultCode, Intent data){
         if (action == ACTION_SELECT){
+            // 回调接口 让控件适配器
             PhotoPickUtils.onActivityResult(requestCode, resultCode, data, new PhotoPickUtils.PickHandler() {
                 @Override
                 public void onPickSuccess(ArrayList<String> photos) {

@@ -251,11 +251,9 @@ public final class KLog {
 
 
     private static void printFile(String tagStr, File targetDirectory, String fileName, Object objectMsg) {
-
         if (!IS_SHOW_LOG) {
             return;
         }
-
         String[] contents = wrapperContent(STACK_TRACE_INDEX_5, tagStr, objectMsg);
         String tag = contents[0];
         String msg = contents[1];

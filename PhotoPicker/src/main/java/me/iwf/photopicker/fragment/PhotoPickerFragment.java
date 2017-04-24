@@ -104,20 +104,20 @@ public class PhotoPickerFragment extends Fragment {
     directories = new ArrayList<>();
     originalPhotos = getArguments().getStringArrayList(EXTRA_ORIGIN);
 
-    column = getArguments().getInt(EXTRA_COLUMN, DEFAULT_COLUMN_NUMBER);
+    column = getArguments().getInt(EXTRA_COLUMN, DEFAULT_COLUMN_NUMBER);   //getArguments()
     boolean showCamera = getArguments().getBoolean(EXTRA_CAMERA, true);
     boolean previewEnable = getArguments().getBoolean(EXTRA_PREVIEW_ENABLED, true);
 
-    photoGridAdapter = new PhotoGridAdapter(mContext, mGlideRequestManager, directories, originalPhotos, column);
+    photoGridAdapter = new PhotoGridAdapter(mContext, mGlideRequestManager, directories, originalPhotos, column);  //directories所有图片
     photoGridAdapter.setShowCamera(showCamera);
-    photoGridAdapter.setPreviewEnable(previewEnable);
+    photoGridAdapter.setPreviewEnable(previewEnable);   //给适配器相关参数
 
     Bundle mediaStoreArgs = new Bundle();
 
     boolean showGif = getArguments().getBoolean(EXTRA_GIF);
     mediaStoreArgs.putBoolean(EXTRA_SHOW_GIF, showGif);
     MediaStoreHelper.getPhotoDirs(getActivity(), mediaStoreArgs,
-        new MediaStoreHelper.PhotosResultCallback() {
+        new MediaStoreHelper.PhotosResultCallback() {    // 获取图片目录等等
           @Override public void onResultCallback(List<PhotoDirectory> dirs) {
             directories.clear();
             directories.addAll(dirs);
@@ -140,6 +140,7 @@ public class PhotoPickerFragment extends Fragment {
     listAdapter  = new PopupDirectoryListAdapter(mGlideRequestManager, directories);
 
     RecyclerView recyclerView = (RecyclerView) rootView.findViewById(R.id.rv_photos);
+    // 设置列数量
     StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(column, OrientationHelper.VERTICAL);
     layoutManager.setGapStrategy(StaggeredGridLayoutManager.GAP_HANDLING_MOVE_ITEMS_BETWEEN_SPANS);
     recyclerView.setLayoutManager(layoutManager);
@@ -160,7 +161,7 @@ public class PhotoPickerFragment extends Fragment {
   /*  int height = wm.getDefaultDisplay().getHeight();
     listPopupWindow.setHeight((int) (height *0.7));*/
     listPopupWindow.setAnchorView(btSwitchDirectory);
-    listPopupWindow.setAdapter(listAdapter);
+    listPopupWindow.setAdapter(listAdapter);  // 、、设置文件夹
     listPopupWindow.setModal(true);
 
     listPopupWindow.setDropDownGravity(Gravity.BOTTOM);
@@ -170,28 +171,30 @@ public class PhotoPickerFragment extends Fragment {
       @Override public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         listPopupWindow.dismiss();
 
-        PhotoDirectory directory = directories.get(position);
+        PhotoDirectory directory = directories.get(position);  // 文件夹集合里面有文件文件里面有图片
 
         btSwitchDirectory.setText(directory.getName().toLowerCase());//默认会大写，这里要改成小写
 
-        photoGridAdapter.setCurrentDirectoryIndex(position);
+        photoGridAdapter.setCurrentDirectoryIndex(position);   // 通过listview 设置选中的那一个文件夹传递索引给适配器适配器重新跟新数据获取新的目录的数据 达到刷新
         photoGridAdapter.notifyDataSetChanged();
       }
     });
 
+
+    // 适配器中的点击图片的回调
     photoGridAdapter.setOnPhotoClickListener(new OnPhotoClickListener() {
       @Override public void onClick(View v, int position, boolean showCamera) {
-        final int index = showCamera ? position - 1 : position;
+        final int index = showCamera ? position - 1 : position;  // 如果有camera 真实的位置减去1
 
-        List<String> photos = photoGridAdapter.getCurrentPhotoPaths();
+        List<String> photos = photoGridAdapter.getCurrentPhotoPaths(); // 获取当前所有选中的图片集合地址
 
         int[] screenLocation = new int[2];
         v.getLocationOnScreen(screenLocation);
+         // 详情大图页
         ImagePagerFragment imagePagerFragment =
             ImagePagerFragment.newInstance(photos, index, screenLocation, v.getWidth(),
-                v.getHeight());
-
-        ((PhotoPickerActivity) getActivity()).addImagePagerFragment(imagePagerFragment);
+                v.getHeight());  // 还是图片选择页面不过是大图详情页 不是选中的图片的预览页面！！！
+        ((PhotoPickerActivity) getActivity()).addImagePagerFragment(imagePagerFragment); //activity 重新切换fragment
       }
     });
 
@@ -200,6 +203,9 @@ public class PhotoPickerFragment extends Fragment {
         try {
           Intent intent = captureManager.dispatchTakePictureIntent();
           startActivityForResult(intent, ImageCaptureManager.REQUEST_TAKE_PHOTO);
+          // 打开相机
+
+
         } catch (IOException e) {
           e.printStackTrace();
         }
@@ -229,7 +235,7 @@ public class PhotoPickerFragment extends Fragment {
        if (photoGridAdapter.getSelectedPhotoPaths().size() > 0){
          PhotoPreview.builder()
                  .setPhotos(photoGridAdapter.getSelectedPhotoPaths())
-                 .setCurrentItem(0)
+                 .setCurrentItem(0)   // 预览传选中的图片 前往activity
                  .start(getActivity());
        }else {
          Toast.makeText(getActivity(),"还没有选择图片",Toast.LENGTH_SHORT).show();
@@ -260,13 +266,14 @@ public class PhotoPickerFragment extends Fragment {
 
 
   @Override public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
     if (requestCode == ImageCaptureManager.REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-      captureManager.galleryAddPic();
+      captureManager.galleryAddPic();  //、、添加图片到相册 并单独存到所有的文件那个地方
       if (directories.size() > 0) {
         String path = captureManager.getCurrentPhotoPath();
         PhotoDirectory directory = directories.get(INDEX_ALL_PHOTOS);
         directory.getPhotos().add(INDEX_ALL_PHOTOS, new Photo(path.hashCode(), path));
-        directory.setCoverPath(path);
+        directory.setCoverPath(path); //、、第一张图像跟换等细节处理
         photoGridAdapter.notifyDataSetChanged();
       }
     }

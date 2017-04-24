@@ -266,10 +266,10 @@ public class MainActivity extends BaseActivity {
         Function about_pic=new Function();
         about_pic.setType(0);//0 标题类型
         about_pic.setName("图片相关");
-        Function choosepic=new Function();
-        choosepic.setType(1);
-        choosepic.setName("图片选择");
-        choosepic.setMclass(ChoosePicActivity.class);
+//        Function choosepic=new Function();
+//        choosepic.setType(1);
+//        choosepic.setName("图片选择");
+//        choosepic.setMclass(ChoosePicActivity.class);
 
         Function show_pic=new Function();
         show_pic.setType(1);
@@ -290,7 +290,7 @@ public class MainActivity extends BaseActivity {
         show_pic2.setMclass(ShowPicAndVideoActivity.class);
 
         functions.add(about_pic);
-        functions.add(choosepic);
+       // functions.add(choosepic);
         functions.add(show_pic);
         functions.add(show_pic2);
         functions.add(show_pic_weixin);

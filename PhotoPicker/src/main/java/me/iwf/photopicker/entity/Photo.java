@@ -15,7 +15,7 @@ public class Photo {
 
   public Photo() {
   }
-
+//0 和你比较的那个对象
   @Override public boolean equals(Object o) {
     if (this == o) return true;
     if (!(o instanceof Photo)) return false;
