@@ -656,6 +656,16 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
         }
         activity.startActivity(intent);
     }
+
+
+    @Override
+    public void onLowMemory() {
+        android.os.Process.killProcess(android.os.Process.myPid());
+        super.onLowMemory();
+    }
+
+
+
     //实例化一个SerializableBook对象
 //    SerializableBook book = new SerializableBook();
 //    book.setAuthor("walfred");
@@ -724,7 +734,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
 
 // 日志打印
-
 
 
 

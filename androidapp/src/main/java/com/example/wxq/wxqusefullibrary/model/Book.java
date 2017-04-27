@@ -8,9 +8,10 @@ import viewgroupadapter.IMulTypeHelper;
  * Created by Administrator on 2016/7/6.
  */
 public class Book implements IMulTypeHelper {
-  public  String name;
-    public  String  price;
-public int id;
+    public String name;
+    public String price;
+    public int id;
+
     public String getType() {
         return type;
     }
@@ -19,7 +20,8 @@ public int id;
         this.type = type;
     }
 
-    String type;//自己可以而外设置 接口不一定会返回 标记
+    public String type;//自己可以而外设置 接口不一定会返回 标记
+
     public int getTag() {
         return tag;
     }
@@ -28,7 +30,7 @@ public int id;
         this.tag = tag;
     }
 
-    int tag=0;
+    public int tag = 0;
 
 
     public Book(String name, String price) {
@@ -39,6 +41,7 @@ public int id;
     public Book() {
 
     }
+
     public String getName() {
         return name;
     }
@@ -57,7 +60,7 @@ public int id;
 
     @Override
     public int getItemLayoutId() {
-        switch (type){
+        switch (type) {
             case "flag1":
 
                 return R.layout.book_list_item;

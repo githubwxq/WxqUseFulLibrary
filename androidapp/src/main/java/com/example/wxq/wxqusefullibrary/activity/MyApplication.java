@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqutilslibrary.application.BaseApplication;
+import com.facebook.stetho.Stetho;
 
 //import cn.bmob.v3.Bmob;
 
@@ -19,6 +20,7 @@ public class MyApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        Stetho.initializeWithDefaults(this);
     }
 
     public static MyApplication getInstance(){

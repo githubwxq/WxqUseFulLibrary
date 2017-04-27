@@ -3,7 +3,10 @@ package dialog;
 import android.content.Context;
 import android.util.SparseArray;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
 
 /**
  * Created by Administrator on 2017/3/20.
@@ -53,6 +56,21 @@ public class DialogViewHolder {
         view.setVisibility(View.INVISIBLE);
         return this;
     }
+
+
+    /**
+     * set view visible
+     *
+     * @param viewId
+     * @return
+     */
+    public DialogViewHolder setImageHeard(int viewId,String url) {
+        ImageView view = getView(viewId);
+        LoadingImgUtil.loading(url,view,null,true);   //
+        return this;
+    }
+
+
 
     /**
      * set view visible

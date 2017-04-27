@@ -128,6 +128,8 @@ public class CommonTools {
         return statusBarHeight;
     }
 
+
+
     public static String getCurrentTime() {
         Date nowTime = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat(

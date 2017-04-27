@@ -14,7 +14,9 @@ import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.bmob.activity.BmobIndexActivity;
 import com.example.wxq.wxqusefullibrary.bmob.activity.BmobStartActivity;
+import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqusefullibrary.model.Function;
+import com.example.wxq.wxqusefullibrary.modelmanageer.BookManager;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
@@ -52,6 +54,16 @@ public class MainActivity extends BaseActivity {
         //测试权限
         requestPermission(new String[]{Manifest.permission.CALL_PHONE}, 0x0001);
         requestPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0x0002);
+
+
+//        // 添加数据到数据库
+//        Book book=new Book();
+//        book.id=11;
+//        book.name="qweqrwrqweqwe";
+//        book.price="15";
+//        book.type="yuweng";
+//        book.tag=11;
+//        long issuccess=  BookManager.getInstance(this).insertBook(book);
 
 
     }
@@ -165,12 +177,6 @@ public class MainActivity extends BaseActivity {
         functions.add(function_banner);
         functions.add(banner1);
         functions.add(banner2);
-
-
-
-
-
-
 
         //dialog分类
         Function dialog=new Function();
@@ -422,11 +428,9 @@ public class MainActivity extends BaseActivity {
         super.permissionSuccess(requestCode);
         switch (requestCode) {
             case 0x0001:
-
                 showToast("有电话权限");
                 break;
             case 0x0002:
-
                 showToast("有sd卡权限");
                 break;
         }

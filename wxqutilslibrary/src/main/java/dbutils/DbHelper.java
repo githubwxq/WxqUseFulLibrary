@@ -12,6 +12,8 @@ import com.example.wxq.wxqutilslibrary.sqlitedb.DBManager;
 /**
  * Created by wxq
  * 数据库帮助类分装数据库操作
+ * 未使用框架的时候
+ *
  */
 public class DbHelper {
     private DatabaseHelper mDbHelper;
