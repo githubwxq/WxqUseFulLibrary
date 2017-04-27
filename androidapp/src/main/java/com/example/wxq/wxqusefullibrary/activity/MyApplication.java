@@ -20,7 +20,7 @@ public class MyApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
-        Stetho.initializeWithDefaults(this);
+
     }
 
     public static MyApplication getInstance(){
