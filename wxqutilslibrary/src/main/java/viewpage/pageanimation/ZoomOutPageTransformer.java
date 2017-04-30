@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.widget.viewpage.pageanimation;
+package viewpage.pageanimation;
 
 import android.annotation.SuppressLint;
 import android.support.v4.view.ViewPager;

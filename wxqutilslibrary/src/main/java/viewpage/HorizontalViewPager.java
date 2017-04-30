@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.widget.viewpage;
+package viewpage;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

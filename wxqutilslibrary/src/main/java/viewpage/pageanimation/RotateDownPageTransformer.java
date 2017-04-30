@@ -1,4 +1,4 @@
-package com.example.wxq.wxqutilslibrary.widget.viewpage.pageanimation;
+package viewpage.pageanimation;
 
 
 
@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.nineoldandroids.view.ViewHelper;
+
 /**
  * http://blog.csdn.net/lmj623565791/article/details/40411921
  * @author zhy

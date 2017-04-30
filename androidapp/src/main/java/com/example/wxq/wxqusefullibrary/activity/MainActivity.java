@@ -10,13 +10,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
 
+import com.blankj.utilcode.util.ScreenUtils;
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.bmob.activity.BmobIndexActivity;
-import com.example.wxq.wxqusefullibrary.bmob.activity.BmobStartActivity;
-import com.example.wxq.wxqusefullibrary.model.Book;
 import com.example.wxq.wxqusefullibrary.model.Function;
-import com.example.wxq.wxqusefullibrary.modelmanageer.BookManager;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
@@ -65,7 +63,7 @@ public class MainActivity extends BaseActivity {
 //        book.tag=11;
 //        long issuccess=  BookManager.getInstance(this).insertBook(book);
 
-
+        ScreenUtils.getScreenRotation(this);
     }
 
 
@@ -81,8 +79,8 @@ public class MainActivity extends BaseActivity {
         bomb.setType(1);
         bomb.setName("基于Bmob平台项目");
        // bomb.setMclass(BmobIndexActivity.class);
-        bomb.setMclass(BmobStartActivity.class);
-
+        bomb.setMclass(SpannerStringActivity.class);
+//        bomb.setMclass(BmobStartActivity.class);
         Function rx=new Function();
         rx.setType(1);
         rx.setName("Rx系列使用demo");

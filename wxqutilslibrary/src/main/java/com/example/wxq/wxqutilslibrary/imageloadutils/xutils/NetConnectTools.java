@@ -252,12 +252,12 @@ public class NetConnectTools {
             }
         }
         //   params.addBodyParameter("myFiletype", "png");
-//        for (int i = 0; i < list.size(); i++) {
-//            File file = new File(list.get(list.size() - 1 - i));
-//            if (file != null) {
-//                params.addBodyParameter("File" + i, file);
-//            }
-//        }
+        for (int i = 0; i < list.size(); i++) {
+            File file = new File(list.get(list.size() - 1 - i));
+            if (file != null) {
+                params.addBodyParameter("File" + i, file);
+            }
+        }
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {

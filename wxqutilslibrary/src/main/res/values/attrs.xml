@@ -550,4 +550,35 @@
         <attr name="load_more_complete_to_default_scrolling_duration" format="integer" />
         <attr name="default_to_loading_more_scrolling_duration" format="integer" />
     </declare-styleable>
+
+    <!-- ThumbnailMenu -->
+    <declare-styleable name="ThumbnailMenu">
+        <attr name="menu_direction" format="enum">
+            <enum name="left" value="1000" />
+            <enum name="bottom" value="1001" />
+            <enum name="right" value="1002" />
+        </attr>
+
+        <attr name="scale_ratio" format="float" />
+    </declare-styleable>
+
+
+    <declare-styleable name="BiuEditStyle">
+        <attr name="biu_text_color" format="color" />
+        <attr name="biu_text_start_size" format="dimension" />
+        <attr name="biu_text_scale" format="float" />
+        <attr name="biu_duration" format="integer" />
+        <attr name="biu_type" format="enum">
+            <enum name="flyup" value="0" />
+            <enum name="flydown" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="FallingView">
+        <attr name="flakeSrc" format="reference"/>
+        <attr name="flakeScale" format="integer"/>
+        <attr name="flakeDensity" format="integer"/>
+        <attr name="fallingDelay" format="integer"/>
+    </declare-styleable>
 </resources>

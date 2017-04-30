@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.wxq.wxqusefullibrary">
+    package="com.example.wxq.wxqusefullibrary">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <!-- 网络状态权限 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
-    <uses-feature android:name="android.hardware.camera"/>
-    <uses-feature android:name="android.hardware.camera.autofocus"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".activity.MyApplication"
@@ -27,81 +27,80 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme"/>
-        <activity android:name=".Main2Activity"/>
+            android:theme="@style/FullscreenTheme" />
+        <activity android:name=".Main2Activity" />
 
         <meta-data
             android:name="com.example.wxq.wxqusefullibrary.utils.SimpleGlideModule"
-            android:value="GlideModule"/>
+            android:value="GlideModule" />
 
         <receiver
             android:name=".MyReceiver"
             android:enabled="true"
-            android:exported="true"/>
+            android:exported="true" />
 
-        <activity android:name=".TabsActivity"/>
-        <activity android:name=".activity.TestCommonAdapterActivity"/>
+        <activity android:name=".TabsActivity" />
+        <activity android:name=".activity.TestCommonAdapterActivity" />
         <activity
             android:name=".activity.TestBaseActivity"
             android:label="@string/title_activity_test_base"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.GuideActivity"
             android:label="@string/title_activity_guide"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.BannerActivity"
             android:label="@string/title_activity_guide"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.PhoteViewActivity"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.PhoteViewActivity" />
         <activity
             android:name=".activity.LinearActivity"
-            android:label="@string/title_activity_guide"/>
+            android:label="@string/title_activity_guide" />
 
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="58010094e0f55a26d0003162"/>
+            android:value="58010094e0f55a26d0003162" />
         <meta-data
             android:name="UMENG_CHANNEL"
-            android:value="Umeng"/>
+            android:value="Umeng" />
 
-        <activity android:name=".activity.MyLinearActivity"/>
-        <activity android:name=".activity.CommonTabActivity"/>
-        <activity android:name=".activity.SlidingTabActivity"/>
-        <activity android:name=".activity.SegmentTabActivity"/>
-        <activity android:name=".activity.PinnedSectionListViewActivity"/>
-        <activity android:name=".activity.TestZhuShiActivity"/>
-        <activity android:name=".activity.DifferentLocationDialogActivity"/>
-        <activity android:name=".activity.DifferentStyleDialogActivity"/>
-        <activity android:name=".activity.ShowPicAndVideoActivity"/>
-        <activity android:name=".activity.ScalableVideoActivity"/>
-        <activity android:name=".activity.GifImageViewActivity"/>
-        <activity android:name=".activity.SpringViewActivity"/>
-        <activity android:name=".activity.SpringListViewActivity"/>
-        <activity android:name=".activity.SprignView2Activity"/>
-        <activity android:name=".activity.SpringViewAnimationHeadActivity"/>
-        <activity android:name=".bmob.activity.BmobIndexActivity"/>
-        <activity android:name=".activity.RxIndexActivity"/>
-        <activity android:name=".activity.ViewGroupActivity"/>
-        <activity android:name=".activity.LinearLayoutAdapterActivity"/>
-        <activity android:name=".activity.CustomBannerActivity"/>
-        <activity android:name=".activity.RecordVoiceActivity"/>
-        <activity android:name=".activity.RecordVideoActivity"/>
-        <activity android:name=".activity.VideoPreviewActivity"/>
-        <activity android:name=".bmob.activity.BmobStartActivity"/>
-        <activity android:name=".bmob.activity.LoginActivity"/>
-        <activity android:name=".bmob.activity.RegisterActivity"/>
-        <activity android:name=".activity.ChoosePicActivity"/>
-
+        <activity android:name=".activity.MyLinearActivity" />
+        <activity android:name=".activity.CommonTabActivity" />
+        <activity android:name=".activity.SlidingTabActivity" />
+        <activity android:name=".activity.SegmentTabActivity" />
+        <activity android:name=".activity.PinnedSectionListViewActivity" />
+        <activity android:name=".activity.TestZhuShiActivity" />
+        <activity android:name=".activity.DifferentLocationDialogActivity" />
+        <activity android:name=".activity.DifferentStyleDialogActivity" />
+        <activity android:name=".activity.ShowPicAndVideoActivity" />
+        <activity android:name=".activity.ScalableVideoActivity" />
+        <activity android:name=".activity.GifImageViewActivity" />
+        <activity android:name=".activity.SpringViewActivity" />
+        <activity android:name=".activity.SpringListViewActivity" />
+        <activity android:name=".activity.SprignView2Activity" />
+        <activity android:name=".activity.SpringViewAnimationHeadActivity" />
+        <activity android:name=".bmob.activity.BmobIndexActivity" />
+        <activity android:name=".activity.RxIndexActivity" />
+        <activity android:name=".activity.ViewGroupActivity" />
+        <activity android:name=".activity.LinearLayoutAdapterActivity" />
+        <activity android:name=".activity.CustomBannerActivity" />
+        <activity android:name=".activity.RecordVoiceActivity" />
+        <activity android:name=".activity.RecordVideoActivity" />
+        <activity android:name=".activity.VideoPreviewActivity" />
+        <activity android:name=".bmob.activity.BmobStartActivity" />
+        <activity android:name=".bmob.activity.LoginActivity" />
+        <activity android:name=".bmob.activity.RegisterActivity" />
+        <activity android:name=".activity.ChoosePicActivity" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
             android:screenOrientation="portrait" />
@@ -111,10 +110,10 @@
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity2"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.MemoryActivity"/>
-        <activity android:name=".activity.RenderingActivity"/>
-        <activity android:name=".activity.weixinActivity">
-        </activity>
+        <activity android:name=".activity.MemoryActivity" />
+        <activity android:name=".activity.RenderingActivity" />
+        <activity android:name=".activity.weixinActivity"></activity>
+        <activity android:name=".activity.SpannerStringActivity"></activity>
     </application>
 
 </manifest>

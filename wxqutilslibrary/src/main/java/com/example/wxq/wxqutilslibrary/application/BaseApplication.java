@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 
+import com.blankj.utilcode.util.Utils;
 import com.example.wxq.wxqutilslibrary.Global;
 import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
-import com.facebook.stetho.Stetho;
 import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 
@@ -53,7 +53,7 @@ public abstract class BaseApplication extends Application implements Thread.Unca
         MobclickAgent.openActivityDurationTrack(false);
         MobclickAgent.setScenarioType(mContext, MobclickAgent.EScenarioType.E_UM_NORMAL);
         MobclickAgent.setDebugMode(false);
-        Stetho.initializeWithDefaults(this);
+     //   Stetho.initializeWithDefaults(this);
 
         // 内存泄漏检测
 //        if (LeakCanary.isInAnalyzerProcess(this)) {
@@ -63,6 +63,7 @@ public abstract class BaseApplication extends Application implements Thread.Unca
 //        }
 //        refWatcher = LeakCanary.install(this);
 //        LeakCanary.install(this);
+        Utils.init(getApplicationContext());  // 初始化工具类
         initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
