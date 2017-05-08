@@ -159,3 +159,48 @@ mInflater=LayoutInflater.from(context);
         void onItemClick(NestFullListView parent, View view, int position);
     }
 }
+
+
+    // 给线性布局设置控件
+//    NestFullListView allchildInfo=(NestFullListView)viewHolder.getView(R.id.allinfo);
+//allchildInfo.setAdapter(new NestFullListViewAdapter<String>(R.layout.school_daka_list_everyone_item,child) {
+//@Override
+//public void onBind(int pos, String every, NestFullViewHolder holder) {
+//        //
+//
+//        LinearLayout ll_left=   holder.getView(R.id.ll_left);
+//        LinearLayout ll_right=   holder.getView(R.id.ll_right);
+//
+//        TextView tv_left_time= (TextView)holder.getView(R.id.tv_left_time);
+//        TextView tv_left_detail= (TextView)holder.getView(R.id.tv_left_detail);
+//
+//
+//        TextView  tv_right_time= (TextView)holder.getView(R.id.tv_right_time);
+//        TextView tv_right_detail= (TextView)holder.getView(R.id.tv_right_detail);
+//
+//
+//        if(every.equals("in")){
+//        ll_left.setVisibility(View.VISIBLE);
+//        tv_left_time.setVisibility(View.VISIBLE);
+//        tv_left_detail.setVisibility(View.VISIBLE);
+//        ll_right.setVisibility(View.GONE);
+//        tv_right_time.setVisibility(View.GONE);
+//        tv_right_detail.setVisibility(View.GONE);
+//        }
+//        if (every.equals("out")){
+//        ll_left.setVisibility(View.GONE);
+//        tv_left_time.setVisibility(View.GONE);
+//        tv_left_detail.setVisibility(View.GONE);
+//        ll_right.setVisibility(View.VISIBLE);
+//        tv_right_time.setVisibility(View.VISIBLE);
+//        tv_right_detail.setVisibility(View.VISIBLE);
+//        }
+//
+//
+//
+//
+//
+//        }
+//        });
+//        }
+//        });

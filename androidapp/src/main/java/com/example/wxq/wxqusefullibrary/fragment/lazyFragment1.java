@@ -1,6 +1,7 @@
 package com.example.wxq.wxqusefullibrary.fragment;
 
 import android.Manifest;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -13,6 +14,8 @@ import com.example.wxq.wxqutilslibrary.fragment.SuperFragment;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
 
 
 /**
@@ -84,5 +87,34 @@ public class lazyFragment1 extends SuperFragment {
         EventBus.getDefault().register(this);
     }
 
+
+
+    //添加guan广播接收者显示或者取消小红点
+    @Override
+    public ArrayList<String> setBroadcastAction() {
+        ArrayList<String> action=new ArrayList<>();
+        action.add("111");
+        action.add("222");
+        return action;
+    }
+
+    @Override
+    public void dealWithBroadcastAction(String action , Intent intent) {
+
+        switch (action) {
+            case "111":
+                //隐藏小红点
+                  showToast("1111111111111111111111111");
+
+                break;
+
+            case "222":
+                //显示小红点
+
+                showToast("22222222222222222222222");
+                break;
+        }
+
+    }
 
 }

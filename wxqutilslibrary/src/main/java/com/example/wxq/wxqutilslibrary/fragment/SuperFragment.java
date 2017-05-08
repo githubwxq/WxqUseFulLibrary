@@ -2,9 +2,11 @@ package com.example.wxq.wxqutilslibrary.fragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -22,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 /*
 * 懒加载fragment 用到显示的时候才加载
@@ -50,7 +53,6 @@ public abstract class SuperFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
             boolean isSupportHidden = savedInstanceState.getBoolean(STATE_SAVE_IS_HIDDEN);
-
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             if (isSupportHidden) {
                 ft.hide(this);
@@ -73,16 +75,64 @@ public abstract class SuperFragment extends Fragment {
         // onCreateView执行 证明被移出过FragmentManager initData确实要执行.
         // 如果这里有数据累加的Bug 请在initViews方法里初始化您的数据 比如 list.clear();
         //  必须设置好缓存界面否则的话对象销毁总是执行 lazyload（）mViewPager.setOffscreenPageLimit(4);
-        isFirstLoad = true;
-        mcontent=getActivity();
-        view = inflater.inflate(getResourceId(), container, false);
-        // 初始化 不用强转
-        //ViewFinder.initContentView(getActivity(), getResourceId()) ;
-        isPrepared = true;
-        commonLoad(view);
-        lazyLoad(view);
+        if (null != view) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+            if (null != parent) {
+                parent.removeView(view);
+            }
+        } else {
+            isFirstLoad = true;
+            mcontent=getActivity();
+            view = inflater.inflate(getResourceId(), container, false);
+            // 初始化 不用强转
+            //ViewFinder.initContentView(getActivity(), getResourceId()) ;
+            isPrepared = true;
+            commonLoad(view);
+            lazyLoad(view);
+            // 注册广播
+            initBroadcastAction();
+        }
         return view;
     }
+
+
+    // 处理系统发出的广播
+    private BroadcastReceiver broadcastReceiver;
+    //注册广播
+    private void initBroadcastAction() {
+        if (setBroadcastAction() != null && setBroadcastAction().size() > 0) {
+            broadcastReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    dealWithBroadcastAction(intent.getAction(),intent);//之类可以覆盖
+                }
+            };
+            IntentFilter intentFilter = new IntentFilter();
+            for (String action : setBroadcastAction()
+                    ) {
+                intentFilter.addAction(action);
+            }
+            getActivity().registerReceiver(broadcastReceiver, intentFilter);
+        } else {
+        }
+    }
+
+    //销毁广播
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (broadcastReceiver != null) {
+            getActivity().unregisterReceiver(broadcastReceiver);  //取消注册广播
+        }
+    }
+
+    // 之类添加的action
+    public ArrayList<String> setBroadcastAction() {
+        return null; //默认返回空之类可以添加
+    }
+    public void dealWithBroadcastAction(String action,Intent intent) {
+    }
+
     public  <T extends View> T findViewById(int viewId) {
         // 先从view map中查找,如果有的缓存的话直接使用,否则再从mContentView中找
         View tagetView = mViewMap.get(viewId);
@@ -93,9 +143,7 @@ public abstract class SuperFragment extends Fragment {
         return tagetView == null ? null : (T) view.findViewById(viewId);
     }
 
-
-
-    // 普通加载
+    // 普通加载  获取参数argument
     public void commonLoad(View view) {
     }
 
@@ -256,6 +304,19 @@ public abstract class SuperFragment extends Fragment {
         void noPermission();
     }
 
+
+    /**
+     * 静态工厂方法需要一个int型的值来初始化fragment的参数，
+     * 然后返回新的fragment到调用者
+     * 在子类中添加这个方法添加参数
+     */
+//    public static SuperFragment newInstance(int index) {
+//        SuperFragment f = new MyFragment();
+//        Bundle args = new Bundle();
+//        args.putInt("index", index);
+//        f.setArguments(args);
+//        return f;
+//    }
     /**
      * Android M运行时权限请求封装(可用于activity和fragment)
      *
