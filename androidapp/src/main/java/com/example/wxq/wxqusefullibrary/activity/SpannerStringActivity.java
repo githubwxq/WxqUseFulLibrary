@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.app.FragmentManager;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -23,6 +24,11 @@ import android.widget.TextView;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 
+import dialog.swipeawaydialog.ExampleDialogFragment;
+import textview.ScaleTextView;
+import textview.TyperTextView;
+import textview.htextview.HTextView;
+
 public class SpannerStringActivity extends BaseActivity {
 
 
@@ -39,6 +45,8 @@ public class SpannerStringActivity extends BaseActivity {
     private TextView textView06;
     private TextView textView07;
 
+    private ScaleTextView textview100;
+    private TyperTextView textview200;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,6 +58,8 @@ public class SpannerStringActivity extends BaseActivity {
         textView04 = (TextView) findViewById(R.id.text04);
         textView06 = (TextView) findViewById(R.id.text06);
         textView07 = (TextView) findViewById(R.id.text07);
+        textview100=(ScaleTextView) findViewById(R.id.textview100);
+        textview200=(TyperTextView) findViewById(R.id.textview200);
         String string01 = textView01.getText().toString();
         String string02 = textView02.getText().toString();
         String string03 = textView03.getText().toString();
@@ -126,9 +136,34 @@ public class SpannerStringActivity extends BaseActivity {
         RelativeSizeSpan sizeSpan05 = new RelativeSizeSpan(0.5f);
         RelativeSizeSpan sizeSpan06 = new RelativeSizeSpan(0.5f);
         spannableString07.setSpan(sizeSpan05, 1, 2 ,Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        spannableString07.setSpan(sizeSpan06, 6, 7 ,Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        spannableString07.setSpan(sizeSpan06, 6, 7, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
 
         textView07.setText(spannableString07);
+
+
+    //htextview
+
+
+
+
+        textview100.setOnClickListener(new ClickListener());
+
+
+        textview200.setOnClickListener(new ClickListener());
+
+//
+//        textview100.animateText(sentences[index++]);
+//
+//
+//
+
+
+        textview200.animateText("我是sad发货啦红烧豆腐哈里斯的看法和拉会受到付款哈收逗乐发货啦收到货房间辣圣诞节了疯狂");
+
+
+
+
+
     }
 
     @Override
@@ -180,4 +215,52 @@ public class SpannerStringActivity extends BaseActivity {
             }
         }
     };
+
+
+
+
+
+
+    String[] sentences = {"What is design?",
+            "Design is not just",
+            "what it looks like and feels like.",
+            "Design is how it works. \n- Steve Jobs",
+            "Older people",
+            "sit down and ask,",
+            "'What is it?'",
+            "but the boy asks,",
+            "'What can I do with it?'. \n- Steve Jobs",
+            "Swift",
+            "Objective-C",
+            "iPhone",
+            "iPad",
+            "Mac Mini", "MacBook Pro", "Mac Pro", "爱老婆", "老婆和女儿"};
+    int index;
+
+    class ClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+
+
+
+               if (v instanceof HTextView) {
+                   if (index + 1 >= sentences.length) {
+                       index = 0;
+                   }
+                   ((HTextView) v).animateText(sentences[index++]);
+               }
+
+
+            ExampleDialogFragment exampleDialogFragment =    new  ExampleDialogFragment();
+
+            FragmentManager fragmentManager = SpannerStringActivity.this.getFragmentManager();
+            exampleDialogFragment.show(fragmentManager, "dialog");
+
+        }
+    }
+
+
+
+
+
 }

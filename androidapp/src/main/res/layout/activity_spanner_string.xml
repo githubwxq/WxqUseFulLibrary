@@ -21,7 +21,7 @@
     <!--layout="@layout/universal_div" />-->
 
     <LinearLayout
-        android:layout_marginTop="16dp"
+
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:orientation="horizontal"
@@ -53,7 +53,7 @@
             <TextView
                 android:id="@+id/text01"
                 android:text="共累计完成签到24次"
-                android:layout_marginTop="3dp"
+
                 android:textSize="18sp"
                 android:textColor="#727272"
                 android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="18dp"
+
         android:paddingRight="12dp"
         android:paddingTop="16dp"
         android:paddingLeft="12dp"
@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="18dp"
+
         android:paddingRight="12dp"
         android:paddingTop="16dp"
         android:paddingLeft="12dp"
@@ -118,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="18dp"
+
         android:paddingRight="12dp"
         android:paddingTop="16dp"
         android:paddingLeft="12dp"
@@ -138,7 +138,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="18dp"
+
         android:paddingRight="12dp"
         android:paddingTop="16dp"
         android:paddingLeft="12dp"
@@ -157,7 +157,7 @@
         <TextView
             android:layout_toRightOf="@+id/text03"
             android:id="@+id/text04"
-            android:layout_marginTop="2dp"
+
             android:layout_marginLeft="3dp"
             android:textColor="#818181"
             android:layout_width="wrap_content"
@@ -169,7 +169,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+
         android:background="#FFFFFF"
         android:padding="16dp" >
 
@@ -182,4 +182,48 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
+
+    <textview.RainbowTextView
+        android:id="@+id/textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is init sentence"/>
+
+
+    <textview.RainbowTextView
+        android:id="@+id/textview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="#2f00"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="1"
+        android:text="我是王晓清你是谁啊！你是王青死数据垃圾袋服了看见爱上了都快放假了"
+        android:textSize="20sp"
+        auto:colorSpace="150dp"
+        auto:colorSpeed="4dp"/>
+
+    <textview.ScaleTextView
+        android:id="@+id/textview100"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#2f00"
+        android:gravity="right"
+        android:letterSpacing="0.1"
+        android:text="撒的发的说法是打发士大夫撒旦法师打发是的撒发多少"
+        android:textSize="16sp"/>
+
+    <textview.TyperTextView
+        android:id="@+id/textview200"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="#2f00"
+        android:lineSpacingMultiplier="1.5"
+        android:text="this is init sentence."
+        auto:charIncrease="3"
+        auto:typerSpeed="80"/>
+
 </LinearLayout>

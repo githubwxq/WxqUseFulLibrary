@@ -604,4 +604,17 @@
         <attr name="flakeDensity" format="integer"/>
         <attr name="fallingDelay" format="integer"/>
     </declare-styleable>
+
+
+    <declare-styleable name="RainbowTextView">
+        <attr name="colorSpeed" format="dimension" />
+        <attr name="colorSpace" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="TyperTextView">
+        <attr name="typerSpeed" format="integer" />
+        <attr name="charIncrease" format="integer" />
+    </declare-styleable>
+
+
 </resources>

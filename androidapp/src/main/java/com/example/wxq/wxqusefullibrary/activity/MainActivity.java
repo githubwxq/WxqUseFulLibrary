@@ -79,6 +79,8 @@ public class MainActivity extends BaseActivity {
         bomb.setType(1);
         bomb.setName("基于Bmob平台项目");
        // bomb.setMclass(BmobIndexActivity.class);
+
+       // 、、Spanner textview部分颜色 htextview
         bomb.setMclass(SpannerStringActivity.class);
 //        bomb.setMclass(BmobStartActivity.class);
         Function rx=new Function();

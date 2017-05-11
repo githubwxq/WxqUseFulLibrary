@@ -220,5 +220,10 @@ public abstract class BaseApplication extends Application implements Thread.Unca
 //    01-18 18:03:00.120 3379-3379/com.example.wxq.wxqusefullibrary I/wxq: /data/data/com.example.wxq.wxqusefullibrary/cache
 //    01-18 18:03:00.120 3379-3379/com.example.wxq.wxqusefullibrary I/wxq: /data/data/com.example.wxq.wxqusefullibrary/files
 
+//
+//    Application 提供有一个 registerActivityLifecycleCallbacks() 的方法,需要传入的参数就是这个 ActivityLifecycleCallbacks 接口,作用和你猜的没错,就是在你调用这个方法传入这个接口实现类后,
+//    系统会在每个 Activity 执行完对应的生命周期后都调用这个实现类中对应的方法,请记住是每个!
+//
+
 
 }

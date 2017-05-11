@@ -19,11 +19,19 @@ import com.example.wxq.wxqutilslibrary.R;
  */
 public abstract class XXDialog {
 
+    public Dialog getmDialog() {
+        return mDialog;
+    }
+
+    public void setmDialog(Dialog mDialog) {
+        this.mDialog = mDialog;
+    }
+
     private Dialog mDialog;
     private Window mDialogWindow;
     private DialogViewHolder dialogVh;
     private View mRootView;
-    private XXDialog(Context context,int layoutId){
+    public XXDialog(Context context, int layoutId){
 
     dialogVh =DialogViewHolder.get(context,layoutId);
     mRootView= dialogVh.getConcertView();
