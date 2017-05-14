@@ -112,8 +112,9 @@
             android:screenOrientation="portrait" />
         <activity android:name=".activity.MemoryActivity" />
         <activity android:name=".activity.RenderingActivity" />
-        <activity android:name=".activity.weixinActivity"></activity>
-        <activity android:name=".activity.SpannerStringActivity"></activity>
+        <activity android:name=".activity.weixinActivity" />
+        <activity android:name=".activity.SpannerStringActivity" />
+        <activity android:name=".activity.UploadFilesActivity"></activity>
     </application>
 
 </manifest>

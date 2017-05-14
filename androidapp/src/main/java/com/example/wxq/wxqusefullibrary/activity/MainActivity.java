@@ -81,7 +81,9 @@ public class MainActivity extends BaseActivity {
        // bomb.setMclass(BmobIndexActivity.class);
 
        // 、、Spanner textview部分颜色 htextview
-        bomb.setMclass(SpannerStringActivity.class);
+
+      //  bomb.setMclass(SpannerStringActivity.class);
+        bomb.setMclass(UploadFilesActivity.class);
 //        bomb.setMclass(BmobStartActivity.class);
         Function rx=new Function();
         rx.setType(1);
