@@ -88,7 +88,10 @@ public class MainActivity extends BaseActivity {
         Function rx=new Function();
         rx.setType(1);
         rx.setName("Rx系列使用demo");
-        rx.setMclass(RxIndexActivity.class);
+//        rx.setMclass(RxIndexActivity.class);
+
+        rx.setMclass(CameraActivity.class);
+
 
         functions.add(project);
         functions.add(bomb);

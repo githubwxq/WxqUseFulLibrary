@@ -3,6 +3,9 @@ package com.example.wxq.wxqutilslibrary.application;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -225,5 +228,29 @@ public abstract class BaseApplication extends Application implements Thread.Unca
 //    系统会在每个 Activity 执行完对应的生命周期后都调用这个实现类中对应的方法,请记住是每个!
 //
 
+//字体不改变
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        if (newConfig.fontScale != 1)//非默认值
+            getResources();
+        super.onConfigurationChanged(newConfig);
+    }
+
+    @Override
+    public Resources getResources() {
+        Resources res = super.getResources();
+        if (res.getConfiguration().fontScale != 1) {//非默认值
+            Configuration newConfig = new Configuration();
+            newConfig.setToDefaults();
+            //设置默认
+            res.updateConfiguration(newConfig, res.getDisplayMetrics());
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                createConfigurationContext(newConfig);
+            } else {
+                res.updateConfiguration(newConfig, res.getDisplayMetrics());
+            }
+        }
+        return res;
+    }
 
 }

@@ -16,7 +16,25 @@
 
 </android.support.v7.widget.RecyclerView>
 
+    <me.iwf.photopicker.widget.MultiPickResultView
 
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/rv_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/take_phote"
+        />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="点击上传图片到服务器"
+        android:gravity="center"
+        android:id="@+id/upload_pic"
+        android:layout_below="@+id/take_phote"
+        />
 
 
 

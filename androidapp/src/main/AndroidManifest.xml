@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.wxq.wxqusefullibrary">
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -103,10 +109,12 @@
         <activity android:name=".activity.ChoosePicActivity" />
         <activity
             android:name="me.iwf.photopicker.PhotoPickerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="me.iwf.photopicker.PhotoPagerActivity2"
             android:screenOrientation="portrait" />
@@ -114,7 +122,8 @@
         <activity android:name=".activity.RenderingActivity" />
         <activity android:name=".activity.weixinActivity" />
         <activity android:name=".activity.SpannerStringActivity" />
-        <activity android:name=".activity.UploadFilesActivity"></activity>
+        <activity android:name=".activity.UploadFilesActivity" />
+        <activity android:name=".activity.CameraActivity"></activity>
     </application>
 
 </manifest>

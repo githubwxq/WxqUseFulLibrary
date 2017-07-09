@@ -23,10 +23,10 @@ import me.iwf.photopicker.widget.MultiPickResultView;
 import me.iwf.photopicker.widget.Titlebar;
 
 import static me.iwf.photopicker.PhotoPicker.KEY_SELECTED_PHOTOS;
+import static me.iwf.photopicker.PhotoPreview.EXTRA_ACTION;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_CURRENT_ITEM;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_PHOTOS;
 import static me.iwf.photopicker.PhotoPreview.EXTRA_SHOW_DELETE;
-import static me.iwf.photopicker.PhotoPreview.EXTRA_ACTION;
 
 /**
  * Created by donglua on 15/6/24.
@@ -42,9 +42,7 @@ public class PhotoPagerActivity extends AppCompatActivity {
 
   @Override protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
     setContentView(R.layout.__picker_activity_photo_pager);
-
     int currentItem = getIntent().getIntExtra(EXTRA_CURRENT_ITEM, 0);
     List<String> paths = getIntent().getStringArrayListExtra(EXTRA_PHOTOS);
     showDelete = getIntent().getBooleanExtra(EXTRA_SHOW_DELETE, true);

@@ -251,6 +251,7 @@ public class NetConnectTools {
                 params.addHeader(entry.getKey(), entry.getValue());
             }
         }
+
         //   params.addBodyParameter("myFiletype", "png");
         for (int i = 0; i < list.size(); i++) {
             File file = new File(list.get(list.size() - 1 - i));
@@ -258,6 +259,7 @@ public class NetConnectTools {
                 params.addBodyParameter("File" + i, file);
             }
         }
+        params.addBodyParameter("name","wxq");
         x.http().post(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
