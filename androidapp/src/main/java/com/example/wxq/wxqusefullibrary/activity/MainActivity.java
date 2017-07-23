@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ListView;
@@ -14,22 +15,31 @@ import com.blankj.utilcode.util.ScreenUtils;
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqusefullibrary.bmob.activity.BmobIndexActivity;
+import com.example.wxq.wxqusefullibrary.bmob.activity.LoginActivity;
 import com.example.wxq.wxqusefullibrary.model.Function;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonAdapter;
 import com.example.wxq.wxqutilslibrary.widget.dialog.BottomView;
+import com.lzy.okgo.OkGo;
+import com.lzy.okgo.model.Response;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import swipemenu.view.SwipeMenu;
 
 public class MainActivity extends BaseActivity {
+
+    public static String UrlApi = "http://test.juziwl.com/";
+    public static final String LOGINURL = UrlApi + "/api/v2/wisdomapp/getBasicInfos/";
     public static final String RXTAG = "MainActivity";
     private final String[] mItems = {"TestCommonAdapter", "listview选中测试", "baseActivity测试"};
     private final Class<?>[] mClasses = {TestCommonAdapterActivity.class, Main2Activity.class,
@@ -64,6 +74,72 @@ public class MainActivity extends BaseActivity {
 //        long issuccess=  BookManager.getInstance(this).insertBook(book);
 
         ScreenUtils.getScreenRotation(this);
+
+        //测试okgo3.0
+
+    //postqingiu
+
+        HashMap<String, String> params = new HashMap<>();
+        JSONObject jsonObject = new JSONObject(params);
+        OkGo.<String>post(LOGINURL + "123987")//
+                .tag(LoginActivity.class)//
+                .upJson(jsonObject.toString())//
+                .execute(new StringDialogCallback(this){
+                    @Override
+                    public void onSuccess(Response<String> response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().toString());
+                            String code = jsonObject.optString("code", "");
+                            if (!TextUtils.isEmpty(code) && code.equals("000000")) {
+                                JSONObject data = jsonObject.getJSONObject("data");
+                                String className = data.optString("classname", "");
+                                String classowner = data.optString("classowner", "");//班级负责人
+                                String classId = data.optString("classId", "");
+                                String schoolId = data.optString("schoolId", "");
+                                String userImg = data.optString("userImg", "");
+                                String classownerId = data.optString("classownerId", "");
+                                String cityName = data.optString("cityName", "");
+                                showToast(className+classowner);
+
+                            } else {
+                                // 获取错误信息
+                                String errorMsg = jsonObject.optString("errorMsg", "");
+                                if (!TextUtils.isEmpty(errorMsg)) {
+                                    showToast(errorMsg);
+                                }
+
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+
+
+                    }
+                });
+
+
+
+
+//
+//        OkGo.<String>get("https://github.com/jeasonlzy")//
+//                .tag(this)//
+//                .headers("header1", "headerValue1")//
+//                .params("param1", "paramValue1")//
+//                .execute(new StringDialogCallback(this) {
+//
+//                    @Override
+//                    public void onError(Response<String> response) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Response<String> response) {
+//
+//                    }
+//                });
+
     }
 
 

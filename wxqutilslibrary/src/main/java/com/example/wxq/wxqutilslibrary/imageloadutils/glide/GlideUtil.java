@@ -1,17 +1,25 @@
 package com.example.wxq.wxqutilslibrary.imageloadutils.glide;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.GlideBitmapDrawable;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
@@ -387,4 +395,30 @@ public class GlideUtil {
     //其他不常用方法
     //.skipMemoryCache( true )跳过 内存缓存
 
+
+    protected void saveImageByGlide(ImageView imageView, Activity activity) {
+        if (checkWriteStoragePermission(activity)) {
+            GlideBitmapDrawable bmpDrawable = (GlideBitmapDrawable) imageView.getDrawable();
+            MediaStore.Images.Media.insertImage(
+                    activity.getContentResolver(),
+                    bmpDrawable.getBitmap(),
+                    String.valueOf(System.currentTimeMillis()),
+                    "");
+            Toast.makeText(activity, "save success", Toast.LENGTH_SHORT).show();
+        }else{
+            Toast.makeText(activity, "无权限", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected static final int READ_EXTERNAL_STORAGE = 100;
+    protected static final int WRITE_EXTERNAL_STORAGE = 101;
+    private boolean checkWriteStoragePermission(Activity activity) {
+        if (ContextCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(activity, new String[]{
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    WRITE_EXTERNAL_STORAGE);
+            return false;
+        }
+        return true;
+    }
 }

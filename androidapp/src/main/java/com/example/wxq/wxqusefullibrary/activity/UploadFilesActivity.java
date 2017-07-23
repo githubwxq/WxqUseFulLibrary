@@ -1,5 +1,6 @@
 package com.example.wxq.wxqusefullibrary.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -8,16 +9,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.wxq.wxqusefullibrary.R;
 import com.example.wxq.wxqutilslibrary.activity.BaseActivity;
 import com.example.wxq.wxqutilslibrary.imageloadutils.xutils.NetConnectTools;
 import com.example.wxq.wxqutilslibrary.widget.adapter.BaseAdapterHelper;
 import com.example.wxq.wxqutilslibrary.widget.adapter.CommonRecyclerAdapter;
+import com.lzy.ninegrid.ImageInfo;
+import com.lzy.ninegrid.NineGridView;
+import com.lzy.ninegrid.preview.NineGridViewClickAdapter;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import me.iwf.photopicker.compresshelp.CompressHelper;
 import me.iwf.photopicker.widget.MultiPickResultView;
@@ -28,6 +36,8 @@ public class UploadFilesActivity extends BaseActivity {
     ArrayList<String> lists;
     MultiPickResultView multiPickResultView;
     TextView upload_pic;
+
+    NineGridView ninegride;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +92,26 @@ public class UploadFilesActivity extends BaseActivity {
 
             }
         });
+
+
+        List<ImageInfo> list=new ArrayList<>();
+
+//
+        ImageInfo imageInfo=new ImageInfo();
+        imageInfo.setBigImageUrl("http://img2.niutuku.com/desk/anime/0529/0529-17277.jpg");
+        imageInfo.setThumbnailUrl("http://img2.niutuku.com/desk/anime/0529/0529-17277.jpg");
+
+        list.add(imageInfo);
+
+        list.add(imageInfo);
+        list.add(imageInfo);
+        list.add(imageInfo);
+        list.add(imageInfo);
+        list.add(imageInfo);
+//        九宫格
+        NineGridView.setImageLoader(new GlideImageLoader());
+        ninegride= (NineGridView) findViewById(R.id.ninegride);
+        ninegride.setAdapter(new NineGridViewClickAdapter(this, list));
     }
 
     private ArrayList<String > temppics=new ArrayList<>();
@@ -130,5 +160,24 @@ public class UploadFilesActivity extends BaseActivity {
     @Override
     public void widgetClick(View v) {
 
+    }
+
+
+        private class GlideImageLoader implements NineGridView.ImageLoader {
+        @Override
+        public void onDisplayImage(Context context, ImageView imageView, String url) {
+
+//            GlideUtil.getInstance().loadImage(UploadFilesActivity.this,imageView,url,true);
+            Glide.with(context).load(url)//
+                    .placeholder(R.drawable.ic_default_color)//
+                    .error(R.drawable.ic_default_color)//
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)//
+                    .into(imageView);
+        }
+
+        @Override
+        public Bitmap getCacheImage(String url) {
+            return null;
+        }
     }
 }

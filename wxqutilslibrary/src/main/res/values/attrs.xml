@@ -617,4 +617,13 @@
     </declare-styleable>
 
 
+
+    <declare-styleable name="MarqueeView">
+        <attr name="marqueeInterval" format="integer" />
+        <attr name="marqueeAnimDuration" format="integer" />
+        <attr name="marqueeAnimIn" format="reference" />
+        <attr name="marqueeAnimOut" format="reference" />
+    </declare-styleable>
+
+
 </resources>

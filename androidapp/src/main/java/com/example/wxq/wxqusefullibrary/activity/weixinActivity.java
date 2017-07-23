@@ -53,7 +53,7 @@ public class weixinActivity extends
 //        // 一般来讲， ImageWatcher 需要占据全屏的位置
         vImageWatcher = (ImageWatcher) findViewById(R.id.v_image_watcher);
         // 如果是透明状态栏，你需要给ImageWatcher标记 一个偏移值，以修正点击ImageView查看的启动动画的Y轴起点的不正确
-        vImageWatcher.setTranslucentStatus(!isTranslucentStatus ? Utils.calcStatusBarHeight(this) : 0);
+        vImageWatcher.setTranslucentStatus(225); //、、toolbar和状态栏的高度和
         // 配置error图标
         vImageWatcher.setErrorImageRes(R.drawable.default_image);
         // 长按图片的回调，你可以显示一个框继续提供一些复制，发送等功能

@@ -39,4 +39,12 @@
 
 
 
+
+    <com.lzy.ninegrid.NineGridView
+        android:id="@+id/ninegride"
+        android:layout_below="@+id/upload_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.lzy.ninegrid.NineGridView>
+
+
 </RelativeLayout>

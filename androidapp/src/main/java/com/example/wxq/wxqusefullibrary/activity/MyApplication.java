@@ -6,6 +6,9 @@ import android.widget.Toast;
 
 import com.example.wxq.wxqusefullibrary.Main2Activity;
 import com.example.wxq.wxqutilslibrary.application.BaseApplication;
+import com.lzy.okgo.OkGo;
+
+import okhttp3.OkHttpClient;
 //import com.facebook.stetho.Stetho;
 
 //import cn.bmob.v3.Bmob;
@@ -20,6 +23,15 @@ public class MyApplication extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         instance = this;
+        //初始化okgo3.0
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        // 其他统一的配置
+        // 详细说明看GitHub文档：https://github.com/jeasonlzy/
+        OkGo.getInstance().init(this)                           //必须调用初始化
+                .setOkHttpClient(builder.build());         //建议设置OkHttpClient，不设置会使用默认的
+                           //全局公共参数
+
 
     }
 
