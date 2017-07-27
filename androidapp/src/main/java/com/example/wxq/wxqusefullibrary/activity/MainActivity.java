@@ -154,24 +154,46 @@ public class MainActivity extends BaseActivity {
         Function bomb=new Function();
         bomb.setType(1);
         bomb.setName("基于Bmob平台项目");
-       // bomb.setMclass(BmobIndexActivity.class);
+         bomb.setMclass(BmobIndexActivity.class);
 
        // 、、Spanner textview部分颜色 htextview
 
       //  bomb.setMclass(SpannerStringActivity.class);
-        bomb.setMclass(UploadFilesActivity.class);
+//        bomb.setMclass(UploadFilesActivity.class);
 //        bomb.setMclass(BmobStartActivity.class);
         Function rx=new Function();
         rx.setType(1);
         rx.setName("Rx系列使用demo");
-//        rx.setMclass(RxIndexActivity.class);
+        rx.setMclass(RxIndexActivity.class);
 
-        rx.setMclass(CameraActivity.class);
+
+//        rx.setMclass(WeiXinVideoPlayActivity.class);
+
+
+        Function uplaodPic=new Function();
+        uplaodPic.setType(1);
+        uplaodPic.setName("图片上传demo");
+        uplaodPic.setMclass(UploadFilesActivity.class);
+
+
+        Function spannerString=new Function();
+        spannerString.setType(1);
+        spannerString.setName("文字多种样式加图片");
+        spannerString.setMclass(SpannerStringActivity.class);
+
+        Function easy=new Function();
+        easy.setType(1);
+        easy.setName("简单获取拍照图片");
+        easy.setMclass(CameraActivity.class);
+
 
 
         functions.add(project);
         functions.add(bomb);
         functions.add(rx);
+        functions.add(uplaodPic);
+        functions.add(spannerString);
+        functions.add(easy);
 
         //android项目优化
         Function youhua=new Function();
@@ -338,12 +360,19 @@ public class MainActivity extends BaseActivity {
         recordvideo.setName("视频录制与播放");
         recordvideo.setMclass(RecordVideoActivity.class);
 
+        Function recordvideo2=new Function();
+        recordvideo2.setType(1);
+        recordvideo2.setName("仿照微信视频录制与播放");
+        recordvideo2.setMclass(WeiXinVideoPlayActivity.class);
+
+
 
 
 
         functions.add(voiceandshiping);
         functions.add(recordvoice);
         functions.add(recordvideo);
+        functions.add(recordvideo2);
 
 
 

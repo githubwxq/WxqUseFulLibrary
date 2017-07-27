@@ -13,6 +13,7 @@ import android.util.Log;
 import com.blankj.utilcode.util.Utils;
 import com.example.wxq.wxqutilslibrary.Global;
 import com.example.wxq.wxqutilslibrary.imageloadutils.imageloader.LoadingImgUtil;
+import com.jingewenku.abrahamcaijin.commonutil.application.AppUtils;
 import com.squareup.leakcanary.RefWatcher;
 import com.umeng.analytics.MobclickAgent;
 
@@ -28,6 +29,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import specialtools.ActivityManager;
+
+//import com.jingewenku.abrahamcaijin.commonutil.application.AppUtils;
 
 public abstract class BaseApplication extends Application implements Thread.UncaughtExceptionHandler {
     private int count;
@@ -67,6 +70,9 @@ public abstract class BaseApplication extends Application implements Thread.Unca
 //        refWatcher = LeakCanary.install(this);
 //        LeakCanary.install(this);
         Utils.init(getApplicationContext());  // 初始化工具类
+        AppUtils.init(this);
+
+
         initResourceAndother();
         this.registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override

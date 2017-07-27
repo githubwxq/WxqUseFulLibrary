@@ -183,9 +183,7 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
     protected void onDestroy() {
         // 需要activity对象所以在destory之前调用
         if (broadcastReceiver != null) {
-
             unregisterReceiver(broadcastReceiver);
-
         }
         super.onDestroy();
         EventBus.getDefault().unregister(this);
@@ -730,7 +728,6 @@ public abstract class BaseActivity extends FragmentActivity implements View.OnCl
 
 
 //  =================== =================== =================== =================== =================== =================== =================== ===================
-
 
 
 // 日志打印
