@@ -294,9 +294,23 @@ public class MainActivity extends BaseActivity {
         dialog2.setName("不同样式dialog");
         dialog2.setMclass(DifferentStyleDialogActivity.class);
 
+        Function dialog3=new Function();
+        dialog3.setType(1);
+        dialog3.setName("封装好的popupwindow");
+        dialog3.setMclass(EasyPopActivity.class);
+
+
+
         functions.add(dialog);
         functions.add(dialog1);
         functions.add(dialog2);
+        functions.add(dialog3);
+
+
+
+
+
+
 
         //adapter 分类
         Function adapter=new Function();

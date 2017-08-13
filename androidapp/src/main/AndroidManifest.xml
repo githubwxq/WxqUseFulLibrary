@@ -136,6 +136,7 @@
         <activity android:name=".activity.UploadFilesActivity" />
         <activity android:name=".activity.CameraActivity" />
         <activity android:name=".activity.WeiXinVideoPlayActivity"></activity>
+        <activity android:name=".activity.EasyPopActivity"></activity>
     </application>
 
 </manifest>
