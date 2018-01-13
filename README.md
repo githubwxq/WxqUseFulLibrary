@@ -28,6 +28,8 @@
 
 
  * ![image](https://github.com/githubwxq/WxqUseFulLibrary/blob/master/screenpic/wxq.gif)
+ 
+ * ![image](https://raw.githubusercontent.com/githubwxq/WxqUseFulLibrary/master/screenpic/testone.png)
 
       ##### Methods:
     | method 方法          | description 描述 |
